@@ -5,7 +5,7 @@ import { LegalShell, LegalBlock } from "@/components/site";
 export default function CookiesPage() {
   return (
     <LegalShell kicker="Legal" title="Cookie Policy" updated="June 2026">
-      <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+      <p className="text-[15px] leading-relaxed text-muted">
         This Cookie Policy explains how PK DIGITAL LLC (&ldquo;PK Digital&rdquo;)
         uses cookies and similar technologies on pkdigitalllc.com, and how you
         can control them. It should be read alongside our Privacy Policy.
@@ -23,16 +23,16 @@ export default function CookiesPage() {
 
       <LegalBlock n="02" title="The cookies we use">
         <p>
-          <span className="text-[#F2F1EE]">Essential cookies</span> are required
+          <span className="text-white">Essential cookies</span> are required
           for the website to function and cannot be switched off in our systems.
         </p>
         <p>
-          <span className="text-[#F2F1EE]">Analytics cookies</span> help us
+          <span className="text-white">Analytics cookies</span> help us
           understand how visitors use the site so we can improve it. They
           collect information in an aggregated way.
         </p>
         <p>
-          <span className="text-[#F2F1EE]">Marketing cookies</span> may be used
+          <span className="text-white">Marketing cookies</span> may be used
           to measure the effectiveness of campaigns and, where applicable, to
           show relevant content. These are only set with your consent.
         </p>
@@ -66,7 +66,7 @@ export default function CookiesPage() {
       <LegalBlock n="06" title="Contact">
         <p>
           Questions about our use of cookies can be sent to
-          contact@pkdigitalllc.com or to PK DIGITAL LLC, 2335 E. Atlantic Blvd
+          contact@pkdigitalllc.com or to PK DIGITAL LLC, 2335 E. Atlantic Blvd,
           STE 200, Pompano Beach, FL 33062, United States.
         </p>
       </LegalBlock>

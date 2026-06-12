@@ -9,8 +9,10 @@ import {
   CompanyInfo,
   useReduce,
   CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
 } from "@/components/site";
-import { IconMail, IconRoute } from "@/components/icons";
+import { IconMail, IconPhone, IconRoute } from "@/components/icons";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -33,7 +35,7 @@ const TOPICS = [
 const labelCls =
   "font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint";
 const inputCls =
-  "mt-3 w-full rounded-xl border border-line bg-surface px-4 py-3.5 text-[15px] text-white placeholder:text-faint transition-all duration-300 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/10";
+  "mt-3 w-full rounded-xl border border-line bg-surface px-4 py-3.5 text-[15px] text-white placeholder:text-faint transition-all duration-300 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20";
 
 export default function ContactPage() {
   const reduce = useReduce();
@@ -226,24 +228,40 @@ export default function ContactPage() {
 
                 <div>
                   <h3 className={`${labelCls} flex items-center gap-2`}>
+                    <IconPhone className="h-3.5 w-3.5 text-muted" />
+                    Phone
+                  </h3>
+                  <a
+                    href={CONTACT_PHONE_HREF}
+                    className="mt-3 block font-[family-name:var(--font-display)] text-2xl font-normal tracking-[0.01em] text-white transition-colors hover:text-muted"
+                  >
+                    {CONTACT_PHONE}
+                  </a>
+                  <p className="mt-4 text-sm text-faint">
+                    Monday–Friday, 9:00 AM – 6:00 PM EST.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className={`${labelCls} flex items-center gap-2`}>
                     <IconRoute className="h-3.5 w-3.5 text-muted" />
                     How it works
                   </h3>
                   <ol className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted">
                     <li className="flex gap-3">
-                      <span className="font-[family-name:var(--font-mono)] text-white">
+                      <span className="font-[family-name:var(--font-mono)] text-accent">
                         01
                       </span>
                       Discovery call to understand your brand and goals.
                     </li>
                     <li className="flex gap-3">
-                      <span className="font-[family-name:var(--font-mono)] text-white">
+                      <span className="font-[family-name:var(--font-mono)] text-accent">
                         02
                       </span>
                       A short consultation to shape the approach.
                     </li>
                     <li className="flex gap-3">
-                      <span className="font-[family-name:var(--font-mono)] text-white">
+                      <span className="font-[family-name:var(--font-mono)] text-accent">
                         03
                       </span>
                       A tailored proposal — scope, structure, and engagement

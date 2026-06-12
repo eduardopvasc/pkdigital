@@ -5,7 +5,7 @@ import { LegalShell, LegalBlock } from "@/components/site";
 export default function PrivacyPage() {
   return (
     <LegalShell kicker="Legal" title="Privacy Policy" updated="June 2026">
-      <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+      <p className="text-[15px] leading-relaxed text-muted">
         This Privacy Policy explains how PK DIGITAL LLC (&ldquo;PK Digital&rdquo;,
         &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects, uses, and protects personal
         information when you visit pkdigitalllc.com or contact us. We aim to be
@@ -15,9 +15,10 @@ export default function PrivacyPage() {
       <LegalBlock n="01" title="Who is responsible for your data">
         <p>
           PK DIGITAL LLC is the controller of personal information collected
-          through this website. Business address: 2335 E. Atlantic Blvd STE 200,
-          Pompano Beach, FL 33062, United States. Contact:
-          contact@pkdigitalllc.com.
+          through this website. Business address: 2335 E. Atlantic Blvd, STE 200,
+          Pompano Beach, FL 33062, United States. Registered address: 412 W 7th
+          St, Clovis, NM 88101, United States. Contact: contact@pkdigitalllc.com
+          or +1 (954) 676-1050.
         </p>
       </LegalBlock>
 
@@ -83,10 +84,11 @@ export default function PrivacyPage() {
 
       <LegalBlock n="08" title="Contact">
         <p>
-          For any privacy question or request, contact contact@pkdigitalllc.com
-          or write to PK DIGITAL LLC, 2335 E. Atlantic Blvd STE 200, Pompano
-          Beach, FL 33062, United States. We may update this policy from time to
-          time; the date above reflects the latest revision.
+          For any privacy question or request, contact contact@pkdigitalllc.com,
+          call +1 (954) 676-1050, or write to PK DIGITAL LLC, 2335 E. Atlantic
+          Blvd, STE 200, Pompano Beach, FL 33062, United States. We may update
+          this policy from time to time; the date above reflects the latest
+          revision.
         </p>
       </LegalBlock>
     </LegalShell>

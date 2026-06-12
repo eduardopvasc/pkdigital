@@ -2,10 +2,11 @@
 
 /**
  * Shared site components for PK Digital.
- * Identity: Bebas Neue (display, all-caps) + DM Sans (body) + DM Mono (labels).
- * Monochrome — white / grey / near-black (#050508), hairline borders, soft
- * white glows. No gold. The public API (names + props) is kept stable so every
- * page under app/ keeps compiling.
+ * Identity: Fraunces (high-contrast serif display, mixed-case) + DM Sans (body)
+ * + DM Mono (UPPERCASE tracked labels). Greyscale base over a four-layer depth
+ * (#050508 → #16161f) with a glacial steel-blue accent (--color-accent) used
+ * sparingly on hairlines, ticks, focus, and soft glows. No gold. The public API
+ * (names + props) is kept stable so every page under app/ keeps compiling.
  */
 
 import { useState, type ComponentType, type ReactNode } from "react";
@@ -20,17 +21,111 @@ import {
   IconMapPin,
   IconMail,
   IconClock,
+  IconPhone,
 } from "@/components/icons";
 
 type IconType = ComponentType<{ className?: string }>;
 
-/* Business address — the only address shown across the public site. */
+/* ------------------------------------------------------------------ */
+/* Company information — single source of truth, used site-wide.        */
+/* ------------------------------------------------------------------ */
+
+/* Business address — the primary address shown across the public site. */
 export const BUSINESS_ADDRESS = [
-  "2335 E. Atlantic Blvd STE 200",
+  "2335 E. Atlantic Blvd, STE 200",
   "Pompano Beach, FL 33062",
   "United States",
 ];
+
+/* Registered address — shown only on legal pages (Terms, Privacy,
+   Disclaimer) and the Company Information page. */
+export const REGISTERED_ADDRESS = [
+  "412 W 7th St",
+  "Clovis, NM 88101",
+  "United States",
+];
+
 export const CONTACT_EMAIL = "contact@pkdigitalllc.com";
+export const CONTACT_PHONE = "+1 (954) 676-1050";
+export const CONTACT_PHONE_HREF = "tel:+19546761050";
+
+/* The five services — single source of truth for the /services page,
+   the footer, and every in-site link. Anchor = `/services#${slug}`. */
+export type Service = {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  benefits: string[];
+};
+
+export const SERVICES: Service[] = [
+  {
+    slug: "social-media-strategy",
+    name: "Social Media Strategy",
+    tagline: "The plan that everything else runs on.",
+    description:
+      "We define what your brand should stand for on social before a single post goes live — positioning, audience, channel roles, and a measurable roadmap built around your business goals.",
+    benefits: [
+      "Brand positioning and messaging for social",
+      "Channel selection and the role each plays",
+      "Content pillars and a measurable roadmap",
+      "Goals and KPIs agreed up front",
+    ],
+  },
+  {
+    slug: "content-and-creative",
+    name: "Content & Creative",
+    tagline: "On-brand content, produced end to end.",
+    description:
+      "A defined art direction applied consistently across every asset — copy, design, and short-form video concepted, scripted, and produced for how people actually watch the feed.",
+    benefits: [
+      "Art direction, typography, and tone of voice",
+      "Short-form video: concepting, scripting, editing",
+      "Templates and a repeatable visual system",
+      "Copywriting aligned to each content pillar",
+    ],
+  },
+  {
+    slug: "community-management",
+    name: "Community Management",
+    tagline: "Your presence, managed day to day.",
+    description:
+      "Planned publishing and day-to-day engagement on a steady cadence, managed end to end in your brand's voice — so your channels stay active, responsive, and consistent.",
+    benefits: [
+      "Content calendar and scheduling",
+      "Daily engagement and conversation",
+      "Comment and message moderation",
+      "A single point of contact who owns the cadence",
+    ],
+  },
+  {
+    slug: "organic-growth",
+    name: "Organic Growth",
+    tagline: "Audience built on strategy, not shortcuts.",
+    description:
+      "Sustainable audience growth driven by strategy and consistency. We reach and retain the right audience across the channels that matter, without gimmicks or paid shortcuts.",
+    benefits: [
+      "Audience development across key channels",
+      "Format and hook testing that compounds",
+      "Consistency systems that sustain a cadence",
+      "Sustainable growth, honestly measured",
+    ],
+  },
+  {
+    slug: "analytics-reporting",
+    name: "Analytics & Reporting",
+    tagline: "Performance turned into decisions.",
+    description:
+      "A regular reporting rhythm that turns performance into clear decisions for the next cycle — dashboards, insights, and a recurring review so social stays accountable.",
+    benefits: [
+      "Dashboards tracking the metrics that matter",
+      "A recurring reporting and review cadence",
+      "Insights tied back to your goals",
+      "Clear recommendations for the next cycle",
+    ],
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /* Motion                                                              */
@@ -76,8 +171,9 @@ export function Reveal({
 
 export function Kicker({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2.5 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.28em] text-muted">
-      <span className="h-1 w-1 rounded-full bg-white" aria-hidden />
+    <span className="inline-flex items-center gap-3 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.28em] text-muted">
+      <span className="h-px w-6 bg-gradient-to-r from-accent to-transparent" aria-hidden />
+      <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
       {children}
     </span>
   );
@@ -86,7 +182,7 @@ export function Kicker({ children }: { children: ReactNode }) {
 /* Small outlined pill label. */
 export function Badge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-1.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-muted">
+    <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-1.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-muted transition-colors hover:border-accent/40">
       {children}
     </span>
   );
@@ -122,10 +218,10 @@ export function GhostButton({
   return (
     <Link
       href={href}
-      className="group inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.02] px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+      className="btn-ghost group inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.02] px-7 py-3.5 text-sm font-medium text-white hover:border-accent/45 hover:bg-white/[0.05]"
     >
       {children}
-      <span className="text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:text-white">
+      <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">
         →
       </span>
     </Link>
@@ -144,9 +240,9 @@ export function TextLink({
       href={href}
       className="group inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-white"
     >
-      <span className="h-px w-6 bg-white/30 transition-all duration-300 group-hover:w-9 group-hover:bg-white" />
+      <span className="h-px w-6 bg-accent/60 transition-all duration-300 group-hover:w-9 group-hover:bg-accent" />
       {children}
-      <span className="transition-transform duration-300 group-hover:translate-x-1">
+      <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">
         →
       </span>
     </Link>
@@ -171,11 +267,9 @@ export function SectionHead({
   return (
     <Reveal reduce={reduce} className="max-w-3xl">
       <Kicker>{kicker}</Kicker>
-      <h2 className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.5rem,5.5vw,4.25rem)] font-normal leading-[0.9] tracking-[0.01em] text-white">
-        {title}
-      </h2>
+      <h2 className="display-lg mt-7">{title}</h2>
       {lead ? (
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+        <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
           {lead}
         </p>
       ) : null}
@@ -201,21 +295,21 @@ export function PageHero({
     <section className="relative overflow-hidden border-b border-line">
       <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[50vh]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[55vh]"
         style={{
           background:
-            "radial-gradient(50% 60% at 30% 0%, rgba(255,255,255,0.05), transparent 70%)",
+            "radial-gradient(50% 60% at 28% 0%, rgba(147,168,199,0.10), transparent 70%)",
         }}
         aria-hidden
       />
+      {/* Hairline frame ticks */}
+      <div className="pointer-events-none absolute left-6 top-28 hidden h-12 w-px bg-gradient-to-b from-accent/40 to-transparent md:block" aria-hidden />
       <div className="relative mx-auto max-w-[1200px] px-6 pb-20 pt-36 md:px-8 md:pb-28 md:pt-44">
         <Reveal reduce={reduce}>
           <Kicker>{kicker}</Kicker>
-          <h1 className="mt-7 max-w-4xl font-[family-name:var(--font-display)] text-[clamp(3rem,8vw,6rem)] font-normal leading-[0.88] tracking-[0.01em] text-white">
-            {title}
-          </h1>
+          <h1 className="display-xl mt-8 max-w-4xl">{title}</h1>
           {lead ? (
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
               {lead}
             </p>
           ) : null}
@@ -249,17 +343,23 @@ export function CTA({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-line">
-      <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden />
+    <section className="layer-2 relative overflow-hidden border-t border-line">
+      <div className="bg-grid bg-grid-fade-c pointer-events-none absolute inset-0 opacity-70" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(45% 60% at 50% 0%, rgba(147,168,199,0.09), transparent 65%)",
+        }}
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-[1200px] px-6 py-28 text-center md:px-8 md:py-40">
         <Reveal reduce={reduce} className="mx-auto max-w-3xl">
           <div className="flex justify-center">
             <Kicker>{kicker}</Kicker>
           </div>
-          <h2 className="mx-auto mt-7 max-w-3xl font-[family-name:var(--font-display)] text-[clamp(3rem,8vw,6.5rem)] font-normal leading-[0.88] tracking-[0.01em] text-white">
-            {title}
-          </h2>
-          <p className="mx-auto mt-7 max-w-lg text-lg leading-relaxed text-muted">
+          <h2 className="display-xl mx-auto mt-8 max-w-3xl">{title}</h2>
+          <p className="mx-auto mt-8 max-w-lg text-lg leading-relaxed text-muted">
             {lead}
           </p>
           <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -279,6 +379,7 @@ export function CTA({
 /* ------------------------------------------------------------------ */
 
 const NAV_LINKS = [
+  { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
@@ -290,9 +391,15 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
     <Link
       href="/"
       onClick={onClick}
-      className="text-[15px] font-semibold uppercase tracking-[0.18em] text-white"
+      className="group inline-flex items-center gap-2.5"
     >
-      PK<span className="text-muted"> Digital</span>
+      <span
+        className="h-2 w-2 rotate-45 bg-accent transition-transform duration-300 group-hover:rotate-[135deg]"
+        aria-hidden
+      />
+      <span className="text-[15px] font-semibold uppercase tracking-[0.18em] text-white">
+        PK<span className="text-muted"> Digital</span>
+      </span>
     </Link>
   );
 }
@@ -316,7 +423,7 @@ export function Nav() {
               className="group relative text-sm text-muted transition-colors hover:text-white"
             >
               {l.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -331,7 +438,7 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-white transition-colors hover:border-white/25 md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-white transition-colors hover:border-accent/45 md:hidden"
           >
             <span className="relative block h-3 w-5">
               <span
@@ -381,25 +488,27 @@ export function Nav() {
 /* Footer (Yumi-style, institutional)                                  */
 /* ------------------------------------------------------------------ */
 
+const FOOTER_SERVICES = SERVICES.map((s) => ({
+  href: `/services#${s.slug}`,
+  label: s.name,
+}));
+
 const FOOTER_COMPANY = [
   { href: "/about", label: "About" },
   { href: "/approach", label: "Approach" },
   { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
-];
-
-const FOOTER_SERVICES = [
-  { href: "/#services", label: "Social Media Strategy" },
-  { href: "/#services", label: "Content & Creative" },
-  { href: "/#services", label: "Community Management" },
-  { href: "/#services", label: "Organic Growth" },
-  { href: "/#services", label: "Analytics & Reporting" },
+  { href: "/company-information", label: "Company Information" },
 ];
 
 const FOOTER_LEGAL = [
-  { href: "/terms", label: "Terms" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/cookies", label: "Cookies" },
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/cookies", label: "Cookie Policy" },
+  { href: "/refund-policy", label: "Refund Policy" },
+  { href: "/acceptable-use", label: "Acceptable Use" },
+  { href: "/disclaimer", label: "Disclaimer" },
 ];
 
 function FooterCol({
@@ -442,7 +551,7 @@ function FooterInfo({
   return (
     <div>
       <h4 className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-faint">
-        <Icon className="h-3.5 w-3.5 text-muted" />
+        <Icon className="h-3.5 w-3.5 text-accent" />
         {title}
       </h4>
       <div className="mt-3 text-[15px] leading-relaxed text-muted">{children}</div>
@@ -452,54 +561,64 @@ function FooterInfo({
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
-      <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-8 md:py-20">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-10">
-          {/* Brand + business info */}
+    <footer className="layer-2 relative border-t border-line">
+      {/* Accent hairline at the very top edge */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent"
+        aria-hidden
+      />
+      <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-8 md:py-24">
+        <div className="grid gap-14 md:grid-cols-12 md:gap-10">
+          {/* Brand + contact */}
           <div className="md:col-span-5">
             <Wordmark />
-            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted">
               PK DIGITAL LLC — a strategy-led social media agency helping
               brands, businesses, and founders build a stronger social presence
               through content systems, community, and organic growth.
             </p>
 
             <div className="mt-10 space-y-8">
-              <FooterInfo title="Business Address" icon={IconMapPin}>
+              <FooterInfo title="Contact" icon={IconMapPin}>
                 {BUSINESS_ADDRESS.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
                 ))}
+                <a
+                  href={CONTACT_PHONE_HREF}
+                  className="mt-3 block text-white transition-colors hover:text-accent-strong"
+                >
+                  {CONTACT_PHONE}
+                </a>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="block text-white transition-colors hover:text-accent-strong"
+                >
+                  {CONTACT_EMAIL}
+                </a>
               </FooterInfo>
-              <div className="grid gap-8 sm:grid-cols-2">
-                <FooterInfo title="Email" icon={IconMail}>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="text-white transition-colors hover:text-muted"
-                  >
-                    {CONTACT_EMAIL}
-                  </a>
-                </FooterInfo>
-                <FooterInfo title="Business Hours" icon={IconClock}>
-                  <span className="block">Monday–Friday</span>
-                  <span className="block">9:00 AM – 6:00 PM EST</span>
-                </FooterInfo>
-              </div>
+              <FooterInfo title="Business Hours" icon={IconClock}>
+                <span className="block">Monday–Friday · 9:00 AM – 6:00 PM EST</span>
+              </FooterInfo>
             </div>
           </div>
 
           {/* Link columns */}
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-6 md:col-start-7">
-            <FooterCol title="Company" links={FOOTER_COMPANY} />
             <FooterCol title="Services" links={FOOTER_SERVICES} />
+            <FooterCol title="Company" links={FOOTER_COMPANY} />
             <FooterCol title="Legal" links={FOOTER_LEGAL} />
           </div>
         </div>
 
-        <div className="mt-16 border-t border-line pt-8">
+        {/* Bottom bar */}
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-faint">
             © 2026 PK DIGITAL LLC. All rights reserved.
+          </p>
+          <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-faint">
+            Registered office: {REGISTERED_ADDRESS.join(", ")}
           </p>
         </div>
       </div>
@@ -824,35 +943,44 @@ export function CapabilityCard({
         {/* Visual */}
         <div className="relative overflow-hidden border-b border-line bg-bg">
           <div
-            className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-line bg-bg/60 text-muted opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white"
+            className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-40"
+            aria-hidden
+          />
+          {/* Big editorial index */}
+          {typeof index === "number" ? (
+            <span
+              className="font-display pointer-events-none absolute left-5 top-3 z-10 text-[3.25rem] leading-none text-outline-accent opacity-70"
+              aria-hidden
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          ) : null}
+          <div
+            className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-bg/70 text-muted transition-all duration-300 group-hover:border-accent/50 group-hover:text-accent-strong"
             aria-hidden
           >
             ↗
           </div>
-          <div className="aspect-[4/3] p-6 transition-transform duration-500 ease-out group-hover:scale-[1.03] md:p-7">
+          <div className="relative aspect-[4/3] p-6 transition-transform duration-500 ease-out group-hover:scale-[1.03] md:p-7">
             <CapabilityVisual variant={capability.variant} name={capability.name} />
           </div>
         </div>
 
         {/* Body */}
         <div className="flex flex-1 flex-col p-6 md:p-8">
-          <div className="flex items-center justify-between font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
-            <span>{capability.discipline}</span>
-            {typeof index === "number" ? (
-              <span>{String(index + 1).padStart(2, "0")}</span>
-            ) : null}
+          <div className="flex items-center gap-2.5 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
+            <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+            {capability.discipline}
           </div>
-          <h3 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-normal tracking-[0.01em] text-white">
-            {capability.name}
-          </h3>
+          <h3 className="display-md mt-4">{capability.name}</h3>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">
             {capability.desc}
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {capability.deliverables.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-line px-3 py-1 text-xs text-muted transition-colors group-hover:border-white/20"
+                className="rounded-full border border-line px-3 py-1 text-xs text-muted transition-colors group-hover:border-accent/30 group-hover:text-white"
               >
                 {t}
               </span>
@@ -923,7 +1051,7 @@ export function TrustBand({ reduce }: { reduce: boolean }) {
               reduce={reduce}
               className="cell group bg-surface p-7 md:p-8"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-white/80 transition-all duration-300 group-hover:border-white/25 group-hover:text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-accent-strong transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/[0.06]">
                 <t.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-base font-medium text-white">{t.title}</h3>
@@ -932,14 +1060,14 @@ export function TrustBand({ reduce }: { reduce: boolean }) {
           ))}
 
           {/* Call-to-action cell */}
-          <Reveal reduce={reduce} className="cell bg-surface-2 p-7 md:p-8">
+          <Reveal reduce={reduce} className="cell bg-accent/[0.04] p-7 md:p-8">
             <Link href="/contact" className="group flex h-full flex-col justify-between">
-              <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
+              <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-accent-strong">
                 Ready when you are
               </span>
               <span className="mt-8 flex items-center justify-between text-lg font-medium text-white">
                 Request a Proposal
-                <span className="text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:text-white">
+                <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
               </span>
@@ -964,6 +1092,12 @@ const COMPANY_INFO: {
   { label: "Legal entity", icon: IconDocument, lines: ["PK DIGITAL LLC"] },
   { label: "Business address", icon: IconMapPin, lines: BUSINESS_ADDRESS },
   {
+    label: "Phone",
+    icon: IconPhone,
+    lines: [CONTACT_PHONE],
+    href: CONTACT_PHONE_HREF,
+  },
+  {
     label: "Email",
     icon: IconMail,
     lines: [CONTACT_EMAIL],
@@ -986,14 +1120,14 @@ export function CompanyInfo({ reduce }: { reduce: boolean }) {
           title="A registered, contactable company."
           lead="PK Digital is operated by a registered US company. The same details appear across the site — no anonymity, no ambiguity."
         />
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
           {COMPANY_INFO.map((c) => (
             <Reveal
               key={c.label}
               reduce={reduce}
               className="cell bg-surface-2 p-7 md:p-8"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-white/80">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-accent-strong">
                 <c.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
@@ -1076,10 +1210,10 @@ export function LegalBlock({
     >
       <div className="grid gap-4 md:grid-cols-12">
         <div className="md:col-span-3">
-          <span className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-faint">
+          <span className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-accent">
             {n}
           </span>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-normal leading-[0.95] tracking-[0.01em] text-white">
+          <h2 className="font-display mt-2 text-2xl font-normal leading-[1.08] tracking-[-0.01em] text-white">
             {title}
           </h2>
         </div>

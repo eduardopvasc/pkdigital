@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, DM_Sans, DM_Mono } from "next/font/google";
+import { Fraunces, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 
 const sans = DM_Sans({
@@ -7,10 +7,11 @@ const sans = DM_Sans({
   variable: "--font-sans",
 });
 
-const display = Bebas_Neue({
-  weight: "400",
+// High-contrast editorial serif — the PK Digital display face.
+const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
+  axes: ["opsz"],
 });
 
 const mono = DM_Mono({
@@ -39,12 +40,22 @@ export const metadata: Metadata = {
   ],
   applicationName: "PK Digital",
   authors: [{ name: "PK Digital LLC" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "PK Digital LLC — Growth-Focused Social Media Agency",
     description:
       "Strategy-led social media agency for brands, businesses, and founders — social media strategy, content, creative direction, community, and organic growth.",
+    url: "/",
     siteName: "PK Digital",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PK Digital LLC — Growth-Focused Social Media Agency",
+    description:
+      "Strategy-led social media agency for brands, businesses, and founders — social media strategy, content, creative direction, community, and organic growth.",
   },
 };
 

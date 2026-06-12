@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Nav,
   Footer,
@@ -12,6 +13,7 @@ import {
   SectionHead,
   CapabilityCard,
   CAPABILITIES,
+  SERVICES,
   TrustBand,
   CompanyInfo,
   PHASES,
@@ -164,6 +166,15 @@ const PHASE_ICONS: Record<string, Ico> = {
   Amplify: IconTrendingUp,
 };
 
+/* Refined icon per service — used by the redesigned Home services section. */
+const SERVICE_ICONS: Record<string, Ico> = {
+  "social-media-strategy": IconTarget,
+  "content-and-creative": IconSparkle,
+  "community-management": IconChat,
+  "organic-growth": IconTrendingUp,
+  "analytics-reporting": IconBarChart,
+};
+
 const FAQ = [
   {
     q: "How are engagements structured?",
@@ -241,51 +252,92 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        {/* ---------------- Hero ---------------- */}
-        <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
+        {/* ---------------- Hero (asymmetric editorial split) ---------------- */}
+        <section className="relative flex min-h-[92svh] items-center overflow-hidden border-b border-line">
           <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden />
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-[60vh]"
+            className="pointer-events-none absolute inset-y-0 left-0 w-[70%]"
             style={{
               background:
-                "radial-gradient(60% 50% at 50% 0%, rgba(255,255,255,0.06), transparent 70%)",
+                "radial-gradient(55% 60% at 18% 38%, rgba(147,168,199,0.10), transparent 70%)",
             }}
             aria-hidden
           />
 
-          <div className="relative mx-auto w-full max-w-5xl px-6 pt-28 pb-20 text-center md:px-8">
-            <Reveal reduce={reduce} className="flex justify-center">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.25em] text-muted md:text-[11px]">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-white/60" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
-                </span>
-                PK Digital — Social Media Agency
-              </span>
-            </Reveal>
+          <div className="relative mx-auto w-full max-w-[1200px] px-6 pb-20 pt-36 md:px-8 md:pb-28 md:pt-40">
+            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
+              {/* Left — headline */}
+              <div className="lg:col-span-7">
+                <Reveal reduce={reduce}>
+                  <Kicker>PK Digital — Social Media Agency</Kicker>
+                </Reveal>
 
-            <Reveal reduce={reduce} delay={0.05}>
-              <h1 className="mt-9 font-[family-name:var(--font-display)] text-[clamp(3.25rem,13vw,11rem)] font-normal uppercase leading-[0.84] tracking-[0.005em] text-white">
-                <span className="block">Social Media.</span>
-                <span className="text-outline block">Content Systems.</span>
-                <span className="block">Brand Growth.</span>
-              </h1>
-            </Reveal>
+                <Reveal reduce={reduce} delay={0.05}>
+                  <h1 className="display-xl mt-8">
+                    Social media,
+                    <br />
+                    content systems,
+                    <br />
+                    <span className="display-em">brand growth.</span>
+                  </h1>
+                </Reveal>
 
-            <Reveal reduce={reduce} delay={0.1}>
-              <p className="mx-auto mt-9 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-                We help brands, businesses, and founders build a stronger social
-                presence — strategy, content, and community, run as one
-                accountable partnership.
-              </p>
-            </Reveal>
+                <Reveal reduce={reduce} delay={0.1}>
+                  <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+                    We help brands, businesses, and founders build a stronger
+                    social presence — strategy, content, and community, run as
+                    one accountable partnership.
+                  </p>
+                </Reveal>
 
-            <Reveal reduce={reduce} delay={0.15}>
-              <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <PrimaryButton href="/contact">Request a Proposal</PrimaryButton>
-                <GhostButton href="/approach">Explore the framework</GhostButton>
+                <Reveal reduce={reduce} delay={0.15}>
+                  <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                    <PrimaryButton href="/contact">Request a Proposal</PrimaryButton>
+                    <GhostButton href="/approach">Explore the framework</GhostButton>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
+
+              {/* Right — geometric strategy panel */}
+              <Reveal reduce={reduce} delay={0.12} className="lg:col-span-5">
+                <div className="ticks relative overflow-hidden rounded-2xl border border-line bg-surface/70 p-6 backdrop-blur-sm md:p-8">
+                  <div
+                    className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-40"
+                    aria-hidden
+                  />
+                  <div className="relative">
+                    <div className="flex items-center justify-between font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-faint">
+                      <span className="flex items-center gap-2 text-accent-strong">
+                        <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                        What we run
+                      </span>
+                      <span>PK · 2026</span>
+                    </div>
+
+                    <ul className="mt-6">
+                      {SERVICES.map((s, i) => (
+                        <li key={s.slug} className="border-t border-line first:border-t-0">
+                          <Link
+                            href={`/services#${s.slug}`}
+                            className="group flex items-center gap-4 py-4"
+                          >
+                            <span className="font-display w-8 text-lg leading-none text-accent-strong">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span className="flex-1 text-[15px] font-medium text-white transition-colors group-hover:text-accent-strong">
+                              {s.name}
+                            </span>
+                            <span className="text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                              →
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -336,33 +388,79 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------------- What we do (specialisms) ---------------- */}
-        <section id="services" className="surface-soft scroll-mt-24 border-t border-line">
+        {/* ---------------- What we do (services) ---------------- */}
+        <section
+          id="services"
+          className="layer-2 scroll-mt-24 border-t border-line"
+        >
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
-            <SectionHead
-              reduce={reduce}
-              kicker="What we do"
-              title="A complete social media function."
-              lead="Ten disciplines, delivered as one accountable partnership — from strategy and content through to community and reporting."
-            />
-            <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
-              {SPECIALISMS.map((s) => (
-                <Reveal
-                  key={s.title}
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-8">
+                <SectionHead
                   reduce={reduce}
-                  className="cell group flex items-start gap-5 bg-surface p-7 md:p-8"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-white/85 transition-all duration-300 group-hover:border-white/25 group-hover:bg-white/[0.05]">
-                    <s.icon className="h-5 w-5" />
+                  kicker="What we do"
+                  title="Five services, one partnership."
+                  lead="From strategy and content through to community, growth, and reporting — delivered as a single accountable retainer, scoped to your brand."
+                />
+              </div>
+              <Reveal
+                reduce={reduce}
+                className="md:col-span-4 md:justify-self-end md:pb-3"
+              >
+                <TextLink href="/services">Explore all services</TextLink>
+              </Reveal>
+            </div>
+
+            <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+              {SERVICES.map((s, i) => {
+                const Icon = SERVICE_ICONS[s.slug];
+                return (
+                  <Reveal key={s.slug} reduce={reduce} className="h-full">
+                    <Link
+                      href={`/services#${s.slug}`}
+                      className="cell group flex h-full flex-col bg-surface p-7 md:p-9"
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-accent-strong transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/[0.06]">
+                          {Icon ? <Icon className="h-5 w-5" /> : null}
+                        </div>
+                        <span className="font-display text-outline text-[2.25rem] leading-none">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <h3 className="display-md mt-7">{s.name}</h3>
+                      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">
+                        {s.tagline}
+                      </p>
+                      <span className="mt-6 inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent-strong">
+                        View service
+                        <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
+                      </span>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+
+              {/* Disciplines cell — keeps the full specialism set visible */}
+              <Reveal reduce={reduce} className="h-full">
+                <div className="cell flex h-full flex-col bg-accent/[0.04] p-7 md:p-9">
+                  <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-accent-strong">
+                    Also includes
+                  </span>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {SPECIALISMS.map((s) => (
+                      <span
+                        key={s.title}
+                        className="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >
+                        {s.title}
+                      </span>
+                    ))}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-white">{s.title}</h3>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-muted">
-                      {s.copy}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -415,7 +513,7 @@ export default function Home() {
             <div className="mt-16 grid gap-12 sm:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4">
               {PRINCIPLES.map((p) => (
                 <Reveal key={p.n} reduce={reduce}>
-                  <div className="font-[family-name:var(--font-display)] text-[clamp(4rem,9vw,7rem)] font-normal leading-[0.8] text-outline">
+                  <div className="font-display text-[clamp(4rem,9vw,7rem)] font-normal leading-[0.8] text-outline-accent">
                     {p.n}
                   </div>
                   <h3 className="mt-6 text-xl font-medium text-white">
@@ -430,8 +528,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------------- PK Framework ---------------- */}
-        <section className="surface-soft border-t border-line">
+        {/* ---------------- PK Framework (editorial) ---------------- */}
+        <section className="layer-3 border-y border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-9">
@@ -450,32 +548,39 @@ export default function Home() {
               </Reveal>
             </div>
 
-            <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-              {PHASES.map((p) => (
-                <Reveal
-                  key={p.name}
-                  reduce={reduce}
-                  className="cell group bg-surface p-8 md:p-10"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-white/85 transition-all duration-300 group-hover:border-white/25 group-hover:bg-white/[0.05]">
-                      {(() => {
-                        const PhaseIcon = PHASE_ICONS[p.name];
-                        return PhaseIcon ? <PhaseIcon className="h-5 w-5" /> : null;
-                      })()}
+            <div className="mt-20 grid gap-y-14 md:grid-cols-4 md:gap-0">
+              {PHASES.map((p) => {
+                const PhaseIcon = PHASE_ICONS[p.name];
+                return (
+                  <Reveal
+                    key={p.name}
+                    reduce={reduce}
+                    className="group relative md:pr-8"
+                  >
+                    {/* Stepped connector with accent node */}
+                    <div className="relative h-px w-full bg-line">
+                      <span
+                        className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 bg-accent transition-transform duration-300 group-hover:rotate-[135deg]"
+                        aria-hidden
+                      />
                     </div>
-                    <span className="font-[family-name:var(--font-mono)] text-sm tracking-[0.2em] text-faint">
-                      {p.n}
-                    </span>
-                  </div>
-                  <h3 className="mt-6 font-[family-name:var(--font-display)] text-3xl font-normal tracking-[0.01em] text-white">
-                    {p.name}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted">
-                    {p.copy}
-                  </p>
-                </Reveal>
-              ))}
+                    <div className="pt-8">
+                      <span className="font-display text-outline-accent block text-[clamp(3.5rem,7vw,5.5rem)] leading-[0.8]">
+                        {p.n}
+                      </span>
+                      <div className="mt-6 flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-white/[0.02] text-accent-strong">
+                          {PhaseIcon ? <PhaseIcon className="h-[18px] w-[18px]" /> : null}
+                        </div>
+                        <h3 className="display-md">{p.name}</h3>
+                      </div>
+                      <p className="mt-4 text-[15px] leading-relaxed text-muted md:pr-2">
+                        {p.copy}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -506,21 +611,26 @@ export default function Home() {
         <CompanyInfo reduce={reduce} />
 
         {/* ---------------- Final CTA ---------------- */}
-        <section className="relative overflow-hidden border-t border-line">
-          <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden />
+        <section className="layer-2 relative overflow-hidden border-t border-line">
+          <div className="bg-grid bg-grid-fade-c pointer-events-none absolute inset-0 opacity-70" aria-hidden />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(45% 60% at 50% 0%, rgba(147,168,199,0.09), transparent 65%)",
+            }}
+            aria-hidden
+          />
           <div className="relative mx-auto max-w-[1200px] px-6 py-28 text-center md:px-8 md:py-40">
             <Reveal reduce={reduce} className="mx-auto max-w-4xl">
               <div className="flex justify-center">
                 <Kicker>Get started</Kicker>
               </div>
-              <h2 className="mt-8 font-[family-name:var(--font-display)] text-[clamp(3.25rem,11vw,9rem)] font-normal uppercase leading-[0.84] tracking-[0.01em] text-white">
-                Let&rsquo;s build
-                <br />
-                <span className="text-outline">something worth</span>
-                <br />
-                following.
+              <h2 className="display-xl mt-8">
+                Let&rsquo;s build{" "}
+                <span className="display-em">something worth</span> following.
               </h2>
-              <p className="mx-auto mt-9 max-w-lg text-lg leading-relaxed text-muted">
+              <p className="mx-auto mt-8 max-w-lg text-lg leading-relaxed text-muted">
                 Start with a discovery call. We&rsquo;ll tell you which phase of
                 the framework your brand needs first — and exactly how we would
                 run it.

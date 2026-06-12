@@ -54,13 +54,19 @@ const COMPANY = [
   { label: "Legal entity", value: "PK DIGITAL LLC" },
   {
     label: "Business address",
-    value: "2335 E. Atlantic Blvd STE 200, Pompano Beach, FL 33062, United States",
+    value:
+      "2335 E. Atlantic Blvd, STE 200, Pompano Beach, FL 33062, United States",
+  },
+  { label: "Phone", value: "+1 (954) 676-1050", href: "tel:+19546761050" },
+  {
+    label: "Email",
+    value: "contact@pkdigitalllc.com",
+    href: "mailto:contact@pkdigitalllc.com",
   },
   {
     label: "Business hours",
     value: "Monday–Friday, 9:00 AM – 6:00 PM EST",
   },
-  { label: "Contact", value: "contact@pkdigitalllc.com", href: "mailto:contact@pkdigitalllc.com" },
 ];
 
 export default function AboutPage() {
@@ -84,13 +90,13 @@ export default function AboutPage() {
             title="A point of view on social media."
             lead="Our work starts from a few convictions. They shape every strategy we build and every engagement we take on."
           />
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2">
+          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
             {BELIEFS.map((b) => (
-              <Reveal key={b.title} reduce={reduce} className="bg-[#0B0C0E] p-8 md:p-10">
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium leading-snug text-[#F2F1EE]">
+              <Reveal key={b.title} reduce={reduce} className="bg-surface p-8 md:p-10">
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium leading-snug text-white">
                   {b.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {b.copy}
                 </p>
               </Reveal>
@@ -99,15 +105,15 @@ export default function AboutPage() {
         </section>
 
         {/* How we work */}
-        <section className="border-y border-white/10 bg-[#0E1014]">
+        <section className="border-y border-line bg-surface-2">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <div className="grid gap-12 md:grid-cols-12 md:items-center">
               <Reveal reduce={reduce} className="md:col-span-6">
                 <Kicker>How we work</Kicker>
-                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-[#F2F1EE]">
+                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
                   Every engagement runs through the same system.
                 </h2>
-                <p className="mt-5 text-lg leading-relaxed text-[#9A9DA6]">
+                <p className="mt-5 text-lg leading-relaxed text-muted">
                   The PK Framework takes a brand from diagnosis to compounding
                   growth in four phases — Audit, Architect, Activate, Amplify.
                   It is how we stay consistent across very different brands.
@@ -117,18 +123,18 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <Reveal reduce={reduce} className="md:col-span-6">
-                <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
+                <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
                   {[
                     ["01", "Audit"],
                     ["02", "Architect"],
                     ["03", "Activate"],
                     ["04", "Amplify"],
                   ].map(([n, name]) => (
-                    <div key={name} className="bg-[#0E1014] p-8">
-                      <span className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-white">
+                    <div key={name} className="bg-surface-2 p-8">
+                      <span className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-accent">
                         {n}
                       </span>
-                      <div className="mt-4 font-[family-name:var(--font-display)] text-xl font-semibold text-[#F2F1EE]">
+                      <div className="mt-4 font-[family-name:var(--font-display)] text-xl font-semibold text-white">
                         {name}
                       </div>
                     </div>
@@ -147,13 +153,13 @@ export default function AboutPage() {
             title="We work best with a specific kind of brand."
             lead="Focus is deliberate. We partner with businesses for which social is a genuine growth lever — not an afterthought."
           />
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {SERVE.map((s) => (
-              <Reveal key={s.title} reduce={reduce} className="bg-[#0B0C0E] p-8">
-                <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-[#F2F1EE]">
+              <Reveal key={s.title} reduce={reduce} className="bg-surface p-8">
+                <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-white">
                   {s.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#9A9DA6]">
+                <p className="mt-3 text-sm leading-relaxed text-muted">
                   {s.copy}
                 </p>
               </Reveal>
@@ -162,23 +168,23 @@ export default function AboutPage() {
         </section>
 
         {/* How we operate */}
-        <section className="border-y border-white/10 bg-[#0E1014]">
+        <section className="border-y border-line bg-surface-2">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <div className="grid gap-12 md:grid-cols-12">
               <Reveal reduce={reduce} className="md:col-span-5">
                 <Kicker>How we operate</Kicker>
-                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-[#F2F1EE]">
+                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
                   Built as a company, run as a partner.
                 </h2>
               </Reveal>
               <Reveal reduce={reduce} className="space-y-5 md:col-span-7">
-                <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="text-[15px] leading-relaxed text-muted">
                   PK Digital is structured as a company, not a side project. We
                   operate to a defined process, keep a clear scope for every
                   engagement, and treat each brand as a long-term partnership
                   rather than a series of disconnected deliverables.
                 </p>
-                <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="text-[15px] leading-relaxed text-muted">
                   That means predictable communication, a single point of
                   contact, and a reporting cadence you can rely on. The
                   framework keeps our work consistent; the partnership model
@@ -192,19 +198,19 @@ export default function AboutPage() {
         {/* Company information */}
         <section className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
           <SectionHead reduce={reduce} kicker="Company information" title="The details." />
-          <Reveal reduce={reduce} className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-white/10">
+          <Reveal reduce={reduce} className="mt-12 max-w-3xl overflow-hidden rounded-2xl border border-line">
             <dl>
               {COMPANY.map((row, i) => (
                 <div
                   key={row.label}
                   className={`grid gap-2 px-6 py-6 sm:grid-cols-3 sm:gap-6 md:px-8 ${
-                    i !== 0 ? "border-t border-white/10" : ""
+                    i !== 0 ? "border-t border-line" : ""
                   }`}
                 >
-                  <dt className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[#6E7079]">
+                  <dt className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
                     {row.label}
                   </dt>
-                  <dd className="text-[15px] text-[#F2F1EE] sm:col-span-2">
+                  <dd className="text-[15px] text-white sm:col-span-2">
                     {row.href ? (
                       <a
                         href={row.href}
@@ -221,6 +227,9 @@ export default function AboutPage() {
             </dl>
           </Reveal>
           <Reveal reduce={reduce} className="mt-12">
+            <TextLink href="/company-information">Full company information</TextLink>
+          </Reveal>
+          <Reveal reduce={reduce} className="mt-8">
             <PrimaryButton href="/contact">Request a Proposal</PrimaryButton>
           </Reveal>
         </section>

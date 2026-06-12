@@ -102,20 +102,20 @@ const FAQ = [
 
 function PhaseDeepDive({ reduce }: { reduce: boolean }) {
   return (
-    <div className="mt-16 space-y-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+    <div className="mt-16 space-y-px overflow-hidden rounded-2xl border border-line bg-line">
       {PHASES.map((p) => {
         const d = PHASE_DETAIL[p.name];
         return (
-          <Reveal key={p.name} reduce={reduce} className="bg-[#0B0C0E] p-8 md:p-12">
+          <Reveal key={p.name} reduce={reduce} className="bg-surface p-8 md:p-12">
             <div className="grid gap-8 md:grid-cols-12">
               <div className="md:col-span-4">
-                <span className="font-[family-name:var(--font-mono)] text-sm tracking-[0.2em] text-white">
+                <span className="font-[family-name:var(--font-mono)] text-sm tracking-[0.2em] text-accent">
                   {p.n}
                 </span>
-                <h3 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[#F2F1EE]">
+                <h3 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-white">
                   {p.name}
                 </h3>
-                <p className="mt-4 text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="mt-4 text-[15px] leading-relaxed text-muted">
                   {p.copy}
                 </p>
               </div>
@@ -126,10 +126,10 @@ function PhaseDeepDive({ reduce }: { reduce: boolean }) {
                   { label: "What comes out", text: d.output },
                 ].map((col) => (
                   <div key={col.label}>
-                    <h4 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[#6E7079]">
+                    <h4 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
                       {col.label}
                     </h4>
-                    <p className="mt-3 text-sm leading-relaxed text-[#9A9DA6]">
+                    <p className="mt-3 text-sm leading-relaxed text-muted">
                       {col.text}
                     </p>
                   </div>
@@ -146,17 +146,17 @@ function PhaseDeepDive({ reduce }: { reduce: boolean }) {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-white/10">
+    <div className="border-b border-line">
       <button
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center justify-between gap-6 py-6 text-left"
         aria-expanded={open}
       >
-        <span className="font-[family-name:var(--font-display)] text-lg font-medium text-[#F2F1EE]">
+        <span className="font-[family-name:var(--font-display)] text-lg font-medium text-white">
           {q}
         </span>
         <span
-          className={`shrink-0 text-white transition-transform duration-300 ${
+          className={`shrink-0 text-accent transition-transform duration-300 ${
             open ? "rotate-45" : ""
           }`}
           aria-hidden
@@ -170,7 +170,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="max-w-2xl text-[15px] leading-relaxed text-[#9A9DA6]">
+          <p className="max-w-2xl text-[15px] leading-relaxed text-muted">
             {a}
           </p>
         </div>
@@ -200,20 +200,20 @@ export default function ApproachPage() {
             title="Four phases, in sequence."
             lead="Each phase builds on the one before it. The order is the point: we diagnose before we design, and design before we publish."
           />
-          <div className="mt-16 grid gap-px overflow-hidden border-t border-white/15 md:grid-cols-4">
+          <div className="mt-16 grid gap-px overflow-hidden border-t border-line-strong md:grid-cols-4">
             {PHASES.map((p) => (
               <Reveal
                 key={p.name}
                 reduce={reduce}
-                className="border-l border-white/10 py-8 pl-6 pr-4 first:border-l-0 md:border-l-0 md:pl-0 md:pr-8"
+                className="border-l border-line py-8 pl-6 pr-4 first:border-l-0 md:border-l-0 md:pl-0 md:pr-8"
               >
-                <span className="font-[family-name:var(--font-mono)] text-sm tracking-[0.2em] text-white">
+                <span className="font-[family-name:var(--font-mono)] text-sm tracking-[0.2em] text-accent">
                   {p.n}
                 </span>
-                <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[#F2F1EE]">
+                <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-white">
                   {p.name}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {p.copy}
                 </p>
               </Reveal>
@@ -222,7 +222,7 @@ export default function ApproachPage() {
         </section>
 
         {/* Deep dive */}
-        <section className="border-y border-white/10 bg-[#0E1014]">
+        <section className="border-y border-line bg-surface-2">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <SectionHead
               reduce={reduce}
@@ -242,20 +242,20 @@ export default function ApproachPage() {
             title="What the first months look like."
             lead="An indicative sequence — exact timing depends on scope, which we agree on before we begin."
           />
-          <div className="mt-16 border-l border-white/15">
+          <div className="mt-16 border-l border-line-strong">
             {TIMELINE.map((t) => (
               <Reveal key={t.title} reduce={reduce} className="relative pl-8 pb-12 last:pb-0">
                 <span
-                  className="absolute left-0 top-1.5 h-2 w-2 -translate-x-[4.5px] rounded-full bg-white"
+                  className="absolute left-0 top-1.5 h-2 w-2 -translate-x-[4.5px] rotate-45 bg-accent"
                   aria-hidden
                 />
-                <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[#6E7079]">
+                <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
                   {t.label}
                 </span>
-                <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl font-medium text-[#F2F1EE]">
+                <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl font-medium text-white">
                   {t.title}
                 </h3>
-                <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">
                   {t.copy}
                 </p>
               </Reveal>
@@ -264,22 +264,22 @@ export default function ApproachPage() {
         </section>
 
         {/* How a partnership works */}
-        <section className="border-y border-white/10 bg-[#0E1014]">
+        <section className="border-y border-line bg-surface-2">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <div className="grid gap-12 md:grid-cols-12 md:items-center">
               <Reveal reduce={reduce} className="md:col-span-6">
                 <Kicker>The partnership</Kicker>
-                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-[#F2F1EE]">
+                <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
                   A retainer relationship, not a one-off project.
                 </h2>
               </Reveal>
               <Reveal reduce={reduce} className="space-y-5 md:col-span-6">
-                <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="text-[15px] leading-relaxed text-muted">
                   Social rewards consistency, so we work as an ongoing partner
                   rather than a project shop. Each month follows a steady rhythm:
                   produce and publish, manage community, measure, and review.
                 </p>
-                <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+                <p className="text-[15px] leading-relaxed text-muted">
                   You get a single point of contact, a predictable reporting
                   cycle, and a strategy that adapts as we learn. Scope is set in
                   the statement of work and reviewed as the partnership grows.
@@ -300,22 +300,22 @@ export default function ApproachPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-white/10">
+        <section className="border-t border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-24 text-center md:px-8 md:py-32">
             <Reveal reduce={reduce} className="mx-auto max-w-2xl">
               <div className="flex justify-center">
                 <Kicker>Get started</Kicker>
               </div>
-              <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-[#F2F1EE]">
+              <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-white">
                 See how the framework fits your brand.
               </h2>
-              <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-[#9A9DA6]">
+              <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-muted">
                 Start with a discovery call. We will tell you which phase your
                 brand needs first.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <PrimaryButton href="/contact">Book a Discovery Call</PrimaryButton>
-                <GhostButton href="/#services">View our services</GhostButton>
+                <GhostButton href="/services">View our services</GhostButton>
               </div>
             </Reveal>
           </div>

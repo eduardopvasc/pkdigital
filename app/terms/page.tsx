@@ -5,7 +5,7 @@ import { LegalShell, LegalBlock } from "@/components/site";
 export default function TermsPage() {
   return (
     <LegalShell kicker="Legal" title="Terms of Service" updated="June 2026">
-      <p className="text-[15px] leading-relaxed text-[#9A9DA6]">
+      <p className="text-[15px] leading-relaxed text-muted">
         These Terms of Service (the &ldquo;Terms&rdquo;) govern your use of this
         website and describe the general terms on which PK DIGITAL LLC
         (&ldquo;PK Digital&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) provides
@@ -17,9 +17,17 @@ export default function TermsPage() {
       <LegalBlock n="01" title="Who we are">
         <p>
           PK Digital is the trading name of PK DIGITAL LLC, a limited liability
-          company registered in the State of New Mexico, United States, with a
-          business address at 2335 E. Atlantic Blvd STE 200, Pompano Beach, FL
-          33062. You can reach us at contact@pkdigitalllc.com.
+          company registered in the State of New Mexico, United States.
+        </p>
+        <p>
+          Business address: 2335 E. Atlantic Blvd, STE 200, Pompano Beach, FL
+          33062, United States.
+        </p>
+        <p>
+          Registered address: 412 W 7th St, Clovis, NM 88101, United States.
+        </p>
+        <p>
+          You can reach us at contact@pkdigitalllc.com or +1 (954) 676-1050.
         </p>
       </LegalBlock>
 
@@ -113,9 +121,9 @@ export default function TermsPage() {
 
       <LegalBlock n="10" title="Contact">
         <p>
-          Questions about these Terms can be sent to contact@pkdigitalllc.com or
-          by mail to PK DIGITAL LLC, 2335 E. Atlantic Blvd STE 200, Pompano
-          Beach, FL 33062, United States.
+          Questions about these Terms can be sent to contact@pkdigitalllc.com,
+          by phone at +1 (954) 676-1050, or by mail to PK DIGITAL LLC, 2335 E.
+          Atlantic Blvd, STE 200, Pompano Beach, FL 33062, United States.
         </p>
       </LegalBlock>
     </LegalShell>
