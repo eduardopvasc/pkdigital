@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Services",
   description:
-    "The five disciplines NOREN Agency delivers as one accountable partnership — social media strategy, content and creative, community management, organic growth, and analytics and reporting.",
+    "The growth capabilities NOREN delivers as one accountable partnership — strategic growth systems, audience development, content infrastructure, strategic distribution, brand positioning, community development, and growth intelligence.",
   path: "/services",
 });
 

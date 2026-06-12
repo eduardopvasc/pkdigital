@@ -22,8 +22,8 @@ export default function WorkPage() {
         <PageHero
           reduce={reduce}
           kicker="Our work"
-          title="What we produce."
-          lead="The formats and systems we deliver across an engagement — content systems, short-form video, channel architecture, creative direction, community, and reporting. Examples of the work itself, not client projects."
+          title="What we build."
+          lead="The systems and assets we deliver across an engagement — content infrastructure, channel architecture, creative direction, distribution, community and reporting. Examples of the work itself, not client projects."
         />
 
         <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-28">
@@ -57,12 +57,12 @@ export default function WorkPage() {
         <CTA
           reduce={reduce}
           kicker="Work with us"
-          title="Let's build your social presence."
-          lead="Tell us about your brand and goals. We'll show you how we'd approach the work, in a tailored proposal."
+          title="Let's build your growth infrastructure."
+          lead="Tell us about your business and goals. We'll show you how we'd approach the work, in a tailored proposal."
           primaryHref="/contact"
-          primaryLabel="Request a Proposal"
-          secondaryHref="/approach"
-          secondaryLabel="See the framework"
+          primaryLabel="Book a Strategy Call"
+          secondaryHref="/framework"
+          secondaryLabel="Explore the Framework"
         />
       </main>
       <Footer />

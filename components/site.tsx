@@ -69,68 +69,94 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    slug: "social-media-strategy",
-    name: "Social Media Strategy",
-    tagline: "The plan that everything else runs on.",
+    slug: "strategic-growth-systems",
+    name: "Strategic Growth Systems",
+    tagline: "The operating system behind sustainable growth.",
     description:
-      "We define what your brand should stand for on social before a single post goes live — positioning, audience, channel roles, and a measurable roadmap built around your business goals.",
+      "We design the strategy and systems that turn scattered activity into a compounding growth engine — clear goals, a measurable roadmap, and the operating rhythm to run it.",
     benefits: [
-      "Brand positioning and messaging for social",
-      "Channel selection and the role each plays",
-      "Content pillars and a measurable roadmap",
-      "Goals and KPIs agreed up front",
+      "Growth strategy and measurable roadmap",
+      "Goal architecture and success metrics",
+      "Operating cadence and accountability",
+      "Prioritization across channels and assets",
     ],
   },
   {
-    slug: "content-and-creative",
-    name: "Content & Creative",
-    tagline: "On-brand content, produced end to end.",
+    slug: "audience-development",
+    name: "Audience Development",
+    tagline: "Turn attention into a durable audience.",
     description:
-      "A defined art direction applied consistently across every asset — copy, design, and short-form video concepted, scripted, and produced for how people actually watch the feed.",
+      "We build the systems that acquire the right audience and convert passive attention into community, trust, and long-term relationships that compound over time.",
     benefits: [
-      "Art direction, typography, and tone of voice",
-      "Short-form video: concepting, scripting, editing",
-      "Templates and a repeatable visual system",
-      "Copywriting aligned to each content pillar",
+      "Audience acquisition strategy",
+      "Ideal-audience definition and segmentation",
+      "Retention and trust-building systems",
+      "Owned-audience development",
     ],
   },
   {
-    slug: "community-management",
-    name: "Community Management",
-    tagline: "Your presence, managed day to day.",
+    slug: "content-infrastructure",
+    name: "Content Infrastructure",
+    tagline: "The systems behind content that scales.",
     description:
-      "Planned publishing and day-to-day engagement on a steady cadence, managed end to end in your brand's voice — so your channels stay active, responsive, and consistent.",
+      "We engineer the workflows, formats, and production systems that let a brand publish consistently at scale — a repeatable infrastructure, not one-off posts.",
     benefits: [
-      "Content calendar and scheduling",
-      "Daily engagement and conversation",
-      "Comment and message moderation",
-      "A single point of contact who owns the cadence",
+      "Content systems, pillars, and formats",
+      "Production workflows and templates",
+      "Creative direction and visual language",
+      "Editorial standards and governance",
     ],
   },
   {
-    slug: "organic-growth",
-    name: "Organic Growth",
-    tagline: "Audience built on strategy, not shortcuts.",
+    slug: "strategic-distribution",
+    name: "Strategic Distribution",
+    tagline: "Engineer reach across the right channels.",
     description:
-      "Sustainable audience growth driven by strategy and consistency. We reach and retain the right audience across the channels that matter, without gimmicks or paid shortcuts.",
+      "We design the distribution engine — the channels, mechanisms, and cadence that expand reach and visibility where your audience actually pays attention.",
     benefits: [
-      "Audience development across key channels",
-      "Format and hook testing that compounds",
-      "Consistency systems that sustain a cadence",
-      "Sustainable growth, honestly measured",
+      "Channel strategy and roles",
+      "Distribution mechanisms and cadence",
+      "Reach and visibility expansion",
+      "Cross-platform sequencing",
     ],
   },
   {
-    slug: "analytics-reporting",
-    name: "Analytics & Reporting",
-    tagline: "Performance turned into decisions.",
+    slug: "brand-positioning",
+    name: "Brand Positioning",
+    tagline: "Be perceived, differentiated, and remembered.",
     description:
-      "A regular reporting rhythm that turns performance into clear decisions for the next cycle — dashboards, insights, and a recurring review so social stays accountable.",
+      "We define how the brand is positioned in its market — the narrative, differentiation, and messaging that make it distinct and hard to forget.",
     benefits: [
-      "Dashboards tracking the metrics that matter",
-      "A recurring reporting and review cadence",
-      "Insights tied back to your goals",
-      "Clear recommendations for the next cycle",
+      "Positioning and narrative",
+      "Differentiation and category framing",
+      "Messaging architecture",
+      "Tone of voice and brand language",
+    ],
+  },
+  {
+    slug: "community-development",
+    name: "Community Development",
+    tagline: "Build a community, not just a following.",
+    description:
+      "We develop the systems and rhythm that turn an audience into an engaged community — conversation, participation, and a sense of belonging around the brand.",
+    benefits: [
+      "Community strategy and rituals",
+      "Engagement and conversation systems",
+      "Moderation and stewardship",
+      "Advocacy and participation loops",
+    ],
+  },
+  {
+    slug: "growth-intelligence",
+    name: "Growth Intelligence & Analytics",
+    tagline: "Decisions driven by data, not guesswork.",
+    description:
+      "We build the measurement and feedback loops that turn performance into decisions — dashboards, analysis, and a recurring review that keeps growth accountable.",
+    benefits: [
+      "Measurement framework and dashboards",
+      "Performance analysis and insight",
+      "Strategic feedback loops",
+      "Recurring review and reporting",
     ],
   },
 ];
@@ -387,9 +413,9 @@ export function CTA({
 /* ------------------------------------------------------------------ */
 
 const NAV_LINKS = [
+  { href: "/framework", label: "Framework" },
   { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
-  { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -399,15 +425,16 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
     <Link
       href="/"
       onClick={onClick}
-      aria-label="NOREN Agency — home"
-      className="group inline-flex items-baseline gap-2"
+      aria-label="NOREN — home"
+      className="group inline-flex items-center"
     >
-      <span className="font-display text-[20px] font-medium leading-none tracking-[0.015em] text-white">
+      <span className="font-display text-[22px] font-medium leading-none tracking-[0.05em] text-white">
         NOREN
       </span>
-      <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.32em] text-muted transition-colors group-hover:text-accent-strong">
-        Agency
-      </span>
+      <span
+        className="ml-[3px] mt-[2px] h-1 w-1 self-end rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
+        aria-hidden
+      />
     </Link>
   );
 }
@@ -502,10 +529,11 @@ const FOOTER_SERVICES = SERVICES.map((s) => ({
 }));
 
 const FOOTER_COMPANY = [
-  { href: "/about", label: "About" },
-  { href: "/approach", label: "Approach" },
-  { href: "/work", label: "Work" },
+  { href: "/framework", label: "Framework" },
   { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/approach", label: "Approach" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "/company-information", label: "Company Information" },
 ];
@@ -581,9 +609,8 @@ export function Footer() {
           <div className="md:col-span-5">
             <Wordmark />
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted">
-              NOREN Agency — Strategic social media, content systems and
-              audience development for modern brands, founders and
-              organizations.
+              NOREN — Strategic growth infrastructure for founders, creators
+              and modern brands.
             </p>
 
             <div className="mt-10 space-y-8">
@@ -638,26 +665,57 @@ export function Footer() {
 /* NOREN Framework data                                                */
 /* ------------------------------------------------------------------ */
 
-export const PHASES = [
+/* The NOREN Framework™ — the proprietary methodology (five pillars).
+   Surfaced on /framework, the Home, and the navigation. */
+export const FRAMEWORK = [
   {
     n: "01",
-    name: "Audit",
-    copy: "We diagnose where the brand stands — audience, competitors, and past performance — before we plan anything.",
+    name: "Positioning",
+    copy: "Define how the brand is perceived, differentiated and remembered.",
   },
   {
     n: "02",
-    name: "Architect",
-    copy: "We turn the diagnosis into strategy: positioning, content pillars, channel roles, and a measurable roadmap.",
+    name: "Content Infrastructure",
+    copy: "Build the systems, workflows and formats behind scalable content operations.",
   },
   {
     n: "03",
-    name: "Activate",
-    copy: "We produce on-brand content, publish on a consistent cadence, and manage community day to day.",
+    name: "Distribution Engine",
+    copy: "Design the channels and mechanisms that expand reach and visibility.",
   },
   {
     n: "04",
-    name: "Amplify",
-    copy: "We measure against the goals, report on a cycle, and reallocate effort toward what compounds.",
+    name: "Audience Development",
+    copy: "Transform attention into audience, community and long-term trust.",
+  },
+  {
+    n: "05",
+    name: "Growth Intelligence",
+    copy: "Use data, analytics and strategic feedback loops to improve performance.",
+  },
+];
+
+/* The engagement process — how a partnership actually runs over time. */
+export const PHASES = [
+  {
+    n: "01",
+    name: "Discovery",
+    copy: "Research and growth assessment — where attention, trust and distribution are leaking today.",
+  },
+  {
+    n: "02",
+    name: "Strategy",
+    copy: "Market positioning and a growth roadmap built around your audience and goals.",
+  },
+  {
+    n: "03",
+    name: "Infrastructure",
+    copy: "Content systems and distribution channels, engineered to scale.",
+  },
+  {
+    n: "04",
+    name: "Optimization",
+    copy: "Data-driven iteration and growth analytics that compound over time.",
   },
 ];
 
@@ -1018,12 +1076,12 @@ const TRUST: { title: string; copy: string; icon: IconType }[] = [
   {
     title: "Strategy-led delivery",
     icon: IconCompass,
-    copy: "We decide what a brand should stand for on social before we publish. Thinking first, content second.",
+    copy: "We decide how a brand should be positioned and distributed before we build. Strategy first, execution second.",
   },
   {
     title: "Professional onboarding",
     icon: IconUserCheck,
-    copy: "A structured onboarding gets us access, context, and alignment before a single post goes live.",
+    copy: "A structured onboarding gets us access, context, and alignment before any system goes live.",
   },
   {
     title: "Structured engagement",
@@ -1049,8 +1107,8 @@ export function TrustBand({ reduce }: { reduce: boolean }) {
         <SectionHead
           reduce={reduce}
           kicker="Why brands choose us"
-          title="Why brands choose NOREN Agency."
-          lead="No inflated claims or borrowed logos — just a professional, structured way of working that makes social dependable and accountable."
+          title="Why brands choose NOREN."
+          lead="No inflated claims or borrowed logos — just a professional, structured way of working that makes growth dependable and accountable."
         />
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {TRUST.map((t) => (

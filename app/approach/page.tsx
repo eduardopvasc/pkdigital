@@ -14,89 +14,89 @@ import {
   PHASES,
 } from "@/components/site";
 
-/* Deep detail for each phase: what happens / what you see / what comes out. */
+/* Deep detail for each stage: what happens / what you see / what comes out. */
 const PHASE_DETAIL: Record<
   string,
   { happens: string; see: string; output: string }
 > = {
-  Audit: {
+  Discovery: {
     happens:
-      "We review your current presence, audience, competitors, and past performance, and interview your team to understand the business behind the brand.",
-    see: "A working session and a written diagnosis of where the brand stands today — what is working, what is not, and why.",
+      "We run a growth assessment — your current positioning, audience, distribution, and past performance — and interview your team to understand the business behind the brand.",
+    see: "A working session and a written diagnosis of where attention, trust and distribution are leaking today.",
     output:
-      "A baseline: clear picture of the account, the audience, the competitive set, and the gaps worth closing first.",
+      "A baseline: a clear picture of your audience, your market position, and the gaps worth closing first.",
   },
-  Architect: {
+  Strategy: {
     happens:
-      "We translate the diagnosis into a strategy — brand positioning for social, content pillars, channel roles, and a roadmap for the months ahead.",
-    see: "A strategy document you can read, question, and sign off on before any content is produced.",
+      "We translate the diagnosis into market positioning and a growth roadmap — narrative, content pillars, channel roles, and the systems each will run on.",
+    see: "A strategy document you can read, question, and sign off on before anything is built.",
     output:
-      "A content and channel strategy: pillars, formats, cadence, and the goals each will be measured against.",
+      "A positioning and growth strategy: pillars, a distribution plan, cadence, and the goals each will be measured against.",
   },
-  Activate: {
+  Infrastructure: {
     happens:
-      "We produce on-brand content, publish on a consistent cadence, and manage community interactions day to day.",
-    see: "A live content calendar, work in progress, and a single point of contact who keeps the cadence steady.",
+      "We build the content systems and distribution channels — the workflows, formats, and mechanisms that let the brand publish and reach consistently at scale.",
+    see: "Live systems, work in progress, and a single point of contact who keeps the cadence steady.",
     output:
-      "A consistent, recognizable presence across the channels that matter — produced and managed end to end.",
+      "A working growth infrastructure — content operations and distribution running end to end.",
   },
-  Amplify: {
+  Optimization: {
     happens:
-      "We measure against the goals set in Architect, report on a regular cycle, and reallocate effort toward what is working.",
+      "We measure against the goals set in Strategy, report on a regular cycle, and reallocate effort toward what compounds.",
     see: "A recurring report and review where we walk through results and decide the next cycle together.",
     output:
-      "Compounding improvement: a presence that gets sharper and more effective the longer we run it.",
+      "Compounding improvement: an audience system that gets sharper and more effective the longer we run it.",
   },
 };
 
 const TIMELINE = [
   {
     label: "Before we start",
-    title: "Discovery & proposal",
-    copy: "A discovery call, a short consultation, and a tailored proposal. Once it is signed, onboarding begins.",
+    title: "Strategy call & proposal",
+    copy: "A strategy call, a short consultation, and a tailored proposal. Once it is signed, onboarding begins.",
   },
   {
     label: "Weeks 1–2",
-    title: "Audit",
-    copy: "We get access, review everything, and deliver the diagnosis. You see exactly where the brand stands.",
+    title: "Discovery",
+    copy: "We get access, run the growth assessment, and deliver the diagnosis. You see exactly where the system is leaking.",
   },
   {
     label: "Weeks 3–4",
-    title: "Architect",
-    copy: "We build and present the strategy. Nothing goes live until it is approved.",
+    title: "Strategy",
+    copy: "We build and present positioning and the growth roadmap. Nothing is built until it is approved.",
   },
   {
     label: "Month 2 onward",
-    title: "Activate",
-    copy: "Production and publishing begin at an agreed cadence, with community managed in parallel.",
+    title: "Infrastructure",
+    copy: "Content systems and distribution channels go live at an agreed cadence.",
   },
   {
     label: "Ongoing",
-    title: "Amplify",
-    copy: "A recurring reporting and review cycle drives optimization and sustainable, compounding growth.",
+    title: "Optimization",
+    copy: "A recurring reporting and review cycle drives iteration and sustainable, compounding growth.",
   },
 ];
 
 const FAQ = [
   {
-    q: "Do I have to commit to all four phases?",
-    a: "The framework is designed to run as a sequence — the later phases depend on the earlier ones. Most partnerships begin with Audit and Architect, then move into an ongoing Activate and Amplify retainer. We will be clear about scope in the proposal.",
+    q: "Do I have to commit to all four stages?",
+    a: "The process is designed to run as a sequence — the later stages depend on the earlier ones. Most partnerships begin with Discovery and Strategy, then move into an ongoing Infrastructure and Optimization retainer. We will be clear about scope in the proposal.",
   },
   {
     q: "How long before we see results?",
-    a: "Audit and Architect typically take the first few weeks. Meaningful, measurable change from consistent activation builds over months, not days — social compounds, and we set expectations honestly rather than promising overnight outcomes.",
+    a: "Discovery and Strategy typically take the first few weeks. Meaningful, measurable change builds over months, not days — audience growth compounds, and we set expectations honestly rather than promising overnight outcomes.",
   },
   {
     q: "Do you focus on organic growth?",
-    a: "Yes. Our work is built around strategy-led, organic growth — content, community, and consistency. We grow audiences sustainably rather than relying on shortcuts.",
+    a: "Yes. Our work is built around strategy-led, organic growth — positioning, content infrastructure, distribution, and community. We grow audiences sustainably rather than relying on shortcuts.",
   },
   {
-    q: "Who owns the content you produce?",
+    q: "Who owns the work you produce?",
     a: "Deliverables produced under an engagement pass to you, your brand, on the terms set out in the agreement. The specifics live in the statement of work and our Terms of Service.",
   },
   {
     q: "How is the engagement structured?",
-    a: "As a monthly retainer partnership, scoped to your brand. We do not publish package pricing because we build each engagement around the business in front of us. Pricing is shared in the proposal.",
+    a: "As a monthly retainer partnership, scoped to your business. We do not publish package pricing because we build each engagement around the business in front of us. Pricing is shared in the proposal.",
   },
 ];
 
@@ -187,9 +187,9 @@ export default function ApproachPage() {
       <main>
         <PageHero
           reduce={reduce}
-          kicker="How we work"
-          title="The NOREN Framework"
-          lead="Social media managed with rigor — a repeatable, four-phase system that takes a brand from diagnosis to compounding growth."
+          kicker="The engagement"
+          title="How We Work"
+          lead="Growth run with rigor — a repeatable, four-stage engagement that takes a brand from diagnosis to compounding growth. For the methodology itself, see the NOREN Framework™."
         />
 
         {/* Overview */}
@@ -197,8 +197,8 @@ export default function ApproachPage() {
           <SectionHead
             reduce={reduce}
             kicker="Overview"
-            title="Four phases, in sequence."
-            lead="Each phase builds on the one before it. The order is the point: we diagnose before we design, and design before we publish."
+            title="Four stages, in sequence."
+            lead="Each stage builds on the one before it. The order is the point: we diagnose before we design, and design before we build."
           />
           <div className="mt-16 grid gap-px overflow-hidden border-t border-line-strong md:grid-cols-4">
             {PHASES.map((p) => (
@@ -227,8 +227,8 @@ export default function ApproachPage() {
             <SectionHead
               reduce={reduce}
               kicker="In detail"
-              title="What each phase actually involves."
-              lead="For every phase: what we do, what you see along the way, and what you are left with at the end."
+              title="What each stage actually involves."
+              lead="For every stage: what we do, what you see along the way, and what you are left with at the end."
             />
             <PhaseDeepDive reduce={reduce} />
           </div>
@@ -275,9 +275,10 @@ export default function ApproachPage() {
               </Reveal>
               <Reveal reduce={reduce} className="space-y-5 md:col-span-6">
                 <p className="text-[15px] leading-relaxed text-muted">
-                  Social rewards consistency, so we work as an ongoing partner
-                  rather than a project shop. Each month follows a steady rhythm:
-                  produce and publish, manage community, measure, and review.
+                  Audience growth rewards consistency, so we work as an ongoing
+                  partner rather than a project shop. Each month follows a steady
+                  rhythm: build, distribute, develop the audience, measure, and
+                  review.
                 </p>
                 <p className="text-[15px] leading-relaxed text-muted">
                   You get a single point of contact, a predictable reporting
@@ -291,7 +292,7 @@ export default function ApproachPage() {
 
         {/* FAQ */}
         <section className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
-          <SectionHead reduce={reduce} kicker="Questions" title="About the framework." />
+          <SectionHead reduce={reduce} kicker="Questions" title="About the process." />
           <Reveal reduce={reduce} className="mt-12 max-w-3xl">
             {FAQ.map((f) => (
               <FaqItem key={f.q} q={f.q} a={f.a} />
@@ -307,15 +308,15 @@ export default function ApproachPage() {
                 <Kicker>Get started</Kicker>
               </div>
               <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-white">
-                See how the framework fits your brand.
+                See how the process fits your brand.
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-muted">
-                Start with a discovery call. We will tell you which phase your
+                Start with a strategy call. We will tell you which stage your
                 brand needs first.
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <PrimaryButton href="/contact">Book a Discovery Call</PrimaryButton>
-                <GhostButton href="/services">View our services</GhostButton>
+                <PrimaryButton href="/contact">Book a Strategy Call</PrimaryButton>
+                <GhostButton href="/framework">Explore the Framework</GhostButton>
               </div>
             </Reveal>
           </div>

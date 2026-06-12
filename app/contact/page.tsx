@@ -13,24 +13,18 @@ import {
   CONTACT_PHONE_HREF,
 } from "@/components/site";
 import { IconMail, IconPhone, IconRoute } from "@/components/icons";
+import { CONTACT_TOPICS } from "@/lib/contact";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 const FIELDS = [
-  { name: "name", label: "Name", type: "text", required: true, placeholder: "Your name" },
-  { name: "company", label: "Company", type: "text", required: true, placeholder: "Company name" },
-  { name: "email", label: "Email", type: "email", required: true, placeholder: "you@company.com" },
+  { name: "name", label: "Full Name", type: "text", required: true, placeholder: "Your name" },
+  { name: "company", label: "Company / Website", type: "text", required: true, placeholder: "Company or website" },
+  { name: "email", label: "Work Email", type: "email", required: true, placeholder: "you@company.com" },
   { name: "website", label: "Website", type: "url", required: false, placeholder: "https://" },
 ] as const;
 
-const TOPICS = [
-  "Social Media Strategy",
-  "Content & Creative",
-  "Community Management",
-  "Organic Growth",
-  "Analytics & Reporting",
-  "General Inquiry",
-] as const;
+const TOPICS = CONTACT_TOPICS;
 
 const labelCls =
   "font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint";
@@ -91,8 +85,8 @@ export default function ContactPage() {
         <PageHero
           reduce={reduce}
           kicker="Contact"
-          title="Let's talk about your brand."
-          lead="Tell us where you are and where you want social to take you. We read every message and reply to qualified enquiries within two business days."
+          title="Let's talk about your growth."
+          lead="Tell us where you are and where you want to take your audience. We read every message and reply to qualified enquiries within two business days."
         />
 
         <section className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
@@ -252,7 +246,7 @@ export default function ContactPage() {
                       <span className="font-[family-name:var(--font-mono)] text-accent">
                         01
                       </span>
-                      Discovery call to understand your brand and goals.
+                      Strategy call to understand your business and goals.
                     </li>
                     <li className="flex gap-3">
                       <span className="font-[family-name:var(--font-mono)] text-accent">

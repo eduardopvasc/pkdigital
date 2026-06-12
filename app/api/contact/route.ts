@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CONTACT_TOPICS } from "@/lib/contact";
 
 type ContactPayload = {
   name?: string;
@@ -11,14 +12,7 @@ type ContactPayload = {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const TOPICS = [
-  "Social Media Strategy",
-  "Content & Creative",
-  "Community Management",
-  "Organic Growth",
-  "Analytics & Reporting",
-  "General Inquiry",
-];
+const TOPICS: readonly string[] = CONTACT_TOPICS;
 
 export async function POST(request: Request) {
   let data: ContactPayload;

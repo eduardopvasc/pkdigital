@@ -14,39 +14,39 @@ import {
 
 const BELIEFS = [
   {
-    title: "Social is a growth channel, not a chore.",
-    copy: "Treated seriously, social compounds into brand recognition and authority. Treated as a chore, it produces motion without progress. We build for the first.",
+    title: "Audience is an asset, not a campaign.",
+    copy: "Built deliberately, an owned audience compounds into authority, demand and durable growth. We build for the asset, not the one-off spike.",
   },
   {
     title: "Strategy comes before content.",
-    copy: "A post is only as good as the thinking behind it. We decide what a brand should stand for on social before we decide what it should publish.",
+    copy: "Output is only as good as the positioning behind it. We decide how a brand should be perceived and distributed before we build anything.",
   },
   {
-    title: "Consistency beats intensity.",
-    copy: "Sporadic bursts of effort rarely build anything. A steady, recognizable presence does. We are built to sustain a cadence, not to chase a moment.",
+    title: "Distribution beats volume.",
+    copy: "Most brands don't have a content problem — they have a distribution problem. We engineer reach, not just more output.",
   },
   {
-    title: "What is not measured cannot be defended.",
-    copy: "We tie work to goals that matter to the business, and report against them — so social earns its place rather than relying on faith.",
+    title: "What is not measured cannot compound.",
+    copy: "We tie work to goals that matter to the business and feed results back into the system — so growth gets sharper every cycle.",
   },
 ];
 
 const SERVE = [
   {
-    title: "Brands & businesses",
-    copy: "Brands and businesses that depend on a credible, consistent presence across the channels their audience uses.",
+    title: "Founders & creators",
+    copy: "Operators turning a personal audience into a durable, compounding growth asset.",
   },
   {
-    title: "Companies",
-    copy: "Established companies that want a senior social function without building and managing one internally.",
+    title: "Modern brands",
+    copy: "Brands that depend on positioning and distribution to reach the right audience.",
   },
   {
-    title: "Founders & professionals",
-    copy: "Founders and professionals establishing authority and a clear voice in their field.",
+    title: "High-growth companies",
+    copy: "Companies that want a senior growth function without building one internally.",
   },
   {
     title: "Organizations",
-    copy: "Organizations that know social matters but lack the time or in-house team to run it with the rigor it deserves.",
+    copy: "Organizations that need a credible, well-positioned public presence run with rigor.",
   },
 ];
 
@@ -79,8 +79,8 @@ export default function AboutPage() {
         <PageHero
           reduce={reduce}
           kicker="About"
-          title="A social media agency built like a firm."
-          lead="NOREN Agency exists to give modern brands a senior, strategy-led social function — run with the rigor of any other part of the business."
+          title="A strategic growth agency built like a firm."
+          lead="NOREN Agency exists to give modern brands, founders and creators a senior, strategy-led growth function — run with the rigor of any other part of the business."
         />
 
         {/* What we believe */}
@@ -88,7 +88,7 @@ export default function AboutPage() {
           <SectionHead
             reduce={reduce}
             kicker="What we believe"
-            title="A point of view on social media."
+            title="A point of view on growth."
             lead="Our work starts from a few convictions. They shape every strategy we build and every engagement we take on."
           />
           <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
@@ -115,21 +115,23 @@ export default function AboutPage() {
                   Every engagement runs through the same system.
                 </h2>
                 <p className="mt-5 text-lg leading-relaxed text-muted">
-                  The NOREN Framework takes a brand from diagnosis to compounding
-                  growth in four phases — Audit, Architect, Activate, Amplify.
-                  It is how we stay consistent across very different brands.
+                  Every engagement runs on the NOREN Framework™ and a disciplined
+                  four-stage process — Discovery, Strategy, Infrastructure,
+                  Optimization. It is how we stay consistent across very
+                  different brands.
                 </p>
-                <div className="mt-8">
-                  <TextLink href="/approach">Explore the framework</TextLink>
+                <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+                  <TextLink href="/framework">Explore the framework</TextLink>
+                  <TextLink href="/approach">See our process</TextLink>
                 </div>
               </Reveal>
               <Reveal reduce={reduce} className="md:col-span-6">
                 <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
                   {[
-                    ["01", "Audit"],
-                    ["02", "Architect"],
-                    ["03", "Activate"],
-                    ["04", "Amplify"],
+                    ["01", "Discovery"],
+                    ["02", "Strategy"],
+                    ["03", "Infrastructure"],
+                    ["04", "Optimization"],
                   ].map(([n, name]) => (
                     <div key={name} className="bg-surface-2 p-8">
                       <span className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-accent">
@@ -151,8 +153,8 @@ export default function AboutPage() {
           <SectionHead
             reduce={reduce}
             kicker="Who we serve"
-            title="We work best with a specific kind of brand."
-            lead="Focus is deliberate. We partner with businesses for which social is a genuine growth lever — not an afterthought."
+            title="We work best with a specific kind of partner."
+            lead="Focus is deliberate. We partner with operators for whom audience and distribution are a genuine growth lever — not an afterthought."
           />
           <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {SERVE.map((s) => (

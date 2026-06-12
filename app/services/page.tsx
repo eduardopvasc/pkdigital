@@ -24,8 +24,8 @@ export default function ServicesPage() {
         <PageHero
           reduce={reduce}
           kicker="Services"
-          title="A complete social media function."
-          lead="Five disciplines, delivered as one accountable partnership — from strategy and content through to community, growth, and reporting. Each is scoped to your brand in a written proposal."
+          title="A complete growth function."
+          lead="Seven connected capabilities, delivered as one accountable partnership — from brand positioning and content infrastructure through to distribution, audience development and growth intelligence. Each is scoped to your business in a written proposal."
         />
 
         {/* Quick index */}
@@ -110,7 +110,7 @@ export default function ServicesPage() {
             <SectionHead
               reduce={reduce}
               kicker="How we engage"
-              title="One retainer, scoped to your brand."
+              title="One retainer, scoped to your business."
               lead="Services are delivered together as a monthly retainer, defined in a written statement of work — with a clear cadence, agreed deliverables, and a single senior point of contact. We don't publish package pricing; each engagement is scoped to the work involved and shared in a tailored proposal."
             />
           </div>
@@ -121,12 +121,12 @@ export default function ServicesPage() {
         <CTA
           reduce={reduce}
           kicker="Get started"
-          title="Tell us where you want social to go."
-          lead="Start with a discovery call. We'll recommend where to begin and exactly how we'd run it."
+          title="Build Your Growth Infrastructure"
+          lead="Start with a strategy call. We'll recommend where to begin and exactly how we'd run it."
           primaryHref="/contact"
-          primaryLabel="Request a Proposal"
-          secondaryHref="/approach"
-          secondaryLabel="See the framework"
+          primaryLabel="Book a Strategy Call"
+          secondaryHref="/framework"
+          secondaryLabel="Explore the Framework"
         />
       </main>
       <Footer />

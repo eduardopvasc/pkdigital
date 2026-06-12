@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Approach",
+  title: "How We Work",
   description:
-    "The NOREN Framework — a repeatable, four-phase system (Audit, Architect, Activate, Amplify) that takes a brand from diagnosis to compounding growth.",
+    "How NOREN works — a repeatable, four-stage engagement (Discovery, Strategy, Infrastructure, Optimization) that takes a brand from diagnosis to compounding growth.",
   path: "/approach",
 });
 

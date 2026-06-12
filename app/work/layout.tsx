@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Work",
   description:
-    "The formats and systems NOREN Agency produces across an engagement — content systems, short-form video, channel architecture, creative direction, community, and reporting.",
+    "The systems and assets NOREN builds across an engagement — content infrastructure, channel architecture, creative direction, distribution, community, and reporting.",
   path: "/work",
 });
 

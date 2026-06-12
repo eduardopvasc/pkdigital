@@ -23,40 +23,39 @@ const mono = DM_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://norenagency.com"),
   title: {
-    default: "NOREN Agency — Strategic Social Media & Content Systems",
-    template: "%s · NOREN Agency",
+    default: "NOREN — Strategic Growth & Audience Infrastructure",
+    template: "%s · NOREN",
   },
   description:
-    "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
+    "NOREN is a strategic growth agency helping founders, creators and modern brands build audience and distribution infrastructure — brand positioning, content systems, strategic distribution and growth intelligence.",
   keywords: [
-    "social media agency",
-    "social media strategy",
-    "content strategy",
-    "content production",
-    "creative direction",
-    "community management",
-    "organic growth",
+    "strategic growth agency",
+    "growth infrastructure",
     "audience development",
-    "analytics and reporting",
+    "strategic distribution",
+    "brand positioning",
+    "content systems",
+    "community development",
+    "growth intelligence",
   ],
-  applicationName: "NOREN Agency",
-  authors: [{ name: "NOREN Agency" }],
+  applicationName: "NOREN",
+  authors: [{ name: "NOREN" }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "NOREN Agency — Strategic Social Media & Content Systems",
+    title: "NOREN — Strategic Growth & Audience Infrastructure",
     description:
-      "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
+      "NOREN is a strategic growth agency helping founders, creators and modern brands build audience and distribution infrastructure — positioning, content systems, strategic distribution and growth intelligence.",
     url: "/",
-    siteName: "NOREN Agency",
+    siteName: "NOREN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NOREN Agency — Strategic Social Media & Content Systems",
+    title: "NOREN — Strategic Growth & Audience Infrastructure",
     description:
-      "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
+      "NOREN is a strategic growth agency helping founders, creators and modern brands build audience and distribution infrastructure — positioning, content systems, strategic distribution and growth intelligence.",
   },
 };
 
