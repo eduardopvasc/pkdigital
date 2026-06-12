@@ -188,7 +188,7 @@ export default function ApproachPage() {
         <PageHero
           reduce={reduce}
           kicker="How we work"
-          title="The PK Framework"
+          title="The NOREN Framework"
           lead="Social media managed with rigor — a repeatable, four-phase system that takes a brand from diagnosis to compounding growth."
         />
 

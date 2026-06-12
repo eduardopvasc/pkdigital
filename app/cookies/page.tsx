@@ -6,8 +6,8 @@ export default function CookiesPage() {
   return (
     <LegalShell kicker="Legal" title="Cookie Policy" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
-        This Cookie Policy explains how PK DIGITAL LLC (&ldquo;PK Digital&rdquo;)
-        uses cookies and similar technologies on pkdigitalllc.com, and how you
+        This Cookie Policy explains how PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;)
+        uses cookies and similar technologies on norenagency.com, and how you
         can control them. It should be read alongside our Privacy Policy.
       </p>
 
@@ -66,7 +66,7 @@ export default function CookiesPage() {
       <LegalBlock n="06" title="Contact">
         <p>
           Questions about our use of cookies can be sent to
-          contact@pkdigitalllc.com or to PK DIGITAL LLC, 2335 E. Atlantic Blvd,
+          contact@norenagency.com or to PK DIGITAL LLC, 2335 E. Atlantic Blvd,
           STE 200, Pompano Beach, FL 33062, United States.
         </p>
       </LegalBlock>

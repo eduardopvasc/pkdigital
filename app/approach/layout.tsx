@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Approach",
   description:
-    "The PK Framework — a repeatable, four-phase system (Audit, Architect, Activate, Amplify) that takes a brand from diagnosis to compounding growth.",
+    "The NOREN Framework — a repeatable, four-phase system (Audit, Architect, Activate, Amplify) that takes a brand from diagnosis to compounding growth.",
   path: "/approach",
 });
 

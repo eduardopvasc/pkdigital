@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Refund Policy",
   description:
-    "How fees, cancellations, and refunds are handled for services provided by PK Digital LLC.",
+    "How fees, cancellations, and refunds are handled for services provided by NOREN Agency (operated by PK Digital LLC).",
   path: "/refund-policy",
 });
 

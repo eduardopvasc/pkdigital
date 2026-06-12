@@ -7,17 +7,18 @@ export default function TermsPage() {
     <LegalShell kicker="Legal" title="Terms of Service" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
         These Terms of Service (the &ldquo;Terms&rdquo;) govern your use of this
-        website and describe the general terms on which PK DIGITAL LLC
-        (&ldquo;PK Digital&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) provides
-        its services. The specific scope, fees, and deliverables of any
+        website and describe the general terms on which PK DIGITAL LLC,
+        operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;,
+        &ldquo;us&rdquo;) provides its services. The specific scope, fees, and deliverables of any
         engagement are set out in a separate statement of work or services
         agreement, which prevails over these Terms in the event of a conflict.
       </p>
 
       <LegalBlock n="01" title="Who we are">
         <p>
-          PK Digital is the trading name of PK DIGITAL LLC, a limited liability
-          company registered in the State of New Mexico, United States.
+          NOREN Agency is a brand operated by PK DIGITAL LLC, a limited
+          liability company registered in the State of New Mexico, United
+          States.
         </p>
         <p>
           Business address: 2335 E. Atlantic Blvd, STE 200, Pompano Beach, FL
@@ -27,7 +28,7 @@ export default function TermsPage() {
           Registered address: 412 W 7th St, Clovis, NM 88101, United States.
         </p>
         <p>
-          You can reach us at contact@pkdigitalllc.com or +1 (954) 676-1050.
+          You can reach us at contact@norenagency.com or +1 (954) 676-1050.
         </p>
       </LegalBlock>
 
@@ -60,7 +61,7 @@ export default function TermsPage() {
           Subject to full payment of the relevant fees, final deliverables
           produced specifically for you under an engagement are assigned to you
           upon payment. We retain ownership of our pre-existing materials,
-          tools, methods, and know-how — including the PK Framework — and of any
+          tools, methods, and know-how — including the NOREN Framework — and of any
           general skills and experience developed in the course of the work.
           You grant us the right to reference the engagement for our own
           portfolio and marketing unless agreed otherwise in writing.
@@ -121,7 +122,7 @@ export default function TermsPage() {
 
       <LegalBlock n="10" title="Contact">
         <p>
-          Questions about these Terms can be sent to contact@pkdigitalllc.com,
+          Questions about these Terms can be sent to contact@norenagency.com,
           by phone at +1 (954) 676-1050, or by mail to PK DIGITAL LLC, 2335 E.
           Atlantic Blvd, STE 200, Pompano Beach, FL 33062, United States.
         </p>

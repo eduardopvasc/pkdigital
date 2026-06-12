@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 /**
  * Per-route metadata helper. The root layout sets the title template
- * ("%s · PK Digital"), so `title` here is the page-specific segment.
+ * ("%s · NOREN Agency"), so `title` here is the page-specific segment.
  * Every page gets a canonical URL and consistent Open Graph tags.
  */
 export function pageMeta({
@@ -19,10 +19,10 @@ export function pageMeta({
     description,
     alternates: { canonical: path },
     openGraph: {
-      title: `${title} · PK Digital`,
+      title: `${title} · NOREN Agency`,
       description,
       url: path,
-      siteName: "PK Digital",
+      siteName: "NOREN Agency",
       type: "website",
     },
   };

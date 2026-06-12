@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Shared site components for PK Digital.
+ * Shared site components for NOREN Agency (operated by PK Digital LLC).
  * Identity: Fraunces (high-contrast serif display, mixed-case) + DM Sans (body)
  * + DM Mono (UPPERCASE tracked labels). Greyscale base over a four-layer depth
  * (#050508 → #16161f) with a glacial steel-blue accent (--color-accent) used
@@ -45,7 +45,15 @@ export const REGISTERED_ADDRESS = [
   "United States",
 ];
 
-export const CONTACT_EMAIL = "contact@pkdigitalllc.com";
+/* Public brand vs. operating legal entity. NOREN Agency is the public-facing
+   brand; PK DIGITAL LLC is the company that operates it and remains the named
+   party on every legal page. */
+export const BRAND_NAME = "NOREN Agency";
+export const BRAND_SHORT = "NOREN";
+export const LEGAL_ENTITY = "PK DIGITAL LLC";
+export const SITE_DOMAIN = "norenagency.com";
+
+export const CONTACT_EMAIL = "contact@norenagency.com";
 export const CONTACT_PHONE = "+1 (954) 676-1050";
 export const CONTACT_PHONE_HREF = "tel:+19546761050";
 
@@ -391,14 +399,14 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
     <Link
       href="/"
       onClick={onClick}
-      className="group inline-flex items-center gap-2.5"
+      aria-label="NOREN Agency — home"
+      className="group inline-flex items-baseline gap-2"
     >
-      <span
-        className="h-2 w-2 rotate-45 bg-accent transition-transform duration-300 group-hover:rotate-[135deg]"
-        aria-hidden
-      />
-      <span className="text-[15px] font-semibold uppercase tracking-[0.18em] text-white">
-        PK<span className="text-muted"> Digital</span>
+      <span className="font-display text-[20px] font-medium leading-none tracking-[0.015em] text-white">
+        NOREN
+      </span>
+      <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.32em] text-muted transition-colors group-hover:text-accent-strong">
+        Agency
       </span>
     </Link>
   );
@@ -573,9 +581,9 @@ export function Footer() {
           <div className="md:col-span-5">
             <Wordmark />
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted">
-              PK DIGITAL LLC — a strategy-led social media agency helping
-              brands, businesses, and founders build a stronger social presence
-              through content systems, community, and organic growth.
+              NOREN Agency — Strategic social media, content systems and
+              audience development for modern brands, founders and
+              organizations.
             </p>
 
             <div className="mt-10 space-y-8">
@@ -615,7 +623,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-faint">
-            © 2026 PK DIGITAL LLC. All rights reserved.
+            © 2026 NOREN Agency. Operated by PK Digital LLC.
           </p>
           <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-faint">
             Registered office: {REGISTERED_ADDRESS.join(", ")}
@@ -627,7 +635,7 @@ export function Footer() {
 }
 
 /* ------------------------------------------------------------------ */
-/* PK Framework data                                                   */
+/* NOREN Framework data                                                */
 /* ------------------------------------------------------------------ */
 
 export const PHASES = [
@@ -1030,7 +1038,7 @@ const TRUST: { title: string; copy: string; icon: IconType }[] = [
   {
     title: "Corporate email",
     icon: IconMail,
-    copy: "Reach a monitored corporate inbox — contact@pkdigitalllc.com — with replies within two business days.",
+    copy: "Reach a monitored corporate inbox — contact@norenagency.com — with replies within two business days.",
   },
 ];
 
@@ -1041,7 +1049,7 @@ export function TrustBand({ reduce }: { reduce: boolean }) {
         <SectionHead
           reduce={reduce}
           kicker="Why brands choose us"
-          title="Why brands choose PK Digital."
+          title="Why brands choose NOREN Agency."
           lead="No inflated claims or borrowed logos — just a professional, structured way of working that makes social dependable and accountable."
         />
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -1089,7 +1097,8 @@ const COMPANY_INFO: {
   lines: string[];
   href?: string;
 }[] = [
-  { label: "Legal entity", icon: IconDocument, lines: ["PK DIGITAL LLC"] },
+  { label: "Brand", icon: IconCompass, lines: [BRAND_NAME] },
+  { label: "Operated by", icon: IconDocument, lines: [LEGAL_ENTITY] },
   { label: "Business address", icon: IconMapPin, lines: BUSINESS_ADDRESS },
   {
     label: "Phone",
@@ -1118,9 +1127,9 @@ export function CompanyInfo({ reduce }: { reduce: boolean }) {
           reduce={reduce}
           kicker="Company information"
           title="A registered, contactable company."
-          lead="PK Digital is operated by a registered US company. The same details appear across the site — no anonymity, no ambiguity."
+          lead="NOREN Agency is operated by PK Digital LLC, a registered US company. The same details appear across the site — no anonymity, no ambiguity."
         />
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {COMPANY_INFO.map((c) => (
             <Reveal
               key={c.label}

@@ -7,7 +7,7 @@ export default function RefundPolicyPage() {
     <LegalShell kicker="Legal" title="Refund Policy" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
         This Refund Policy explains how fees, cancellations, and refunds are
-        handled for services provided by PK DIGITAL LLC (&ldquo;PK Digital&rdquo;,
+        handled for services provided by PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;,
         &ldquo;we&rdquo;, &ldquo;us&rdquo;). It should be read alongside our Terms
         of Service and the statement of work for your engagement, which prevails
         in the event of a conflict.
@@ -15,7 +15,7 @@ export default function RefundPolicyPage() {
 
       <LegalBlock n="01" title="Nature of our services">
         <p>
-          PK Digital provides professional social media services — strategy,
+          NOREN Agency provides professional social media services — strategy,
           content and creative production, community management, organic growth,
           and analytics and reporting — typically on a monthly retainer. Because
           the work is bespoke and delivered as time and creative output, fees
@@ -55,7 +55,7 @@ export default function RefundPolicyPage() {
       <LegalBlock n="05" title="How to request a refund">
         <p>
           To raise a billing question or request a refund, contact us at
-          contact@pkdigitalllc.com or call +1 (954) 676-1050. Please include your
+          contact@norenagency.com or call +1 (954) 676-1050. Please include your
           company name, the invoice or charge in question, and a short
           description. We aim to respond within two business days.
         </p>
@@ -65,7 +65,7 @@ export default function RefundPolicyPage() {
         <p>
           PK DIGITAL LLC — Business address: 2335 E. Atlantic Blvd, STE 200,
           Pompano Beach, FL 33062, United States. Email:
-          contact@pkdigitalllc.com. Phone: +1 (954) 676-1050.
+          contact@norenagency.com. Phone: +1 (954) 676-1050.
         </p>
       </LegalBlock>
     </LegalShell>

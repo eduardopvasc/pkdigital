@@ -7,7 +7,7 @@ const sans = DM_Sans({
   variable: "--font-sans",
 });
 
-// High-contrast editorial serif — the PK Digital display face.
+// High-contrast editorial serif — the NOREN Agency display face.
 const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
@@ -21,41 +21,42 @@ const mono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pkdigitalllc.com"),
+  metadataBase: new URL("https://norenagency.com"),
   title: {
-    default: "PK Digital LLC — Growth-Focused Social Media Agency",
-    template: "%s · PK Digital",
+    default: "NOREN Agency — Strategic Social Media & Content Systems",
+    template: "%s · NOREN Agency",
   },
   description:
-    "PK Digital LLC is a strategy-led social media agency helping brands, businesses, and founders build a stronger social presence through content strategy, creative direction, community management, and organic growth.",
+    "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
   keywords: [
     "social media agency",
     "social media strategy",
     "content strategy",
+    "content production",
     "creative direction",
     "community management",
     "organic growth",
-    "personal branding",
-    "social media management",
+    "audience development",
+    "analytics and reporting",
   ],
-  applicationName: "PK Digital",
-  authors: [{ name: "PK Digital LLC" }],
+  applicationName: "NOREN Agency",
+  authors: [{ name: "NOREN Agency" }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PK Digital LLC — Growth-Focused Social Media Agency",
+    title: "NOREN Agency — Strategic Social Media & Content Systems",
     description:
-      "Strategy-led social media agency for brands, businesses, and founders — social media strategy, content, creative direction, community, and organic growth.",
+      "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
     url: "/",
-    siteName: "PK Digital",
+    siteName: "NOREN Agency",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PK Digital LLC — Growth-Focused Social Media Agency",
+    title: "NOREN Agency — Strategic Social Media & Content Systems",
     description:
-      "Strategy-led social media agency for brands, businesses, and founders — social media strategy, content, creative direction, community, and organic growth.",
+      "NOREN Agency is a strategic social media agency focused on content systems, audience development, community management and long-term brand growth.",
   },
 };
 

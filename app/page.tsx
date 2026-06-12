@@ -269,7 +269,7 @@ export default function Home() {
               {/* Left — headline */}
               <div className="lg:col-span-7">
                 <Reveal reduce={reduce}>
-                  <Kicker>PK Digital — Social Media Agency</Kicker>
+                  <Kicker>NOREN Agency — Social Media Agency</Kicker>
                 </Reveal>
 
                 <Reveal reduce={reduce} delay={0.05}>
@@ -311,7 +311,7 @@ export default function Home() {
                         <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
                         What we run
                       </span>
-                      <span>PK · 2026</span>
+                      <span>NOREN · 2026</span>
                     </div>
 
                     <ul className="mt-6">
@@ -465,7 +465,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------------- Why brands choose PK Digital ---------------- */}
+        {/* ---------------- Why brands choose NOREN Agency ---------------- */}
         <TrustBand reduce={reduce} />
 
         {/* ---------------- What we produce (capabilities) ---------------- */}
@@ -528,14 +528,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------------- PK Framework (editorial) ---------------- */}
+        {/* ---------------- NOREN Framework (editorial) ---------------- */}
         <section className="layer-3 border-y border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-9">
                 <SectionHead
                   reduce={reduce}
-                  kicker="The PK Framework"
+                  kicker="The NOREN Framework"
                   title="One system. Four phases. Every engagement."
                   lead="From diagnosis to compounding growth — a repeatable method that keeps our work consistent across very different clients."
                 />

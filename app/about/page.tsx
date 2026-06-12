@@ -51,7 +51,8 @@ const SERVE = [
 ];
 
 const COMPANY = [
-  { label: "Legal entity", value: "PK DIGITAL LLC" },
+  { label: "Brand", value: "NOREN Agency" },
+  { label: "Operated by", value: "PK DIGITAL LLC" },
   {
     label: "Business address",
     value:
@@ -60,8 +61,8 @@ const COMPANY = [
   { label: "Phone", value: "+1 (954) 676-1050", href: "tel:+19546761050" },
   {
     label: "Email",
-    value: "contact@pkdigitalllc.com",
-    href: "mailto:contact@pkdigitalllc.com",
+    value: "contact@norenagency.com",
+    href: "mailto:contact@norenagency.com",
   },
   {
     label: "Business hours",
@@ -79,7 +80,7 @@ export default function AboutPage() {
           reduce={reduce}
           kicker="About"
           title="A social media agency built like a firm."
-          lead="PK Digital exists to give modern brands a senior, strategy-led social function — run with the rigor of any other part of the business."
+          lead="NOREN Agency exists to give modern brands a senior, strategy-led social function — run with the rigor of any other part of the business."
         />
 
         {/* What we believe */}
@@ -114,7 +115,7 @@ export default function AboutPage() {
                   Every engagement runs through the same system.
                 </h2>
                 <p className="mt-5 text-lg leading-relaxed text-muted">
-                  The PK Framework takes a brand from diagnosis to compounding
+                  The NOREN Framework takes a brand from diagnosis to compounding
                   growth in four phases — Audit, Architect, Activate, Amplify.
                   It is how we stay consistent across very different brands.
                 </p>
@@ -179,7 +180,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal reduce={reduce} className="space-y-5 md:col-span-7">
                 <p className="text-[15px] leading-relaxed text-muted">
-                  PK Digital is structured as a company, not a side project. We
+                  NOREN Agency is structured as a company, not a side project. We
                   operate to a defined process, keep a clear scope for every
                   engagement, and treat each brand as a long-term partnership
                   rather than a series of disconnected deliverables.

@@ -6,9 +6,9 @@ export default function PrivacyPage() {
   return (
     <LegalShell kicker="Legal" title="Privacy Policy" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
-        This Privacy Policy explains how PK DIGITAL LLC (&ldquo;PK Digital&rdquo;,
+        This Privacy Policy explains how PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;,
         &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects, uses, and protects personal
-        information when you visit pkdigitalllc.com or contact us. We aim to be
+        information when you visit norenagency.com or contact us. We aim to be
         clear about what we collect and why.
       </p>
 
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           PK DIGITAL LLC is the controller of personal information collected
           through this website. Business address: 2335 E. Atlantic Blvd, STE 200,
           Pompano Beach, FL 33062, United States. Registered address: 412 W 7th
-          St, Clovis, NM 88101, United States. Contact: contact@pkdigitalllc.com
+          St, Clovis, NM 88101, United States. Contact: contact@norenagency.com
           or +1 (954) 676-1050.
         </p>
       </LegalBlock>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
           certain processing, and to withdraw consent. Residents of California
           and certain other US states, and individuals in the EU/UK, have
           specific statutory rights. To exercise any right, contact us at
-          contact@pkdigitalllc.com; we will respond as required by applicable
+          contact@norenagency.com; we will respond as required by applicable
           law.
         </p>
       </LegalBlock>
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
 
       <LegalBlock n="08" title="Contact">
         <p>
-          For any privacy question or request, contact contact@pkdigitalllc.com,
+          For any privacy question or request, contact contact@norenagency.com,
           call +1 (954) 676-1050, or write to PK DIGITAL LLC, 2335 E. Atlantic
           Blvd, STE 200, Pompano Beach, FL 33062, United States. We may update
           this policy from time to time; the date above reflects the latest

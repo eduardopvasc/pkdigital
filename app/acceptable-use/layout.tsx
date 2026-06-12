@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Acceptable Use Policy",
   description:
-    "The standards that apply when you use the pkdigitalllc.com website and when you engage PK Digital LLC for services.",
+    "The standards that apply when you use the norenagency.com website and when you engage NOREN Agency (operated by PK Digital LLC) for services.",
   path: "/acceptable-use",
 });
 

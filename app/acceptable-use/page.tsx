@@ -7,8 +7,8 @@ export default function AcceptableUsePage() {
     <LegalShell kicker="Legal" title="Acceptable Use Policy" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
         This Acceptable Use Policy (the &ldquo;Policy&rdquo;) sets out the
-        standards that apply when you use the pkdigitalllc.com website and when
-        you engage PK DIGITAL LLC (&ldquo;PK Digital&rdquo;, &ldquo;we&rdquo;,
+        standards that apply when you use the norenagency.com website and when
+        you engage PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;,
         &ldquo;us&rdquo;) for services. By using the site or working with us, you
         agree to this Policy and to our Terms of Service.
       </p>
@@ -64,7 +64,7 @@ export default function AcceptableUsePage() {
       <LegalBlock n="06" title="Contact">
         <p>
           To report misuse or ask a question about this Policy, contact
-          contact@pkdigitalllc.com or call +1 (954) 676-1050. You can also write
+          contact@norenagency.com or call +1 (954) 676-1050. You can also write
           to PK DIGITAL LLC, 2335 E. Atlantic Blvd, STE 200, Pompano Beach, FL
           33062, United States.
         </p>

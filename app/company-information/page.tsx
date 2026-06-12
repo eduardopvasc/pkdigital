@@ -9,6 +9,9 @@ import {
   SectionHead,
   PrimaryButton,
   CTA,
+  BRAND_NAME,
+  LEGAL_ENTITY,
+  SITE_DOMAIN,
   BUSINESS_ADDRESS,
   REGISTERED_ADDRESS,
   CONTACT_EMAIL,
@@ -25,11 +28,26 @@ type Row = {
 };
 
 const ROWS: Row[] = [
-  { label: "Legal entity", lines: ["PK DIGITAL LLC"] },
+  { label: "Brand", lines: [BRAND_NAME] },
   {
-    label: "Entity type",
-    lines: ["Limited liability company (LLC)"],
-    note: "Registered in the State of New Mexico, United States.",
+    label: "Operated by",
+    lines: [LEGAL_ENTITY],
+    note: "A limited liability company registered in the State of New Mexico, United States.",
+  },
+  {
+    label: "Domain",
+    lines: [SITE_DOMAIN],
+    href: `https://${SITE_DOMAIN}`,
+  },
+  {
+    label: "Email",
+    lines: [CONTACT_EMAIL],
+    href: `mailto:${CONTACT_EMAIL}`,
+  },
+  {
+    label: "Phone",
+    lines: [CONTACT_PHONE],
+    href: CONTACT_PHONE_HREF,
   },
   {
     label: "Business address",
@@ -39,17 +57,7 @@ const ROWS: Row[] = [
   {
     label: "Registered address",
     lines: REGISTERED_ADDRESS,
-    note: "Our registered office for legal and corporate purposes.",
-  },
-  {
-    label: "Phone",
-    lines: [CONTACT_PHONE],
-    href: CONTACT_PHONE_HREF,
-  },
-  {
-    label: "Email",
-    lines: [CONTACT_EMAIL],
-    href: `mailto:${CONTACT_EMAIL}`,
+    note: "The registered office of PK Digital LLC for legal and corporate purposes.",
   },
   {
     label: "Business hours",
@@ -68,7 +76,7 @@ export default function CompanyInformationPage() {
           reduce={reduce}
           kicker="Company information"
           title="A registered, contactable company."
-          lead="PK Digital is operated by PK DIGITAL LLC, a registered US company. The same details appear consistently across the site — no anonymity, no ambiguity."
+          lead="NOREN Agency is operated by PK Digital LLC, a registered US company. The same details appear consistently across the site — no anonymity, no ambiguity."
         />
 
         <section className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
