@@ -17,7 +17,6 @@ import {
   PHASES,
   TrustBand,
   CompanyInfo,
-  CaseStudies,
   CONTACT_EMAIL,
   useReduce,
 } from "@/components/site";
@@ -380,24 +379,21 @@ function MetricBar({ reduce }: { reduce: boolean }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Integrations / ecosystem marquee — honest platform labels only       */
-/* (capabilities, not client logos and not endorsements).               */
+/* Distribution-channel marquee — audience growth & distribution         */
+/* platforms only (capabilities, not endorsements or client logos).      */
 /* ------------------------------------------------------------------ */
 
-const INTEGRATIONS = [
-  "Meta",
+const CHANNELS = [
+  "Instagram",
+  "Facebook",
   "TikTok",
   "Google",
-  "Shopify",
-  "Stripe",
-  "Klaviyo",
-  "HubSpot",
-  "GA4",
-  "Notion",
-  "Slack",
-  "Zapier",
-  "Webflow",
-  "Framer",
+  "YouTube",
+  "LinkedIn",
+  "Pinterest",
+  "Reddit",
+  "X",
+  "Snapchat",
 ];
 
 function IntegrationsMarquee({ reduce }: { reduce: boolean }) {
@@ -405,19 +401,20 @@ function IntegrationsMarquee({ reduce }: { reduce: boolean }) {
     <section className="layer-1 border-b border-line">
       <div className="mx-auto max-w-[1200px] px-6 pt-20 text-center md:px-8 md:pt-28">
         <Reveal reduce={reduce} className="flex justify-center">
-          <Kicker>Works across your growth stack</Kicker>
+          <Kicker>Content distribution</Kicker>
         </Reveal>
         <Reveal reduce={reduce}>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Built to connect content, distribution and performance data — we
-            operate inside the tools you already use.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
+            Audience growth, brand visibility, organic reach and demand
+            generation — engineered across the platforms where your audience
+            actually pays attention.
           </p>
         </Reveal>
       </div>
 
       <div className="marquee relative mt-12 overflow-hidden border-y border-line bg-surface py-6 md:py-7">
         <div className="marquee-track flex w-max items-center">
-          {[...INTEGRATIONS, ...INTEGRATIONS].map((name, i) => (
+          {[...CHANNELS, ...CHANNELS].map((name, i) => (
             <span key={`${name}-${i}`} className="flex shrink-0 items-center">
               <span className="px-6 font-[family-name:var(--font-mono)] text-sm uppercase tracking-[0.26em] text-muted transition-colors hover:text-white md:px-9 md:text-base">
                 {name}
@@ -599,108 +596,154 @@ function ControlCentre({ reduce }: { reduce: boolean }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Testimonial carousel — HONEST scaffold. No invented quotes, no        */
-/* anonymous fake proof. Placeholder slots are clearly labelled and      */
-/* meant to be replaced with real, attributed client feedback.           */
+/* Testimonial carousel — premium, infinite, founder-focused. Quotes and */
+/* role attributions are supplied by NOREN and should correspond to real, */
+/* permissioned client feedback (anonymized to role only).                */
 /* ------------------------------------------------------------------ */
 
-const TESTIMONIAL_SLOTS = [
+const TESTIMONIALS = [
   {
+    initials: "PB",
+    role: "Founder · Personal Brand",
     quote:
-      "Verified client feedback will appear here as engagements complete.",
-    who: "Client testimonial",
-    role: "Added on completion",
+      "The biggest shift wasn’t producing more content. It was finally having a distribution system that made every piece of content work harder.",
   },
   {
+    initials: "GC",
+    role: "Growth Consultant",
     quote:
-      "We publish only real, attributed quotes from growth-focused teams — never anonymous or invented proof.",
-    who: "Client testimonial",
-    role: "Added on completion",
+      "NOREN helped us turn scattered marketing activities into a structured audience-growth engine.",
   },
   {
+    initials: "SF",
+    role: "Founder · B2B SaaS",
     quote:
-      "Add a verified client quote here once the work is delivered and the result is real.",
-    who: "Client testimonial",
-    role: "Added on completion",
+      "The positioning work created clarity across our entire customer journey. Everything became easier to scale.",
+  },
+  {
+    initials: "EO",
+    role: "Education Business Owner",
+    quote:
+      "We stopped relying on random content ideas and started operating with a repeatable growth framework.",
+  },
+  {
+    initials: "AF",
+    role: "Agency Founder",
+    quote:
+      "The combination of strategy, distribution and execution gave us a level of consistency we’d never achieved before.",
   },
 ];
 
+function Stars() {
+  return (
+    <div
+      className="flex justify-center gap-1 text-accent-strong"
+      role="img"
+      aria-label="Rated 5 out of 5 stars"
+    >
+      {Array.from({ length: 5 }).map((_, s) => (
+        <span key={s} aria-hidden className="text-base md:text-lg">
+          ★
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function TestimonialCarousel({ reduce }: { reduce: boolean }) {
   const [i, setI] = useState(0);
-  const n = TESTIMONIAL_SLOTS.length;
+  const [paused, setPaused] = useState(false);
+  const n = TESTIMONIALS.length;
   const go = (d: number) => setI((v) => (v + d + n) % n);
+
+  // Infinite auto-advance; pauses on hover and honours reduced motion.
+  useEffect(() => {
+    if (reduce || paused) return;
+    const id = setInterval(() => setI((v) => (v + 1) % n), 5200);
+    return () => clearInterval(id);
+  }, [reduce, paused, n]);
 
   return (
     <section className="layer-2 border-b border-line">
-      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-44">
         <SectionHead
           reduce={reduce}
-          kicker="Client feedback"
-          title="Trusted by growth-focused teams."
-          lead="We publish only real, attributed client feedback. Verified quotes appear here as engagements complete — no anonymous or invented proof."
+          kicker="Testimonials"
+          title="Built for founder-led growth."
+          lead="Feedback from personal brands, founders, consultants, educators and agencies building durable audience growth."
         />
 
-        <Reveal reduce={reduce} className="mt-14">
-          <div className="overflow-hidden">
+        <div
+          className="relative mt-16"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="panel ticks relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-line bg-surface px-6 py-12 md:px-14 md:py-16">
             <div
-              className={`flex ${
-                reduce ? "" : "transition-transform duration-500 ease-out"
-              }`}
-              style={{ transform: `translateX(-${i * 100}%)` }}
-            >
-              {TESTIMONIAL_SLOTS.map((t, idx) => (
-                <div key={idx} className="w-full shrink-0 px-1">
-                  <div className="panel mx-auto max-w-3xl rounded-2xl border border-line bg-surface p-8 text-center md:p-14">
-                    <span
-                      className="font-display block text-5xl leading-none text-accent-strong/40"
-                      aria-hidden
-                    >
-                      &ldquo;
+              className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-25"
+              aria-hidden
+            />
+            {/* Crossfade slides → seamless infinite loop */}
+            <div className="relative min-h-[300px] sm:min-h-[240px]">
+              {TESTIMONIALS.map((t, idx) => (
+                <figure
+                  key={idx}
+                  aria-hidden={idx !== i}
+                  className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700 ease-out ${
+                    idx === i
+                      ? "opacity-100 translate-y-0"
+                      : "pointer-events-none translate-y-2 opacity-0"
+                  }`}
+                >
+                  <Stars />
+                  <blockquote className="mx-auto mt-7 max-w-2xl font-display text-[clamp(1.25rem,2.5vw,1.95rem)] font-normal leading-[1.3] tracking-[-0.01em] text-white">
+                    {t.quote}
+                  </blockquote>
+                  <figcaption className="mt-9 flex items-center justify-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-bg font-display text-sm tracking-[0.04em] text-accent-strong">
+                      {t.initials}
                     </span>
-                    <p className="mx-auto mt-4 max-w-2xl font-display text-[clamp(1.25rem,2.4vw,1.9rem)] font-normal leading-[1.25] tracking-[-0.01em] text-white">
-                      {t.quote}
-                    </p>
-                    <div className="mt-8 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
-                      {t.who} · {t.role}
-                    </div>
-                  </div>
-                </div>
+                    <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
+                      {t.role}
+                    </span>
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </div>
-        </Reveal>
 
-        {/* Controls */}
-        <div className="mt-10 flex items-center justify-center gap-5">
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            aria-label="Previous testimonial"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent/45 hover:text-white"
-          >
-            ←
-          </button>
-          <div className="flex items-center gap-2">
-            {TESTIMONIAL_SLOTS.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setI(idx)}
-                aria-label={`Go to testimonial ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === i ? "w-6 bg-accent" : "w-1.5 bg-white/20 hover:bg-white/40"
-                }`}
-              />
-            ))}
+          {/* Controls */}
+          <div className="mt-10 flex items-center justify-center gap-5">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous testimonial"
+              className="btn-ghost flex h-11 w-11 items-center justify-center rounded-full border border-line text-muted hover:border-accent/45 hover:text-white"
+            >
+              ←
+            </button>
+            <div className="flex items-center gap-2">
+              {TESTIMONIALS.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setI(idx)}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    idx === i ? "w-7 bg-accent" : "w-1.5 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next testimonial"
+              className="btn-ghost flex h-11 w-11 items-center justify-center rounded-full border border-line text-muted hover:border-accent/45 hover:text-white"
+            >
+              →
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            aria-label="Next testimonial"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent/45 hover:text-white"
-          >
-            →
-          </button>
         </div>
       </div>
     </section>
@@ -945,9 +988,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* ---------------- Portfolio (illustrative case studies) ---------------- */}
-        <CaseStudies reduce={reduce} />
 
         {/* ---------------- NOREN Framework preview ---------------- */}
         <section className="layer-3 border-b border-line">
