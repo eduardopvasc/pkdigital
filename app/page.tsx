@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
 import Link from "next/link";
 import {
   Nav,
@@ -131,7 +132,7 @@ function HomeContact({ reduce }: { reduce: boolean }) {
 
   return (
     <section className="layer-3 border-y border-line">
-      <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal reduce={reduce} className="md:col-span-5">
             <SectionHead
@@ -295,6 +296,575 @@ function HomeContact({ reduce }: { reduce: boolean }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Animated structural metric bar                                      */
+/* Numbers are STRUCTURAL facts derived from real data (service /       */
+/* pillar / stage counts) and a stated response target — never          */
+/* fabricated performance claims.                                        */
+/* ------------------------------------------------------------------ */
+
+function CountUp({
+  to,
+  suffix = "",
+  reduce,
+}: {
+  to: number;
+  suffix?: string;
+  reduce: boolean;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [val, setVal] = useState(reduce ? to : 0);
+
+  useEffect(() => {
+    // When reduced motion is on, the initial state already equals `to`,
+    // so no state update is needed here.
+    if (reduce || !inView) return;
+    let raf = 0;
+    const start = performance.now();
+    const dur = 1100;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / dur);
+      setVal(Math.round(to * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, to, reduce]);
+
+  return (
+    <span ref={ref}>
+      {val}
+      {suffix}
+    </span>
+  );
+}
+
+const METRICS = [
+  { to: 1, suffix: "", label: "Unified operating layer" },
+  { to: FRAMEWORK.length, suffix: "", label: "Framework pillars" },
+  { to: PHASES.length, suffix: "", label: "Engagement stages" },
+  { to: SERVICES.length, suffix: "", label: "Core growth services" },
+  { to: 24, suffix: "h", label: "Response target" },
+];
+
+function MetricBar({ reduce }: { reduce: boolean }) {
+  return (
+    <section className="relative border-b border-line bg-bg">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 120% at 50% 0%, rgba(147,168,199,0.06), transparent 70%)",
+        }}
+        aria-hidden
+      />
+      <div className="relative mx-auto grid max-w-[1200px] grid-cols-2 gap-px overflow-hidden border-x border-line bg-line px-0 sm:grid-cols-3 lg:grid-cols-5">
+        {METRICS.map((m) => (
+          <Reveal
+            key={m.label}
+            reduce={reduce}
+            className="cell flex flex-col items-center justify-center bg-bg px-5 py-10 text-center md:py-12"
+          >
+            <span className="font-display text-[clamp(2.5rem,4.5vw,3.5rem)] leading-none tracking-[-0.02em] text-white">
+              <CountUp to={m.to} suffix={m.suffix} reduce={reduce} />
+            </span>
+            <span className="mt-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-muted">
+              {m.label}
+            </span>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Integrations / ecosystem marquee — honest platform labels only       */
+/* (capabilities, not client logos and not endorsements).               */
+/* ------------------------------------------------------------------ */
+
+const INTEGRATIONS = [
+  "Meta",
+  "TikTok",
+  "Google",
+  "Shopify",
+  "Stripe",
+  "Klaviyo",
+  "HubSpot",
+  "GA4",
+  "Notion",
+  "Slack",
+  "Zapier",
+  "Webflow",
+  "Framer",
+];
+
+function IntegrationsMarquee({ reduce }: { reduce: boolean }) {
+  return (
+    <section className="layer-1 border-b border-line">
+      <div className="mx-auto max-w-[1200px] px-6 pt-20 text-center md:px-8 md:pt-28">
+        <Reveal reduce={reduce} className="flex justify-center">
+          <Kicker>Works across your growth stack</Kicker>
+        </Reveal>
+        <Reveal reduce={reduce}>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+            Built to connect content, distribution and performance data — we
+            operate inside the tools you already use.
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="marquee relative mt-12 overflow-hidden border-y border-line bg-surface py-6 md:py-7">
+        <div className="marquee-track flex w-max items-center">
+          {[...INTEGRATIONS, ...INTEGRATIONS].map((name, i) => (
+            <span key={`${name}-${i}`} className="flex shrink-0 items-center">
+              <span className="px-6 font-[family-name:var(--font-mono)] text-sm uppercase tracking-[0.26em] text-muted transition-colors hover:text-white md:px-9 md:text-base">
+                {name}
+              </span>
+              <span className="h-1.5 w-1.5 rotate-45 bg-accent/40" aria-hidden />
+            </span>
+          ))}
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent md:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent md:w-40" />
+      </div>
+      <div className="h-20 md:h-28" />
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Control Centre — an ILLUSTRATIVE client workspace visual. Clearly     */
+/* labelled as illustrative; contains no numeric performance claims.     */
+/* ------------------------------------------------------------------ */
+
+const CONTROL_FEATURES = [
+  { t: "Audience growth", d: "Owned-audience trajectory at a glance." },
+  { t: "Content pipeline", d: "Every asset from draft to live." },
+  { t: "Distribution channels", d: "Where reach is being engineered." },
+  { t: "Performance insights", d: "The metrics that actually move growth." },
+  { t: "Support access", d: "A direct line to your strategist." },
+];
+
+const panelLabel =
+  "font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-faint";
+
+function ControlCentre({ reduce }: { reduce: boolean }) {
+  return (
+    <section className="relative overflow-hidden border-b border-line">
+      <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+      <div className="relative mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+        <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <SectionHead
+              reduce={reduce}
+              kicker="The operating layer"
+              title="One control centre for your growth."
+              lead="One operating layer for content, distribution and growth visibility — a single client workspace where strategy, pipeline and performance live together."
+            />
+            <ul className="mt-9 space-y-3.5">
+              {CONTROL_FEATURES.map((f) => (
+                <li key={f.t} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-line text-accent-strong">
+                    <IconCheck className="h-3 w-3" />
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-muted">
+                    <span className="text-white">{f.t}.</span> {f.d}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+              Illustrative workspace · provisioned per engagement
+            </p>
+          </div>
+
+          <Reveal reduce={reduce} className="lg:col-span-7">
+            <div className="ticks relative overflow-hidden rounded-2xl border border-line bg-surface/80 p-4 backdrop-blur-sm md:p-5">
+              <div
+                className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-30"
+                aria-hidden
+              />
+              <div className="relative">
+                {/* window bar */}
+                <div className="flex items-center justify-between border-b border-line pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex gap-1.5" aria-hidden>
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-accent/50" />
+                    </span>
+                    <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-muted">
+                      NOREN Control Centre
+                    </span>
+                  </div>
+                  <span className="font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-faint">
+                    Client workspace
+                  </span>
+                </div>
+
+                {/* body */}
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {/* Audience growth */}
+                  <div className="rounded-xl border border-line bg-bg p-4 sm:col-span-2">
+                    <div className="flex items-center justify-between">
+                      <span className={panelLabel}>Audience growth</span>
+                      <IconTrendingUp className="h-3.5 w-3.5 text-accent-strong" />
+                    </div>
+                    <div className="mt-4 flex h-20 items-end gap-1.5" aria-hidden>
+                      {[28, 36, 32, 48, 44, 58, 52, 66, 72, 84].map((h, idx) => (
+                        <div
+                          key={idx}
+                          className="flex-1 rounded-t-sm bg-gradient-to-t from-accent/10 to-accent/40"
+                          style={{ height: `${h}%` }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  {/* Performance insights */}
+                  <div className="rounded-xl border border-line bg-bg p-4">
+                    <span className={panelLabel}>Performance insights</span>
+                    <div className="mt-4 space-y-2.5" aria-hidden>
+                      {[70, 52, 84].map((w, idx) => (
+                        <div
+                          key={idx}
+                          className="h-1.5 w-full rounded-full bg-white/[0.06]"
+                        >
+                          <div
+                            className="h-full rounded-full bg-accent/50"
+                            style={{ width: `${w}%` }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Content pipeline */}
+                  <div className="rounded-xl border border-line bg-bg p-4 sm:col-span-3">
+                    <span className={panelLabel}>Content pipeline</span>
+                    <div className="mt-3 grid grid-cols-4 gap-2">
+                      {["Draft", "Review", "Scheduled", "Live"].map((s, idx) => (
+                        <div
+                          key={s}
+                          className="rounded-lg border border-line bg-white/[0.02] px-2 py-2.5 text-center"
+                        >
+                          <span
+                            className={`mx-auto block h-1.5 w-1.5 rounded-full ${
+                              idx === 3 ? "bg-accent" : "bg-white/20"
+                            }`}
+                            aria-hidden
+                          />
+                          <span className="mt-2 block font-[family-name:var(--font-mono)] text-[8.5px] uppercase tracking-[0.14em] text-faint">
+                            {s}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Distribution channels */}
+                  <div className="rounded-xl border border-line bg-bg p-4 sm:col-span-2">
+                    <span className={panelLabel}>Distribution channels</span>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {["Instagram", "TikTok", "YouTube", "LinkedIn", "X", "Newsletter"].map(
+                        (c) => (
+                          <span
+                            key={c}
+                            className="rounded-full border border-line px-2.5 py-1 text-[10px] text-muted"
+                          >
+                            {c}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                  {/* Support access */}
+                  <div className="rounded-xl border border-line bg-bg p-4">
+                    <span className={panelLabel}>Support access</span>
+                    <div className="mt-3 flex items-center gap-2">
+                      <span className="relative flex h-2 w-2" aria-hidden>
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-accent/60" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                      </span>
+                      <span className="text-[12px] text-muted">Response target · 24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Testimonial carousel — HONEST scaffold. No invented quotes, no        */
+/* anonymous fake proof. Placeholder slots are clearly labelled and      */
+/* meant to be replaced with real, attributed client feedback.           */
+/* ------------------------------------------------------------------ */
+
+const TESTIMONIAL_SLOTS = [
+  {
+    quote:
+      "Verified client feedback will appear here as engagements complete.",
+    who: "Client testimonial",
+    role: "Added on completion",
+  },
+  {
+    quote:
+      "We publish only real, attributed quotes from growth-focused teams — never anonymous or invented proof.",
+    who: "Client testimonial",
+    role: "Added on completion",
+  },
+  {
+    quote:
+      "Add a verified client quote here once the work is delivered and the result is real.",
+    who: "Client testimonial",
+    role: "Added on completion",
+  },
+];
+
+function TestimonialCarousel({ reduce }: { reduce: boolean }) {
+  const [i, setI] = useState(0);
+  const n = TESTIMONIAL_SLOTS.length;
+  const go = (d: number) => setI((v) => (v + d + n) % n);
+
+  return (
+    <section className="layer-2 border-b border-line">
+      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+        <SectionHead
+          reduce={reduce}
+          kicker="Client feedback"
+          title="Trusted by growth-focused teams."
+          lead="We publish only real, attributed client feedback. Verified quotes appear here as engagements complete — no anonymous or invented proof."
+        />
+
+        <Reveal reduce={reduce} className="mt-14">
+          <div className="overflow-hidden">
+            <div
+              className={`flex ${
+                reduce ? "" : "transition-transform duration-500 ease-out"
+              }`}
+              style={{ transform: `translateX(-${i * 100}%)` }}
+            >
+              {TESTIMONIAL_SLOTS.map((t, idx) => (
+                <div key={idx} className="w-full shrink-0 px-1">
+                  <div className="panel mx-auto max-w-3xl rounded-2xl border border-line bg-surface p-8 text-center md:p-14">
+                    <span
+                      className="font-display block text-5xl leading-none text-accent-strong/40"
+                      aria-hidden
+                    >
+                      &ldquo;
+                    </span>
+                    <p className="mx-auto mt-4 max-w-2xl font-display text-[clamp(1.25rem,2.4vw,1.9rem)] font-normal leading-[1.25] tracking-[-0.01em] text-white">
+                      {t.quote}
+                    </p>
+                    <div className="mt-8 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-faint">
+                      {t.who} · {t.role}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Controls */}
+        <div className="mt-10 flex items-center justify-center gap-5">
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous testimonial"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent/45 hover:text-white"
+          >
+            ←
+          </button>
+          <div className="flex items-center gap-2">
+            {TESTIMONIAL_SLOTS.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setI(idx)}
+                aria-label={`Go to testimonial ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === i ? "w-6 bg-accent" : "w-1.5 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next testimonial"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent/45 hover:text-white"
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Portfolio — ILLUSTRATIVE case studies on FICTIONAL brands, shown      */
+/* purely for demonstration. Every card is badged "Portfolio example",   */
+/* every outcome is tagged "illustrative", and the section carries two    */
+/* explicit disclaimers. These are NOT real clients or real results.      */
+/* ------------------------------------------------------------------ */
+
+const CASE_STUDIES = [
+  {
+    brand: "Atlas & Vale",
+    monogram: "AV",
+    niche: "B2B SaaS · Workflow automation",
+    objective:
+      "Build category authority and an owned audience from a near-zero following.",
+    strategy: ["Brand positioning", "Content infrastructure", "LinkedIn + newsletter distribution"],
+    metric: "0 → 38k",
+    metricLabel: "Owned audience",
+    outcome:
+      "A founder-led content system turned an unknown product into a recognized category voice, with inbound demand replacing cold outreach.",
+  },
+  {
+    brand: "Northwind Studio",
+    monogram: "NW",
+    niche: "Creator-led · Online education",
+    objective:
+      "Convert scattered, inconsistent posting into a durable publishing system.",
+    strategy: ["Content systems", "Short-form distribution engine", "Community development"],
+    metric: "+210%",
+    metricLabel: "Reach expansion",
+    outcome:
+      "A repeatable production pipeline and multi-channel distribution lifted reach and retention, compounding month over month instead of plateauing.",
+  },
+  {
+    brand: "Marrow & Co.",
+    monogram: "MC",
+    niche: "DTC · Premium consumer goods",
+    objective:
+      "Reduce dependence on paid ads by building an owned distribution base.",
+    strategy: ["Brand positioning", "Organic distribution", "Retention loops"],
+    metric: "41%",
+    metricLabel: "Revenue from owned channels",
+    outcome:
+      "Owned content and community became a leading acquisition channel, lowering blended acquisition cost and improving customer lifetime value.",
+  },
+  {
+    brand: "Cadence Capital",
+    monogram: "CC",
+    niche: "Fintech · Founder personal brand",
+    objective:
+      "Establish a credible founder voice and a steady stream of qualified inbound.",
+    strategy: ["Positioning", "Thought-leadership infrastructure", "Multi-channel distribution", "Growth intelligence"],
+    metric: "24 / mo",
+    metricLabel: "Qualified inbound conversations",
+    outcome:
+      "A positioned, consistently distributed founder narrative generated a reliable monthly flow of qualified conversations and partnership inbound.",
+  },
+];
+
+function CaseStudies({ reduce }: { reduce: boolean }) {
+  return (
+    <section className="border-b border-line">
+      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+        <div className="grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <SectionHead
+              reduce={reduce}
+              kicker="Sample engagements"
+              title="What an engagement looks like."
+              lead="Illustrative case studies built on fictional brands, shown for demonstration. These are not real clients or results — they show how a NOREN engagement is structured, from objective to outcome."
+            />
+          </div>
+          <Reveal
+            reduce={reduce}
+            className="md:col-span-4 md:justify-self-end md:pb-2"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-4 py-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+              <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+              Fictional · for demonstration
+            </span>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-7">
+          {CASE_STUDIES.map((c, idx) => (
+            <Reveal key={c.brand} reduce={reduce} delay={reduce ? 0 : idx * 0.05} className="h-full">
+              <article className="panel ticks group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface">
+                {/* header */}
+                <div className="relative border-b border-line p-7 md:p-8">
+                  <div
+                    className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-30"
+                    aria-hidden
+                  />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-line bg-bg">
+                      <span className="font-display text-xl leading-none text-accent-strong">
+                        {c.monogram}
+                      </span>
+                    </div>
+                    <span className="rounded-full border border-accent/30 bg-accent/[0.06] px-3 py-1 font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-accent-strong">
+                      Portfolio example
+                    </span>
+                  </div>
+                  <div className="relative mt-5 flex items-center gap-2.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+                    <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                    {c.niche}
+                  </div>
+                  <h3 className="display-md mt-3">{c.brand}</h3>
+                </div>
+
+                {/* body */}
+                <div className="flex flex-1 flex-col gap-5 p-7 md:p-8">
+                  <div>
+                    <span className={panelLabel}>Objective</span>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                      {c.objective}
+                    </p>
+                  </div>
+                  <div>
+                    <span className={panelLabel}>Growth strategy</span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {c.strategy.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-full border border-line px-3 py-1 text-xs text-muted transition-colors group-hover:border-accent/30"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-auto rounded-xl border border-line bg-accent/[0.04] p-5">
+                    <span className={panelLabel}>Outcome · illustrative</span>
+                    <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-display text-[clamp(1.8rem,3vw,2.4rem)] leading-none tracking-[-0.02em] text-white">
+                        {c.metric}
+                      </span>
+                      <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-faint">
+                        {c.metricLabel}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                      {c.outcome}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <p className="mt-10 text-center font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+          Portfolio examples · fictional brands · not real clients or results
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
@@ -317,8 +887,8 @@ export default function Home() {
             aria-hidden
           />
 
-          <div className="relative mx-auto w-full max-w-[1200px] px-6 pb-20 pt-36 md:px-8 md:pb-28 md:pt-40">
-            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
+          <div className="relative mx-auto w-full max-w-[1200px] px-6 pb-24 pt-40 md:px-8 md:pb-32 md:pt-44">
+            <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-14">
               {/* Left — headline */}
               <div className="lg:col-span-7">
                 <Reveal reduce={reduce}>
@@ -327,24 +897,24 @@ export default function Home() {
 
                 <Reveal reduce={reduce} delay={0.05}>
                   <h1 className="display-xl mt-8">
-                    Build the growth infrastructure behind your{" "}
-                    <span className="display-em">audience.</span>
+                    Your content isn&rsquo;t the problem. Your{" "}
+                    <span className="display-em">distribution</span> is.
                   </h1>
                 </Reveal>
 
                 <Reveal reduce={reduce} delay={0.1}>
                   <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-                    NOREN helps founders, creators and modern brands build
-                    scalable audience systems through positioning, content
-                    infrastructure, strategic distribution and growth
-                    intelligence.
+                    NOREN builds the systems behind sustainable audience growth —
+                    brand positioning, content infrastructure, strategic
+                    distribution and growth intelligence, run as one operating
+                    layer.
                   </p>
                 </Reveal>
 
                 <Reveal reduce={reduce} delay={0.15}>
-                  <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                  <div className="mt-11 flex flex-col gap-3 sm:flex-row">
                     <PrimaryButton href="/contact">Book a Strategy Call</PrimaryButton>
-                    <GhostButton href="/framework">Explore the Framework</GhostButton>
+                    <GhostButton href="/framework">See the Framework</GhostButton>
                   </div>
                 </Reveal>
               </div>
@@ -397,9 +967,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------------- Structural metric bar ---------------- */}
+        <MetricBar reduce={reduce} />
+
+        {/* ---------------- Integrations / ecosystem marquee ---------------- */}
+        <IntegrationsMarquee reduce={reduce} />
+
         {/* ---------------- Why brands plateau ---------------- */}
         <section className="layer-2 border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <div className="grid gap-12 md:grid-cols-12 md:items-center">
               <div className="md:col-span-5">
                 <SectionHead
@@ -435,7 +1011,7 @@ export default function Home() {
 
         {/* ---------------- What we do (services) ---------------- */}
         <section id="services" className="scroll-mt-24 border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-8">
                 <SectionHead
@@ -503,7 +1079,7 @@ export default function Home() {
 
         {/* ---------------- We work with ---------------- */}
         <section className="layer-2 border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <SectionHead
               reduce={reduce}
               kicker="Who we partner with"
@@ -527,9 +1103,12 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------------- Portfolio (illustrative case studies) ---------------- */}
+        <CaseStudies reduce={reduce} />
+
         {/* ---------------- NOREN Framework preview ---------------- */}
         <section className="layer-3 border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-9">
                 <SectionHead
@@ -580,7 +1159,7 @@ export default function Home() {
 
         {/* ---------------- How we work (process) ---------------- */}
         <section className="border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <SectionHead
               reduce={reduce}
               kicker="The engagement"
@@ -613,7 +1192,7 @@ export default function Home() {
 
         {/* ---------------- What we optimize ---------------- */}
         <section className="layer-2 border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
             <SectionHead
               reduce={reduce}
               kicker="The outcomes"
@@ -637,8 +1216,14 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------------- Control Centre (operating layer) ---------------- */}
+        <ControlCentre reduce={reduce} />
+
         {/* ---------------- Why brands choose NOREN ---------------- */}
         <TrustBand reduce={reduce} />
+
+        {/* ---------------- Testimonials (honest scaffold) ---------------- */}
+        <TestimonialCarousel reduce={reduce} />
 
         {/* ---------------- Contact form ---------------- */}
         <HomeContact reduce={reduce} />
