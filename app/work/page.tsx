@@ -6,6 +6,7 @@ import {
   PageHero,
   Reveal,
   CapabilityCard,
+  CaseStudies,
   CompanyInfo,
   CTA,
   CAPABILITIES,
@@ -51,6 +52,15 @@ export default function WorkPage() {
             </div>
           </Reveal>
         </section>
+
+        {/* Sample Engagements — illustrative, fictional, for demonstration */}
+        <CaseStudies
+          reduce={reduce}
+          kicker="Portfolio"
+          title="Sample Engagements"
+          lead="Illustrative case studies on fictional brands, shown for demonstration — not real clients or results. They show how a NOREN engagement is structured, from objective to outcome."
+          className="layer-2"
+        />
 
         <CompanyInfo reduce={reduce} />
 

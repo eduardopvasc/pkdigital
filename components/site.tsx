@@ -1226,6 +1226,189 @@ export function CompanyInfo({ reduce }: { reduce: boolean }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Portfolio — ILLUSTRATIVE case studies on FICTIONAL brands, shown for  */
+/* demonstration only. Shared by the Home page and the /work page.       */
+/* Every card is badged "Portfolio example", every outcome is tagged      */
+/* "illustrative", and the section carries explicit disclaimers. These    */
+/* are NOT real clients or real results.                                  */
+/* ------------------------------------------------------------------ */
+
+type CaseStudy = {
+  brand: string;
+  monogram: string;
+  niche: string;
+  objective: string;
+  strategy: string[];
+  metric: string;
+  metricLabel: string;
+  outcome: string;
+};
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    brand: "Atlas & Vale",
+    monogram: "AV",
+    niche: "B2B SaaS · Workflow automation",
+    objective:
+      "Build category authority and an owned audience from a near-zero following.",
+    strategy: ["Brand positioning", "Content infrastructure", "LinkedIn + newsletter distribution"],
+    metric: "0 → 38k",
+    metricLabel: "Owned audience",
+    outcome:
+      "A founder-led content system turned an unknown product into a recognized category voice, with inbound demand replacing cold outreach.",
+  },
+  {
+    brand: "Northwind Studio",
+    monogram: "NW",
+    niche: "Creator-led · Online education",
+    objective:
+      "Convert scattered, inconsistent posting into a durable publishing system.",
+    strategy: ["Content systems", "Short-form distribution engine", "Community development"],
+    metric: "+210%",
+    metricLabel: "Reach expansion",
+    outcome:
+      "A repeatable production pipeline and multi-channel distribution lifted reach and retention, compounding month over month instead of plateauing.",
+  },
+  {
+    brand: "Marrow & Co.",
+    monogram: "MC",
+    niche: "DTC · Premium consumer goods",
+    objective:
+      "Reduce dependence on paid ads by building an owned distribution base.",
+    strategy: ["Brand positioning", "Organic distribution", "Retention loops"],
+    metric: "41%",
+    metricLabel: "Revenue from owned channels",
+    outcome:
+      "Owned content and community became a leading acquisition channel, lowering blended acquisition cost and improving customer lifetime value.",
+  },
+  {
+    brand: "Cadence Capital",
+    monogram: "CC",
+    niche: "Fintech · Founder personal brand",
+    objective:
+      "Establish a credible founder voice and a steady stream of qualified inbound.",
+    strategy: ["Positioning", "Thought-leadership infrastructure", "Multi-channel distribution", "Growth intelligence"],
+    metric: "24 / mo",
+    metricLabel: "Qualified inbound conversations",
+    outcome:
+      "A positioned, consistently distributed founder narrative generated a reliable monthly flow of qualified conversations and partnership inbound.",
+  },
+];
+
+const caseLabel =
+  "font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint";
+
+export function CaseStudies({
+  reduce,
+  kicker = "Sample engagements",
+  title = "What an engagement looks like.",
+  lead = "Illustrative case studies built on fictional brands, shown for demonstration. These are not real clients or results — they show how a NOREN engagement is structured, from objective to outcome.",
+  className = "",
+}: {
+  reduce: boolean;
+  kicker?: string;
+  title?: string;
+  lead?: string;
+  className?: string;
+}) {
+  return (
+    <section className={`border-b border-line ${className}`}>
+      <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+        <div className="grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <SectionHead reduce={reduce} kicker={kicker} title={title} lead={lead} />
+          </div>
+          <Reveal
+            reduce={reduce}
+            className="md:col-span-4 md:justify-self-end md:pb-2"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-4 py-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+              <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+              Fictional · for demonstration
+            </span>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-7">
+          {CASE_STUDIES.map((c, idx) => (
+            <Reveal
+              key={c.brand}
+              reduce={reduce}
+              delay={reduce ? 0 : idx * 0.05}
+              className="h-full"
+            >
+              <article className="panel ticks group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface">
+                <div className="relative border-b border-line p-7 md:p-8">
+                  <div
+                    className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-30"
+                    aria-hidden
+                  />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-line bg-bg">
+                      <span className="font-display text-xl leading-none text-accent-strong">
+                        {c.monogram}
+                      </span>
+                    </div>
+                    <span className="rounded-full border border-accent/30 bg-accent/[0.06] px-3 py-1 font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-accent-strong">
+                      Portfolio example
+                    </span>
+                  </div>
+                  <div className="relative mt-5 flex items-center gap-2.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+                    <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                    {c.niche}
+                  </div>
+                  <h3 className="display-md mt-3">{c.brand}</h3>
+                </div>
+
+                <div className="flex flex-1 flex-col gap-5 p-7 md:p-8">
+                  <div>
+                    <span className={caseLabel}>Objective</span>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                      {c.objective}
+                    </p>
+                  </div>
+                  <div>
+                    <span className={caseLabel}>Growth strategy</span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {c.strategy.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-full border border-line px-3 py-1 text-xs text-muted transition-colors group-hover:border-accent/30"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-auto rounded-xl border border-line bg-accent/[0.04] p-5">
+                    <span className={caseLabel}>Outcome · illustrative</span>
+                    <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-display text-[clamp(1.8rem,3vw,2.4rem)] leading-none tracking-[-0.02em] text-white">
+                        {c.metric}
+                      </span>
+                      <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-faint">
+                        {c.metricLabel}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                      {c.outcome}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <p className="mt-10 text-center font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-faint">
+          Portfolio examples · fictional brands · not real clients or results
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Legal page layout                                                   */
 /* ------------------------------------------------------------------ */
 
