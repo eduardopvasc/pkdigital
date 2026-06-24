@@ -6,62 +6,82 @@ export default function RefundPolicyPage() {
   return (
     <LegalShell kicker="Legal" title="Refund Policy" updated="June 2026">
       <p className="text-[15px] leading-relaxed text-muted">
-        This Refund Policy explains how fees, cancellations, and refunds are
-        handled for services provided by PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;,
-        &ldquo;we&rdquo;, &ldquo;us&rdquo;). It should be read alongside our Terms
-        of Service and the statement of work for your engagement, which prevails
-        in the event of a conflict.
+        This Refund Policy explains how payments and refunds are handled for the
+        digital services provided by PK DIGITAL LLC, operating as NOREN Agency
+        (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;). It
+        should be read alongside our Terms of Service and any plan, private
+        proposal, or statement of work for your engagement, which prevails in the
+        event of a conflict.
       </p>
 
       <LegalBlock n="01" title="Nature of our services">
         <p>
-          NOREN Agency provides professional social media services — strategy,
-          content and creative production, community management, organic growth,
-          and analytics and reporting — typically on a monthly retainer. Because
-          the work is bespoke and delivered as time and creative output, fees
-          reflect work performed rather than a returnable product.
+          NOREN Agency provides digital growth and advisory services — strategy
+          and positioning, content and creative direction, community and
+          distribution support, organic growth, implementation guidance, and
+          analytics and reporting. Engagements are delivered digitally as
+          professional work, advisory, and access. There is no physical product
+          and nothing is shipped. Fees reflect strategic work, time, and digital
+          deliverables rather than a returnable good.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="02" title="Retainer fees and billing cycles">
+      <LegalBlock n="02" title="Payment and when it becomes final">
         <p>
-          Retainers are billed in advance for each cycle as set out in the
-          statement of work. Once a cycle has begun and work has commenced, fees
-          for that cycle are generally non-refundable, as resources and time are
-          allocated to your account at the start of the period.
+          Engagements are purchased as a one-time, upfront payment through an
+          approved checkout provider (for example, Whop), by invoice, or as set
+          out in the applicable plan or private proposal. Payment confirms your
+          engagement tier or custom scope and authorizes us to begin. Once
+          onboarding or work has commenced, payment is generally considered
+          final, because resources, time, and strategic work are committed to
+          your account from the start.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="03" title="Cancellations">
+      <LegalBlock n="03" title="Digital delivery">
         <p>
-          You may cancel an ongoing engagement on the written notice period set
-          out in the statement of work. Cancellation stops future billing cycles;
-          it does not retroactively refund a cycle already in progress. We will
-          deliver paid-for work in progress as reasonably practicable up to the
-          end of the notice period.
+          All services, deliverables, access, and assets are provided digitally —
+          by document, workspace, client portal, call, or email. No physical
+          goods are sold or shipped. Delivery is considered made when the
+          relevant work, access, or materials are provided to you.
         </p>
       </LegalBlock>
 
       <LegalBlock n="04" title="When a refund may apply">
         <p>
-          Where we have invoiced for work that has not been started, or where a
-          duplicate or incorrect charge has occurred, we will refund the affected
-          amount. If a dispute arises about delivered work, we will review it in
-          good faith and aim for a fair resolution consistent with the statement
-          of work.
+          Where a duplicate or incorrect charge has occurred, or where you have
+          paid for an engagement that has not yet started and no onboarding,
+          strategic work, or setup has taken place, we will refund the affected
+          amount. At our discretion, we may offer a partial or goodwill refund
+          for clearly unstarted portions of a scope. Work already delivered —
+          including strategy, consulting and advisory time, setup and onboarding,
+          custom work, and digital assets or access already provided — is
+          non-refundable.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="05" title="How to request a refund">
+      <LegalBlock n="05" title="Disputes and chargebacks">
+        <p>
+          If you have a concern about a charge or about the work, please contact
+          NOREN Agency first so we can review it in good faith and aim for a fair
+          resolution consistent with your plan, proposal, or statement of work.
+          We ask that you raise any dispute with us before initiating a
+          chargeback. Chargebacks or payment disputes filed without first
+          contacting us may be treated as a breach and may result in suspension
+          of services and access.
+        </p>
+      </LegalBlock>
+
+      <LegalBlock n="06" title="How to request a refund">
         <p>
           To raise a billing question or request a refund, contact us at
           contact@norenagency.com or call +1 (954) 676-1050. Please include your
-          company name, the invoice or charge in question, and a short
+          company name, the order, invoice, or charge in question, and a short
           description. We aim to respond within two business days.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="06" title="Contact">
+      <LegalBlock n="07" title="Contact">
         <p>
           PK DIGITAL LLC — Business address: 2335 E. Atlantic Blvd, STE 200,
           Pompano Beach, FL 33062, United States. Email:
