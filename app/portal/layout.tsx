@@ -16,5 +16,6 @@ export default function PortalLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  // `.portal` scopes the private-client champagne accent tokens.
+  return <div className="portal">{children}</div>;
 }
