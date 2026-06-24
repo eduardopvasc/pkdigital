@@ -90,12 +90,12 @@ export default function LoginPage() {
               />
             </Link>
             <p className="mt-10 max-w-sm font-display text-[1.6rem] font-normal leading-snug tracking-[-0.01em] text-white">
-              Your private client workspace.
+              The NOREN client workspace.
             </p>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
-              Onboarding, implementation resources, engagement status, and
-              support — together in one secure place, for active NOREN
-              engagements.
+              Where your engagement lives — onboarding, status, deliverables,
+              resources, and a direct line to your strategist. Private to active
+              NOREN clients.
             </p>
           </div>
           <div className="relative mt-10">
@@ -134,7 +134,7 @@ export default function LoginPage() {
           </span>
           <h1 className="display-md mt-3">Sign in.</h1>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">
-            Access your private NOREN workspace.
+            Sign in to your private engagement workspace.
           </p>
 
           {error ? (

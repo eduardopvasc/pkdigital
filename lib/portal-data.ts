@@ -200,29 +200,56 @@ export const ENGAGEMENT_PHASES: EngagementPhase[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* Per-client engagement module — the "your engagement" layer.          */
-/* This is placeholder structure shown to every member today; in        */
-/* production it is provisioned per client (keyed off the member) from   */
-/* your store/CRM. Shapes are stable so a real data source can drop in.  */
+/* Per-client engagement record — the "your engagement" layer.          */
+/* A clean typed shape for one client's engagement. Seeded with a        */
+/* realistic NOREN demo client; in production, load per client (keyed     */
+/* off the member email) from your store/CRM via getEngagementForMember.  */
 /* ------------------------------------------------------------------ */
 export type DeliverableStatus = "in-progress" | "scheduled" | "delivered";
 
-export type ClientEngagement = {
-  summary: { label: string; value: string }[];
-  scope: string[];
-  currentPhase: string;
-  pendingInputs: string[];
-  nextDeliverables: { title: string; due: string; status: DeliverableStatus }[];
-  notes: { date: string; title: string; body: string }[];
+export type Deliverable = { title: string; due: string; status: DeliverableStatus };
+export type EngagementUpdate = { date: string; title: string; body: string };
+
+export type EngagementSupport = {
+  /** Primary support channel (monitored corporate inbox). */
+  channel: string;
+  /** Expected response framing. */
+  responseTime: string;
+  /** "Book a working call" CTA → scheduling link (or /contact placeholder). */
+  bookCtaLabel: string;
+  bookCtaHref: string;
+  /** "Request support" CTA → mailto (or ticketing endpoint later). */
+  requestLabel: string;
+  requestHref: string;
+  /** Optional private-channel note (secondary, for active engagements). */
+  privateChannelNote?: string;
 };
 
-export const ENGAGEMENT: ClientEngagement = {
-  summary: [
-    { label: "Engagement", value: "Growth — structured engagement" },
-    { label: "Started", value: "June 2026" },
-    { label: "Strategist", value: "Assigned at kickoff" },
-    { label: "Working cadence", value: "Bi-weekly review" },
-  ],
+export type ClientEngagement = {
+  clientName: string;
+  title: string; // engagement title
+  serviceType: string; // service type / scope tier
+  startedOn: string;
+  strategist: string;
+  cadence: string;
+  scope: string[];
+  currentPhase: string;
+  phases: EngagementPhase[];
+  pendingInputs: string[];
+  nextDeliverables: Deliverable[];
+  recentUpdates: EngagementUpdate[];
+  support: EngagementSupport;
+};
+
+const SUPPORT_EMAIL = "contact@norenagency.com";
+
+const DEMO_ENGAGEMENT: ClientEngagement = {
+  clientName: "Northwind Studio",
+  title: "Growth Engagement",
+  serviceType: "Strategy & implementation",
+  startedOn: "June 2026",
+  strategist: "Assigned at kickoff",
+  cadence: "Bi-weekly working review",
   scope: [
     "Positioning & messaging",
     "Content infrastructure",
@@ -230,31 +257,57 @@ export const ENGAGEMENT: ClientEngagement = {
     "Reporting & growth reviews",
   ],
   currentPhase: "Strategy",
+  phases: ENGAGEMENT_PHASES,
   pendingInputs: [
-    "Complete your client profile (onboarding above).",
+    "Complete your client profile in onboarding above.",
     "Grant access to your primary channels and analytics.",
     "Share brand assets and any existing guidelines.",
   ],
   nextDeliverables: [
     { title: "Positioning & messaging brief", due: "Current phase", status: "in-progress" },
-    { title: "Growth roadmap & channel plan", due: "Next", status: "scheduled" },
+    { title: "Growth roadmap & channel plan", due: "Next up", status: "scheduled" },
     { title: "Content system setup", due: "Infrastructure phase", status: "scheduled" },
   ],
-  notes: [
+  recentUpdates: [
     {
       date: "June 2026",
       title: "Strategy phase underway",
-      body: "Positioning and the growth roadmap are in progress. You’ll review before anything is built.",
+      body: "Positioning and the growth roadmap are in progress. You’ll review and sign off before anything is built.",
     },
     {
       date: "June 2026",
       title: "Resource added: Paid Acquisition Guidance",
-      body: "Channel structure, creative direction, and budget-allocation principles are in your library.",
+      body: "Channel structure, creative direction, and budget-allocation principles are now in your library.",
     },
     {
       date: "May 2026",
       title: "Workspace provisioned",
-      body: "Your private client workspace is live. Complete your intake profile to prepare the engagement.",
+      body: "Your private workspace is live. Completing your intake profile lets us finalize the strategy scope.",
     },
   ],
+  support: {
+    channel: SUPPORT_EMAIL,
+    responseTime: "Replies within one business day on active engagements.",
+    bookCtaLabel: "Book a working call",
+    bookCtaHref: "/contact",
+    requestLabel: "Request support",
+    requestHref: `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(
+      "Support request — NOREN client workspace",
+    )}`,
+    privateChannelNote:
+      "A private communication channel can be arranged for active engagements.",
+  },
 };
+
+/**
+ * Returns the engagement record for the signed-in member.
+ * TODO: replace the demo return with a per-client lookup (DB/CRM) keyed by
+ * `email`. `name` lets the demo reflect the logged-in client.
+ */
+export function getEngagementForMember(
+  email?: string,
+  name?: string,
+): ClientEngagement {
+  void email; // reserved for the real per-client lookup
+  return name ? { ...DEMO_ENGAGEMENT, clientName: name } : DEMO_ENGAGEMENT;
+}

@@ -10,13 +10,12 @@ import {
 } from "@/lib/session";
 import {
   PORTAL_RESOURCES,
-  ENGAGEMENT_PHASES,
-  ENGAGEMENT,
+  getEngagementForMember,
   type PhaseStatus,
   type DeliverableStatus,
 } from "@/lib/portal-data";
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF } from "@/components/site";
-import { IconMail, IconLock, IconChat } from "@/components/icons";
+import { CONTACT_PHONE, CONTACT_PHONE_HREF } from "@/components/site";
+import { IconMail, IconLock, IconChat, IconCalendar } from "@/components/icons";
 
 // Reads the session cookie → always dynamic.
 export const dynamic = "force-dynamic";
@@ -54,6 +53,15 @@ export default async function PortalPage() {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   const session = await verifySession(token, getSessionSecret());
   const name = session?.name || "Client";
+  const eng = getEngagementForMember(session?.email, name);
+
+  const summaryRows: [string, string][] = [
+    ["Engagement", eng.title],
+    ["Service", eng.serviceType],
+    ["Started", eng.startedOn],
+    ["Strategist", eng.strategist],
+    ["Cadence", eng.cadence],
+  ];
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -72,14 +80,15 @@ export default async function PortalPage() {
             .
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted">
-            Your private NOREN engagement hub — onboarding, engagement status,
-            deliverables, resources, and support, in one place.
+            Your private NOREN workspace — engagement status, deliverables,
+            implementation resources, and a direct line to your strategist, in
+            one place.
           </p>
           <div className="mt-9 flex flex-wrap gap-2.5">
             {[
               ["Status", "Active"],
               ["Access", "Private"],
-              ["Phase", ENGAGEMENT.currentPhase],
+              ["Phase", eng.currentPhase],
             ].map(([k, v]) => (
               <span
                 key={k}
@@ -96,10 +105,10 @@ export default async function PortalPage() {
         <section id="onboarding" className="scroll-mt-24 border-t border-line py-16 md:py-24">
           <div className="mb-10 max-w-2xl">
             <Eyebrow>Onboarding</Eyebrow>
-            <h2 className="display-lg mt-6">Complete your client profile.</h2>
+            <h2 className="display-lg mt-6">Tell us how to run your engagement.</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted md:text-base">
-              A short intake so we can scope and prepare your engagement
-              properly. Saved to your workspace as you go.
+              A short intake that sets your scope, priorities, and the way we’ll
+              work together. It’s saved to your workspace as you go.
             </p>
           </div>
           <Onboarding memberName={name} />
@@ -111,8 +120,8 @@ export default async function PortalPage() {
             <Eyebrow>Your engagement</Eyebrow>
             <h2 className="display-lg mt-6">Engagement overview.</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted md:text-base">
-              Where your engagement stands, what’s in scope, what we need from
-              you, and what’s coming next — maintained by your strategist.
+              Live status of your scope, what we’re building now, what we need
+              from you, and what’s next — maintained by your strategist.
             </p>
           </div>
 
@@ -124,12 +133,12 @@ export default async function PortalPage() {
                   Engagement summary
                 </span>
                 <dl className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
-                  {ENGAGEMENT.summary.map((row) => (
-                    <div key={row.label}>
+                  {summaryRows.map(([label, value]) => (
+                    <div key={label}>
                       <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-faint">
-                        {row.label}
+                        {label}
                       </dt>
-                      <dd className="mt-1.5 text-[15px] text-white">{row.value}</dd>
+                      <dd className="mt-1.5 text-[15px] text-white">{value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -138,7 +147,7 @@ export default async function PortalPage() {
                     Current scope
                   </span>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {ENGAGEMENT.scope.map((s) => (
+                    {eng.scope.map((s) => (
                       <span
                         key={s}
                         className="rounded-full border border-line bg-white/[0.02] px-3.5 py-1.5 text-[13px] text-muted"
@@ -157,7 +166,7 @@ export default async function PortalPage() {
                   Current phase &amp; status
                 </span>
                 <div className="mt-6 space-y-2.5">
-                  {ENGAGEMENT_PHASES.map((p) => {
+                  {eng.phases.map((p) => {
                     const s = PHASE_STYLES[p.status];
                     return (
                       <div key={p.n} className="flex items-center gap-3">
@@ -187,7 +196,7 @@ export default async function PortalPage() {
                   Pending inputs from you
                 </span>
                 <ul className="mt-6 space-y-4">
-                  {ENGAGEMENT.pendingInputs.map((item) => (
+                  {eng.pendingInputs.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span
                         className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border border-[color:rgba(var(--gold-rgb),0.6)]"
@@ -214,7 +223,7 @@ export default async function PortalPage() {
                   Next deliverables
                 </span>
                 <ul className="mt-6 space-y-4">
-                  {ENGAGEMENT.nextDeliverables.map((d) => {
+                  {eng.nextDeliverables.map((d) => {
                     const s = DELIV_STYLES[d.status];
                     return (
                       <li
@@ -248,7 +257,7 @@ export default async function PortalPage() {
                 Recent updates &amp; notes
               </span>
             </div>
-            {ENGAGEMENT.notes.map((u, i) => (
+            {eng.recentUpdates.map((u, i) => (
               <article
                 key={u.title}
                 className={`flex flex-col gap-3 bg-surface p-6 sm:flex-row sm:gap-8 md:px-7 ${
@@ -288,9 +297,10 @@ export default async function PortalPage() {
         <section id="resources" className="scroll-mt-24 border-t border-line py-16 md:py-24">
           <div className="mb-10 max-w-2xl">
             <Eyebrow>The library</Eyebrow>
-            <h2 className="display-lg mt-6">Resources connected to your scope.</h2>
+            <h2 className="display-lg mt-6">Resources for your engagement.</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted md:text-base">
-              Implementation docs, playbooks, and references for your engagement.
+              Implementation docs, playbooks, and references that map to your
+              current scope.
             </p>
           </div>
           <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
@@ -332,45 +342,64 @@ export default async function PortalPage() {
               <Eyebrow>Support</Eyebrow>
               <h2 className="display-lg mt-6">A direct line to your team.</h2>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-                Questions, requests, or anything you need for the engagement —
-                reach your strategist and the NOREN team here.
+                Reach your strategist for anything related to the engagement —
+                questions, requests, feedback, or a review.
               </p>
-              <p className="mt-4 max-w-md text-[13px] leading-relaxed text-faint">
-                A private communication channel can be arranged for active
-                engagements.
+              <p className="mt-4 max-w-md text-[14px] leading-relaxed text-muted">
+                {eng.support.responseTime}
               </p>
+              {eng.support.privateChannelNote ? (
+                <p className="mt-4 max-w-md text-[13px] leading-relaxed text-faint">
+                  {eng.support.privateChannelNote}
+                </p>
+              ) : null}
             </div>
+
             <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-              <div className="rounded-2xl border border-line bg-surface p-7">
+              {/* Primary support channel */}
+              <div className="flex flex-col rounded-2xl border border-line bg-surface p-7">
                 <IconMail className="h-5 w-5 text-[color:var(--gold-strong)]" />
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-lg font-medium text-white">
-                  Email your strategist
+                  Message your strategist
                 </h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-muted">
-                  A monitored inbox with replies within two business days.
+                  Your primary support channel — a monitored inbox for the
+                  engagement.
                 </p>
                 <a
-                  href={`mailto:${CONTACT_EMAIL}`}
+                  href={`mailto:${eng.support.channel}`}
                   className="mt-4 inline-block text-[15px] text-white transition-colors hover:text-[color:var(--gold-strong)]"
                 >
-                  {CONTACT_EMAIL}
+                  {eng.support.channel}
+                </a>
+                <a
+                  href={eng.support.requestHref}
+                  className="btn-glow group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-white/90"
+                >
+                  {eng.support.requestLabel}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </a>
               </div>
-              <div className="rounded-2xl border border-line bg-surface p-7">
-                <IconChat className="h-5 w-5 text-[color:var(--gold-strong)]" />
+
+              {/* Book a working call */}
+              <div className="flex flex-col rounded-2xl border border-line bg-surface p-7">
+                <IconCalendar className="h-5 w-5 text-[color:var(--gold-strong)]" />
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-lg font-medium text-white">
-                  Book a working call
+                  {eng.support.bookCtaLabel}
                 </h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-muted">
                   Strategy and review calls are scheduled with your team.
                 </p>
                 <Link
-                  href="/contact"
+                  href={eng.support.bookCtaHref}
                   className="mt-4 inline-flex items-center gap-2 text-[15px] text-white transition-colors hover:text-[color:var(--gold-strong)]"
                 >
                   Request a call <span>→</span>
                 </Link>
-                <p className="mt-4 font-[family-name:var(--font-mono)] text-[11px] text-faint">
+                <p className="mt-auto pt-6 font-[family-name:var(--font-mono)] text-[11px] text-faint">
+                  <IconChat className="mr-1.5 inline h-3.5 w-3.5 align-[-2px]" />
                   {CONTACT_PHONE} ·{" "}
                   <a href={CONTACT_PHONE_HREF} className="hover:text-white">
                     call
