@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NOREN Agency
 
-## Getting Started
+Marketing site for **NOREN Agency** (operated by PK DIGITAL LLC) — a strategic
+growth agency building audience, content and distribution infrastructure for
+founders, creators and modern brands.
 
-First, run the development server:
+Public site: [norenagency.com](https://norenagency.com)
+
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **React 19** + **TypeScript** (strict)
+- **Tailwind CSS v4** (theme defined in `app/globals.css`)
+- **framer-motion** for motion / reveals
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # start the dev server (http://localhost:3000)
+npm run build   # production build
+npm run start   # serve the production build
+npm run lint    # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/` — routes (App Router). Marketing pages, legal pages, `/plans`,
+  `/login`, `/portal`, and the `/api/contact` route handler.
+- `components/site.tsx` — shared chrome (nav, footer), primitives, and the
+  single source of truth for services, framework, and company details.
+- `components/icons.tsx` — in-house monochrome icon set.
+- `lib/` — `contact.ts` (form topics) and `seo.ts` (per-route metadata helper).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Identity
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+High-contrast editorial serif (**Fraunces**) + **DM Sans** body + **DM Mono**
+labels, over a four-layer dark palette with a glacial steel-blue accent. The
+official logo lives at `public/noren-logo-white.png`.
