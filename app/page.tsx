@@ -73,7 +73,7 @@ const WORK_WITH = [
   { title: "Media Brands", copy: "Distribution systems that scale reach and retention." },
   { title: "High-Growth Businesses", copy: "Growth infrastructure that keeps pace with scale." },
   { title: "Creator-Led Companies", copy: "Operationalizing a founder's audience into a system." },
-  { title: "Professional Organizations", copy: "A credible, well-positioned public presence." },
+  { title: "Premium E-commerce", copy: "Acquisition, retention and lifecycle systems for premium DTC brands." },
 ];
 
 const OPTIMIZE = [
@@ -85,6 +85,41 @@ const OPTIMIZE = [
   "Brand Visibility",
   "Authority",
   "Distribution Efficiency",
+];
+
+/* What clients can expect — the concrete work delivered across an engagement.
+   Verifiable categories of work, not fabricated results or case studies. */
+const DELIVERABLES: { icon: Ico; title: string; copy: string }[] = [
+  {
+    icon: IconRoute,
+    title: "Channel strategy",
+    copy: "A defined channel mix and the role each plays across acquisition and retention.",
+  },
+  {
+    icon: IconTrendingUp,
+    title: "Paid acquisition support",
+    copy: "Structured guidance on paid channels, creative direction, and budget allocation.",
+  },
+  {
+    icon: IconLayers,
+    title: "Content infrastructure",
+    copy: "Systems, formats, and workflows that let the brand publish consistently at scale.",
+  },
+  {
+    icon: IconUserCheck,
+    title: "CRM & lifecycle structure",
+    copy: "Lifecycle and retention systems that turn first-time buyers into repeat revenue.",
+  },
+  {
+    icon: IconBarChart,
+    title: "Reporting & growth systems",
+    copy: "A reporting cadence and growth dashboards that turn performance into decisions.",
+  },
+  {
+    icon: IconCompass,
+    title: "Strategic guidance",
+    copy: "A senior point of contact and a strategy that adapts as the engagement compounds.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -989,6 +1024,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------------- What clients can expect (deliverables) ---------------- */}
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+            <SectionHead
+              reduce={reduce}
+              kicker="What we deliver"
+              title="What clients can expect."
+              lead="The work itself — the systems, structure and senior input delivered across an engagement. No inflated claims; just the operating layer we build and run."
+            />
+            <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+              {DELIVERABLES.map((d) => (
+                <Reveal
+                  key={d.title}
+                  reduce={reduce}
+                  className="cell group bg-surface p-7 md:p-8"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-accent-strong transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/[0.06]">
+                    <d.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="display-md mt-5 text-[1.4rem]">{d.title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">
+                    {d.copy}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ---------------- NOREN Framework preview ---------------- */}
         <section className="layer-3 border-b border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
@@ -1095,6 +1159,35 @@ export default function Home() {
                   <span className="text-[15px] font-medium text-white">{o}</span>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------- Retainer model ---------------- */}
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
+            <div className="ticks relative overflow-hidden rounded-2xl border border-line bg-surface/60 p-8 md:p-12">
+              <div
+                className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-30"
+                aria-hidden
+              />
+              <div className="relative grid gap-8 md:grid-cols-12 md:items-center">
+                <div className="md:col-span-8">
+                  <Kicker>How we engage</Kicker>
+                  <h2 className="display-md mt-6">
+                    A retainer model, scoped to your brand.
+                  </h2>
+                  <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted md:text-base">
+                    Noren works through monthly retainer structures and strategic
+                    execution plans. Scope, channel mix, and delivery cadence
+                    depend on your engagement tier and what your brand needs.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
+                  <PrimaryButton href="/plans">View plans</PrimaryButton>
+                  <GhostButton href="/contact">Request a proposal</GhostButton>
+                </div>
+              </div>
             </div>
           </div>
         </section>

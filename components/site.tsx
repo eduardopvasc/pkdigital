@@ -11,6 +11,7 @@
 
 import { useState, type ComponentType, type ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   IconRoute,
@@ -415,12 +416,19 @@ export function CTA({
 const NAV_LINKS = [
   { href: "/framework", label: "Framework" },
   { href: "/services", label: "Services" },
+  { href: "/plans", label: "Plans" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
-function Wordmark({ onClick }: { onClick?: () => void }) {
+function Wordmark({
+  onClick,
+  className = "h-7 w-auto md:h-8",
+}: {
+  onClick?: () => void;
+  className?: string;
+}) {
   return (
     <Link
       href="/"
@@ -428,12 +436,14 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
       aria-label="NOREN — home"
       className="group inline-flex items-center"
     >
-      <span className="font-display text-[22px] font-medium leading-none tracking-[0.05em] text-white">
-        NOREN
-      </span>
-      <span
-        className="ml-[3px] mt-[2px] h-1 w-1 self-end rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
-        aria-hidden
+      {/* Official NOREN logo (white, transparent background). */}
+      <Image
+        src="/noren-logo-white.png"
+        alt="NOREN"
+        width={1240}
+        height={331}
+        priority
+        className={`${className} object-contain transition-opacity duration-300 group-hover:opacity-80`}
       />
     </Link>
   );
@@ -450,7 +460,7 @@ export function Nav() {
         </div>
 
         {/* Centered links */}
-        <div className="hidden items-center gap-9 justify-self-center md:flex">
+        <div className="hidden items-center gap-6 justify-self-center md:flex lg:gap-8">
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
@@ -465,7 +475,14 @@ export function Nav() {
 
         {/* Right side */}
         <div className="flex items-center justify-self-end">
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-5 md:flex">
+            <Link
+              href="/login"
+              className="group relative text-sm text-muted transition-colors hover:text-white"
+            >
+              Login
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+            </Link>
             <PrimaryButton href="/contact">Request a Proposal</PrimaryButton>
           </div>
           <button
@@ -509,6 +526,13 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              href="/login"
+              onClick={() => setOpen(false)}
+              className="py-2 text-[15px] text-muted transition-colors hover:text-white"
+            >
+              Login
+            </Link>
             <div className="pt-3">
               <PrimaryButton href="/contact">Request a Proposal</PrimaryButton>
             </div>
@@ -531,11 +555,13 @@ const FOOTER_SERVICES = SERVICES.map((s) => ({
 const FOOTER_COMPANY = [
   { href: "/framework", label: "Framework" },
   { href: "/services", label: "Services" },
+  { href: "/plans", label: "Plans" },
   { href: "/work", label: "Work" },
   { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "/company-information", label: "Company Information" },
+  { href: "/login", label: "Client Login" },
 ];
 
 const FOOTER_LEGAL = [
@@ -607,10 +633,13 @@ export function Footer() {
         <div className="grid gap-14 md:grid-cols-12 md:gap-10">
           {/* Brand + contact */}
           <div className="md:col-span-5">
-            <Wordmark />
+            <Wordmark className="h-9 w-auto" />
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted">
               NOREN — Strategic growth infrastructure for founders, creators
               and modern brands.
+            </p>
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.18em] text-faint">
+              Digital growth services · Monthly client retainers
             </p>
 
             <div className="mt-10 space-y-8">
