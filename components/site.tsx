@@ -569,6 +569,9 @@ const FOOTER_LEGAL = [
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/cookies", label: "Cookie Policy" },
   { href: "/refund-policy", label: "Refund Policy" },
+  { href: "/digital-delivery-policy", label: "Digital Delivery Policy" },
+  { href: "/service-delivery", label: "Service Delivery" },
+  { href: "/eula", label: "End User License Agreement" },
   { href: "/acceptable-use", label: "Acceptable Use" },
   { href: "/disclaimer", label: "Disclaimer" },
 ];

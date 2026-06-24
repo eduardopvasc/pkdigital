@@ -9,9 +9,9 @@ export default function RefundPolicyPage() {
         This Refund Policy explains how payments and refunds are handled for the
         digital services provided by PK DIGITAL LLC, operating as NOREN Agency
         (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;). It
-        should be read alongside our Terms of Service and any plan, private
-        proposal, or statement of work for your engagement, which prevails in the
-        event of a conflict.
+        should be read alongside our Terms of Service, our Digital Delivery
+        Policy, and any plan, private proposal, or statement of work for your
+        engagement, which prevails in the event of a conflict.
       </p>
 
       <LegalBlock n="01" title="Nature of our services">
