@@ -14,9 +14,10 @@ export default function DisclaimerPage() {
 
       <LegalBlock n="01" title="No guarantee of results">
         <p>
-          PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;) provides social media
-          services that depend on factors outside our control, including
-          third-party platforms, algorithms, and audience behavior. Nothing on
+          PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;) provides digital
+          growth and advisory services that depend on factors outside our
+          control, including third-party platforms, algorithms, and audience
+          behavior. Nothing on
           this website is a promise or guarantee of specific reach, engagement,
           growth, revenue, or other results. Past or illustrative work does not
           guarantee future outcomes.

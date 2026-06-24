@@ -10,7 +10,8 @@ export default function AcceptableUsePage() {
         standards that apply when you use the norenagency.com website and when
         you engage PK DIGITAL LLC, operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;,
         &ldquo;us&rdquo;) for services. By using the site or working with us, you
-        agree to this Policy and to our Terms of Service.
+        agree to this Policy, our Terms of Service, and — where you access our
+        client portal, workspace, or materials — our End User License Agreement.
       </p>
 
       <LegalBlock n="01" title="Prohibited use of the website">

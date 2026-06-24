@@ -110,8 +110,8 @@ export default function ServicesPage() {
             <SectionHead
               reduce={reduce}
               kicker="How we engage"
-              title="One retainer, scoped to your business."
-              lead="Services are delivered together as a monthly retainer, defined in a written statement of work — with a clear cadence, agreed deliverables, and a single senior point of contact. We don't publish package pricing; each engagement is scoped to the work involved and shared in a tailored proposal."
+              title="One engagement, scoped to your business."
+              lead="Services are delivered together as a single structured engagement, defined in a written statement of work — with a clear cadence, agreed deliverables, and a single senior point of contact. Engagement tiers are published on our plans page; for custom scopes or tailored pricing, each engagement is shared in a private proposal."
             />
           </div>
         </section>

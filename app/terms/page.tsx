@@ -9,9 +9,10 @@ export default function TermsPage() {
         These Terms of Service (the &ldquo;Terms&rdquo;) govern your use of this
         website and describe the general terms on which PK DIGITAL LLC,
         operating as NOREN Agency (&ldquo;NOREN Agency&rdquo;, &ldquo;we&rdquo;,
-        &ldquo;us&rdquo;) provides its services. The specific scope, fees, and deliverables of any
-        engagement are set out in a separate statement of work or services
-        agreement, which prevails over these Terms in the event of a conflict.
+        &ldquo;us&rdquo;) provides its services. The specific scope, fees, and
+        deliverables of any engagement are set out in the applicable plan, a
+        private proposal, or a separate statement of work or services agreement,
+        which prevails over these Terms in the event of a conflict.
       </p>
 
       <LegalBlock n="01" title="Who we are">
@@ -32,85 +33,116 @@ export default function TermsPage() {
         </p>
       </LegalBlock>
 
-      <LegalBlock n="02" title="Scope of services">
+      <LegalBlock n="02" title="Eligibility and use of the website">
         <p>
-          We provide social media strategy, content strategy and production,
-          creative direction, community management, organic growth, and
-          analytics and reporting services. The
-          precise services, deliverables, timelines, and fees for your
-          engagement are defined in a statement of work (&ldquo;SOW&rdquo;)
-          agreed in writing. Nothing on this website constitutes an offer or a
-          commitment to provide services on particular terms.
+          The website and our services are intended for businesses and
+          professionals. By engaging us or submitting our contact form, you
+          confirm that you are at least the age of majority in your jurisdiction
+          and authorized to act for the business you represent. You agree to use
+          the website lawfully and in line with our Acceptable Use Policy.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="03" title="Engagement and fees">
+      <LegalBlock n="03" title="Scope of services">
         <p>
-          Services are typically provided on a monthly retainer basis. Fees,
-          billing frequency, and payment terms are specified in the applicable
-          SOW. Unless stated otherwise, invoices are due within the period set
-          out in the SOW, and late or non-payment may result in suspension of
-          services. Fees are exclusive of any applicable taxes and of
-          third-party media spend, which is billed or funded separately as
-          agreed.
+          We provide digital growth and advisory services — strategy and
+          positioning, content strategy and creative direction, community and
+          distribution support, organic growth, implementation guidance, and
+          analytics and reporting. The precise services, deliverables, and scope
+          vary by engagement tier (see our Plans page) or by a custom private
+          proposal or statement of work (&ldquo;SOW&rdquo;) agreed in writing.
+          Depending on the engagement, we may provide access to a client portal
+          or workspace; your use of those is also governed by our End User License
+          Agreement. Nothing on this website constitutes an offer or a commitment
+          to provide services on particular terms.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="04" title="Intellectual property">
+      <LegalBlock n="04" title="Plans, proposals and fees">
+        <p>
+          Published engagement tiers are shown on our Plans page; purchasing a
+          tier or accepting a proposal constitutes acceptance of these Terms.
+          Engagements are purchased as a one-time, upfront payment through an
+          approved checkout provider (for example, Whop), by invoice, or as set
+          out in the applicable plan or private proposal. Unless stated otherwise,
+          payment is due at or before commencement, and access or work begins once
+          payment is confirmed. Fees are exclusive of any applicable taxes and of
+          any third-party media spend or third-party tool costs, which are funded
+          separately as agreed. Custom scopes and alternative structures are
+          arranged through a private proposal.
+        </p>
+      </LegalBlock>
+
+      <LegalBlock n="05" title="Digital delivery and third-party platforms">
+        <p>
+          Our services are delivered digitally — there is no physical product and
+          nothing is shipped (see our Digital Delivery Policy and Service Delivery
+          information). We rely on third-party platforms to deliver and operate an
+          engagement, which may include checkout and access providers (for
+          example, Whop), email, analytics, scheduling, and workspace or
+          client-portal tools. Your use of those platforms may be subject to their
+          own terms, and their availability is outside our control.
+        </p>
+      </LegalBlock>
+
+      <LegalBlock n="06" title="Intellectual property">
         <p>
           Subject to full payment of the relevant fees, final deliverables
           produced specifically for you under an engagement are assigned to you
-          upon payment. We retain ownership of our pre-existing materials,
-          tools, methods, and know-how — including the NOREN Framework — and of any
+          upon payment. We retain ownership of our pre-existing materials, tools,
+          methods, and know-how — including the NOREN Framework — and of any
           general skills and experience developed in the course of the work.
-          You grant us the right to reference the engagement for our own
-          portfolio and marketing unless agreed otherwise in writing.
+          Access to any materials, client portal, or workspace is licensed under
+          our End User License Agreement. You grant us the right to reference the
+          engagement for our own portfolio and marketing unless agreed otherwise
+          in writing.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="05" title="Confidentiality">
+      <LegalBlock n="07" title="Confidentiality">
         <p>
           Each party may receive confidential information from the other. Both
           parties agree to keep such information confidential and to use it only
-          for the purposes of the engagement, except where disclosure is
-          required by law. This obligation survives termination of the
-          engagement.
+          for the purposes of the engagement, except where disclosure is required
+          by law. This obligation survives completion of the engagement.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="06" title="Responsibilities of the parties">
+      <LegalBlock n="08" title="Responsibilities of the parties">
         <p>
           We will perform our services with reasonable skill and care. You agree
           to provide timely access, approvals, brand assets, and information
           reasonably required for us to perform, and you are responsible for the
-          accuracy of materials you supply and for ensuring you hold the rights
-          to them. Delays in providing inputs or approvals may affect timelines.
+          accuracy of materials you supply and for ensuring you hold the rights to
+          them. Delays in providing inputs or approvals may affect timelines.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="07" title="Limitation of liability">
+      <LegalBlock n="09" title="Limitation of liability">
         <p>
           We do not guarantee specific outcomes, reach, engagement, or growth
           results, as these depend on factors outside our control, including
           third-party platforms. To the maximum extent permitted by law, our
           total aggregate liability arising out of or relating to an engagement
-          is limited to the fees paid by you to us for the services giving rise
-          to the claim in the three months preceding the event, and neither
-          party is liable for indirect or consequential losses.
+          is limited to the total fees paid by you to us for the services giving
+          rise to the claim, and neither party is liable for indirect or
+          consequential losses.
         </p>
       </LegalBlock>
 
-      <LegalBlock n="08" title="Termination">
+      <LegalBlock n="10" title="Suspension and termination">
         <p>
-          Either party may terminate an engagement on the written notice period
-          set out in the SOW. On termination, you remain responsible for fees
-          for services performed up to the termination date, and we will deliver
-          paid-for work in progress as reasonably practicable. We may suspend or
-          terminate services for material breach, including non-payment.
+          We may suspend or terminate services and access for material breach,
+          including non-payment, fraud, abuse, or a chargeback or payment dispute
+          raised without first contacting us. Where an engagement is ended, you
+          remain responsible for fees for services performed and work delivered
+          up to that point, and we will make paid-for work in progress available
+          as reasonably practicable. Termination does not entitle you to a refund
+          of fees for work already delivered (see our Refund Policy).
         </p>
       </LegalBlock>
 
-      <LegalBlock n="09" title="Governing law">
+      <LegalBlock n="11" title="Governing law">
         <p>
           These Terms and any engagement are governed by the laws of the State
           of New Mexico, United States, without regard to its conflict-of-laws
@@ -120,7 +152,7 @@ export default function TermsPage() {
         </p>
       </LegalBlock>
 
-      <LegalBlock n="10" title="Contact">
+      <LegalBlock n="12" title="Contact">
         <p>
           Questions about these Terms can be sent to contact@norenagency.com,
           by phone at +1 (954) 676-1050, or by mail to PK DIGITAL LLC, 2335 E.
