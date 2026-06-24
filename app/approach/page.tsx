@@ -43,7 +43,7 @@ const PHASE_DETAIL: Record<
   Optimization: {
     happens:
       "We measure against the goals set in Strategy, report on a regular cycle, and reallocate effort toward what compounds.",
-    see: "A recurring report and review where we walk through results and decide the next cycle together.",
+    see: "A scheduled report and review where we walk through results and decide the next cycle together.",
     output:
       "Compounding improvement: an audience system that gets sharper and more effective the longer we run it.",
   },
@@ -73,14 +73,14 @@ const TIMELINE = [
   {
     label: "Ongoing",
     title: "Optimization",
-    copy: "A recurring reporting and review cycle drives iteration and sustainable, compounding growth.",
+    copy: "A scheduled reporting and review cycle drives iteration and sustainable, compounding growth.",
   },
 ];
 
 const FAQ = [
   {
     q: "Do I have to commit to all four stages?",
-    a: "The process is designed to run as a sequence — the later stages depend on the earlier ones. Most partnerships begin with Discovery and Strategy, then move into an ongoing Infrastructure and Optimization retainer. We will be clear about scope in the proposal.",
+    a: "The process is designed to run as a sequence — the later stages depend on the earlier ones. Most partnerships begin with Discovery and Strategy, then move into an ongoing Infrastructure and Optimization engagement. We will be clear about scope in the proposal.",
   },
   {
     q: "How long before we see results?",
@@ -96,7 +96,7 @@ const FAQ = [
   },
   {
     q: "How is the engagement structured?",
-    a: "As a monthly retainer partnership, scoped to your business. We do not publish package pricing because we build each engagement around the business in front of us. Pricing is shared in the proposal.",
+    a: "As a structured engagement, scoped to your business. Engagement tiers are published on our plans page; for custom scopes or tailored pricing, we build the engagement around the business in front of us and share it in a private proposal.",
   },
 ];
 
@@ -270,15 +270,15 @@ export default function ApproachPage() {
               <Reveal reduce={reduce} className="md:col-span-6">
                 <Kicker>The partnership</Kicker>
                 <h2 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
-                  A retainer relationship, not a one-off project.
+                  A strategic partnership, not a one-off project.
                 </h2>
               </Reveal>
               <Reveal reduce={reduce} className="space-y-5 md:col-span-6">
                 <p className="text-[15px] leading-relaxed text-muted">
                   Audience growth rewards consistency, so we work as an ongoing
-                  partner rather than a project shop. Each month follows a steady
-                  rhythm: build, distribute, develop the audience, measure, and
-                  review.
+                  partner rather than a project shop. The engagement follows a
+                  steady rhythm: build, distribute, develop the audience, measure,
+                  and review.
                 </p>
                 <p className="text-[15px] leading-relaxed text-muted">
                   You get a single point of contact, a predictable reporting

@@ -21,6 +21,7 @@ import {
   useReduce,
 } from "@/components/site";
 import { CONTACT_TOPICS } from "@/lib/contact";
+import { PricingPlans } from "@/components/plans";
 import {
   IconTarget,
   IconLayers,
@@ -288,7 +289,7 @@ function HomeContact({ reduce }: { reduce: boolean }) {
                       id="h-message"
                       required
                       rows={5}
-                      placeholder="Monthly revenue, current challenges, goals..."
+                      placeholder="Revenue, current challenges, goals..."
                       value={form.message}
                       onChange={(e) => update("message", e.target.value)}
                       className={`${inputCls} resize-none`}
@@ -986,8 +987,8 @@ export default function Home() {
                     One partnership
                   </span>
                   <p className="mt-6 text-[15px] leading-relaxed text-muted">
-                    Delivered together as a single retainer, scoped to your
-                    business and run on a defined cadence.
+                    Delivered together as a single engagement, scoped to your
+                    business.
                   </p>
                   <span className="mt-6">
                     <TextLink href="/services">See how we engage</TextLink>
@@ -1163,31 +1164,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------------- Retainer model ---------------- */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
-            <div className="ticks relative overflow-hidden rounded-2xl border border-line bg-surface/60 p-8 md:p-12">
-              <div
-                className="bg-grid-fine bg-grid-fade-c pointer-events-none absolute inset-0 opacity-30"
-                aria-hidden
-              />
-              <div className="relative grid gap-8 md:grid-cols-12 md:items-center">
-                <div className="md:col-span-8">
-                  <Kicker>How we engage</Kicker>
-                  <h2 className="display-md mt-6">
-                    A retainer model, scoped to your brand.
-                  </h2>
-                  <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted md:text-base">
-                    Noren works through monthly retainer structures and strategic
-                    execution plans. Scope, channel mix, and delivery cadence
-                    depend on your engagement tier and what your brand needs.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
-                  <PrimaryButton href="/plans">View plans</PrimaryButton>
-                  <GhostButton href="/contact">Request a proposal</GhostButton>
-                </div>
+        {/* ---------------- Plans (pricing) ---------------- */}
+        <section id="plans" className="scroll-mt-24 border-b border-line">
+          <div className="mx-auto max-w-[1200px] px-6 py-28 md:px-8 md:py-40">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="flex justify-center">
+                <Kicker>Plans</Kicker>
               </div>
+              <h2 className="display-lg mt-7">
+                Simple plans for structured growth.
+              </h2>
+              <p className="mt-7 text-base leading-relaxed text-muted md:text-lg">
+                Clear engagement tiers for brands that want stronger strategy,
+                better execution, and scalable growth systems.
+              </p>
+            </div>
+            <div className="mt-16">
+              <PricingPlans reduce={reduce} />
             </div>
           </div>
         </section>

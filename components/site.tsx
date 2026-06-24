@@ -152,12 +152,12 @@ export const SERVICES: Service[] = [
     name: "Growth Intelligence & Analytics",
     tagline: "Decisions driven by data, not guesswork.",
     description:
-      "We build the measurement and feedback loops that turn performance into decisions — dashboards, analysis, and a recurring review that keeps growth accountable.",
+      "We build the measurement and feedback loops that turn performance into decisions — dashboards, analysis, and a regular review that keeps growth accountable.",
     benefits: [
       "Measurement framework and dashboards",
       "Performance analysis and insight",
       "Strategic feedback loops",
-      "Recurring review and reporting",
+      "Regular review and reporting",
     ],
   },
 ];
@@ -639,7 +639,7 @@ export function Footer() {
               and modern brands.
             </p>
             <p className="mt-4 font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.18em] text-faint">
-              Digital growth services · Monthly client retainers
+              Digital growth services · Structured growth engagements
             </p>
 
             <div className="mt-10 space-y-8">
@@ -1115,7 +1115,7 @@ const TRUST: { title: string; copy: string; icon: IconType }[] = [
   {
     title: "Structured engagement",
     icon: IconCalendar,
-    copy: "A monthly retainer with a defined rhythm and a single point of contact — not ad-hoc, one-off work.",
+    copy: "A structured engagement with a defined rhythm and a single point of contact — not scattered, ad-hoc work.",
   },
   {
     title: "Real business address",
