@@ -1,9 +1,9 @@
 # NOREN Client Portal — Production Handoff
 
 A private client workspace for active NOREN engagements, built into the main
-Next.js app. Dark + glacial steel-blue NOREN identity with a restrained
-champagne secondary accent ("private-client mode"). This doc is everything you
-need to run, populate, and launch it.
+Next.js app. It uses the same identity as the public NOREN site — dark
+four-layer surfaces with the glacial steel-blue accent (no separate palette).
+This doc is everything you need to run, populate, and launch it.
 
 ---
 

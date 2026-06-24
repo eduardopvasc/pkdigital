@@ -82,7 +82,7 @@ export function MemberBar() {
               priority
               className="h-6 w-auto object-contain"
             />
-            <span className="hidden border-l border-line pl-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)] sm:inline">
+            <span className="hidden border-l border-line pl-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)] sm:inline">
               Private Workspace
             </span>
           </Link>
@@ -108,7 +108,7 @@ export function MemberBar() {
               type="button"
               onClick={signOut}
               disabled={signingOut}
-              className="hidden rounded-full border border-line bg-white/[0.02] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:border-[color:rgba(var(--gold-rgb),0.5)] disabled:opacity-60 lg:inline-flex"
+              className="hidden rounded-full border border-line bg-white/[0.02] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:border-[color:rgba(var(--accent-rgb),0.5)] disabled:opacity-60 lg:inline-flex"
             >
               {signingOut ? "Signing out…" : "Sign out"}
             </button>
@@ -165,7 +165,7 @@ export function MemberBar() {
           <button
             type="button"
             onClick={signOut}
-            className="mt-3 w-full rounded-full border border-line bg-white/[0.02] py-3 text-sm font-medium text-[color:var(--gold-strong)]"
+            className="mt-3 w-full rounded-full border border-line bg-white/[0.02] py-3 text-sm font-medium text-[color:var(--color-accent-strong)]"
           >
             Sign out
           </button>

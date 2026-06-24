@@ -99,7 +99,7 @@ export default function LoginPage() {
             </p>
           </div>
           <div className="relative mt-10">
-            <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[color:var(--gold)]">
+            <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
               Inside your workspace
             </span>
             <ul className="mt-5 grid grid-cols-2 gap-3">
@@ -108,7 +108,7 @@ export default function LoginPage() {
                   key={item.label}
                   className="flex items-center gap-3 rounded-xl border border-line bg-white/[0.02] px-3.5 py-3"
                 >
-                  <item.icon className="h-4 w-4 text-[color:var(--gold-strong)]" />
+                  <item.icon className="h-4 w-4 text-[color:var(--color-accent-strong)]" />
                   <span className="text-[13.5px] text-muted">{item.label}</span>
                 </li>
               ))}
@@ -129,7 +129,7 @@ export default function LoginPage() {
             />
           </Link>
 
-          <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+          <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
             Client Portal
           </span>
           <h1 className="display-md mt-3">Sign in.</h1>
@@ -169,7 +169,7 @@ export default function LoginPage() {
                 </label>
                 <Link
                   href="/contact"
-                  className="font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-[color:var(--gold-strong)]"
+                  className="font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-[color:var(--color-accent-strong)]"
                 >
                   Need access?
                 </Link>
@@ -200,7 +200,7 @@ export default function LoginPage() {
                 type="checkbox"
                 checked={remember}
                 onChange={(e) => setRemember(e.target.checked)}
-                className="h-4 w-4 rounded border-line bg-bg accent-[var(--gold)]"
+                className="h-4 w-4 rounded border-line bg-bg accent-[var(--color-accent)]"
               />
               Keep me signed in
             </label>
@@ -219,7 +219,7 @@ export default function LoginPage() {
             </button>
 
             <p className="flex items-center justify-center gap-2 font-[family-name:var(--font-mono)] text-[11px] text-faint">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" aria-hidden />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" aria-hidden />
               Secure access · Billing via Whop
             </p>
           </form>

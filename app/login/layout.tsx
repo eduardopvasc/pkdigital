@@ -16,6 +16,6 @@ export default function LoginLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // `.portal` scopes the private-client champagne accent tokens.
+  // `.portal` wrapper for the private client area (NOREN steel-blue system).
   return <div className="portal">{children}</div>;
 }

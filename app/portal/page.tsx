@@ -23,30 +23,31 @@ export const dynamic = "force-dynamic";
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2.5 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.24em] text-muted">
-      <span className="h-1 w-1 rounded-full bg-[var(--gold)]" aria-hidden />
+      <span className="h-1 w-1 rounded-full bg-[var(--color-accent)]" aria-hidden />
       {children}
     </span>
   );
 }
 
 const PHASE_STYLES: Record<PhaseStatus, { label: string; cls: string; dot: string }> = {
-  complete: { label: "Complete", cls: "border-accent/40 text-accent-strong", dot: "bg-accent" },
+  // Single steel-blue hue; states differ by intensity, not color.
+  complete: { label: "Complete", cls: "border-accent/30 text-accent-strong", dot: "bg-accent" },
   active: {
     label: "In progress",
-    cls: "border-[color:rgba(var(--gold-rgb),0.5)] text-[color:var(--gold-strong)]",
-    dot: "bg-[var(--gold)]",
+    cls: "border-accent/55 text-accent-strong",
+    dot: "bg-accent shadow-[0_0_10px_-1px_rgba(var(--accent-rgb),0.85)]",
   },
-  upcoming: { label: "Upcoming", cls: "border-line text-faint", dot: "bg-white/25" },
+  upcoming: { label: "Upcoming", cls: "border-line text-faint", dot: "bg-white/20" },
 };
 
 const DELIV_STYLES: Record<DeliverableStatus, { label: string; cls: string; dot: string }> = {
-  delivered: { label: "Delivered", cls: "border-accent/40 text-accent-strong", dot: "bg-accent" },
+  delivered: { label: "Delivered", cls: "border-accent/30 text-accent-strong", dot: "bg-accent" },
   "in-progress": {
     label: "In progress",
-    cls: "border-[color:rgba(var(--gold-rgb),0.5)] text-[color:var(--gold-strong)]",
-    dot: "bg-[var(--gold)]",
+    cls: "border-accent/55 text-accent-strong",
+    dot: "bg-accent shadow-[0_0_10px_-1px_rgba(var(--accent-rgb),0.85)]",
   },
-  scheduled: { label: "Scheduled", cls: "border-line text-faint", dot: "bg-white/25" },
+  scheduled: { label: "Scheduled", cls: "border-line text-faint", dot: "bg-white/20" },
 };
 
 export default async function PortalPage() {
@@ -74,7 +75,7 @@ export default async function PortalPage() {
           <Eyebrow>Private client workspace</Eyebrow>
           <h1 className="display-xl mt-7">
             Welcome back,{" "}
-            <span className="font-display italic text-[color:var(--gold-strong)]">
+            <span className="font-display italic text-[color:var(--color-accent-strong)]">
               {name}
             </span>
             .
@@ -94,7 +95,7 @@ export default async function PortalPage() {
                 key={k}
                 className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-[13px] text-muted"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" aria-hidden />
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" aria-hidden />
                 {k}: <b className="font-medium text-white">{v}</b>
               </span>
             ))}
@@ -129,7 +130,7 @@ export default async function PortalPage() {
           <div className="grid gap-6 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="ticks h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
-                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
                   Engagement summary
                 </span>
                 <dl className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
@@ -162,7 +163,7 @@ export default async function PortalPage() {
 
             <div className="lg:col-span-5">
               <div className="h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
-                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
                   Current phase &amp; status
                 </span>
                 <div className="mt-6 space-y-2.5">
@@ -192,14 +193,14 @@ export default async function PortalPage() {
           <div className="mt-6 grid gap-6 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <div className="h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
-                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
                   Pending inputs from you
                 </span>
                 <ul className="mt-6 space-y-4">
                   {eng.pendingInputs.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <span
-                        className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border border-[color:rgba(var(--gold-rgb),0.6)]"
+                        className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border border-[color:rgba(var(--accent-rgb),0.6)]"
                         aria-hidden
                       />
                       <span className="text-[14.5px] leading-relaxed text-muted">
@@ -219,7 +220,7 @@ export default async function PortalPage() {
 
             <div className="lg:col-span-6">
               <div className="h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
-                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
                   Next deliverables
                 </span>
                 <ul className="mt-6 space-y-4">
@@ -253,7 +254,7 @@ export default async function PortalPage() {
           {/* Recent updates & notes */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-line">
             <div className="border-b border-line bg-surface px-7 py-5">
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
                 Recent updates &amp; notes
               </span>
             </div>
@@ -264,7 +265,7 @@ export default async function PortalPage() {
                   i !== 0 ? "border-t border-line" : ""
                 }`}
               >
-                <span className="shrink-0 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[color:var(--gold)] sm:w-28">
+                <span className="shrink-0 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[color:var(--color-accent)] sm:w-28">
                   {u.date}
                 </span>
                 <div>
@@ -286,9 +287,9 @@ export default async function PortalPage() {
             </p>
             <a
               href="#support"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-6 py-3 text-sm font-medium text-white transition-colors hover:border-[color:rgba(var(--gold-rgb),0.5)]"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-6 py-3 text-sm font-medium text-white transition-colors hover:border-[color:rgba(var(--accent-rgb),0.5)]"
             >
-              Contact your team <span className="text-[color:var(--gold-strong)]">→</span>
+              Contact your team <span className="text-[color:var(--color-accent-strong)]">→</span>
             </a>
           </div>
         </section>
@@ -311,11 +312,11 @@ export default async function PortalPage() {
                 className="cell group flex flex-col bg-surface p-7 md:p-8"
               >
                 <div className="flex items-start justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-[color:var(--gold-strong)] transition-colors group-hover:border-[color:rgba(var(--gold-rgb),0.4)]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-[color:var(--color-accent-strong)] transition-colors group-hover:border-[color:rgba(var(--accent-rgb),0.4)]">
                     <r.icon className="h-5 w-5" />
                   </div>
                   {r.tag ? (
-                    <span className="rounded-full border border-[color:rgba(var(--gold-rgb),0.4)] px-2.5 py-1 font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.16em] text-[color:var(--gold-strong)]">
+                    <span className="rounded-full border border-[color:rgba(var(--accent-rgb),0.4)] px-2.5 py-1 font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.16em] text-[color:var(--color-accent-strong)]">
                       {r.tag}
                     </span>
                   ) : null}
@@ -324,7 +325,7 @@ export default async function PortalPage() {
                 <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-muted">
                   {r.desc}
                 </p>
-                <span className="mt-6 inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-[color:var(--gold-strong)]">
+                <span className="mt-6 inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-[color:var(--color-accent-strong)]">
                   Open
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -358,7 +359,7 @@ export default async function PortalPage() {
             <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
               {/* Primary support channel */}
               <div className="flex flex-col rounded-2xl border border-line bg-surface p-7">
-                <IconMail className="h-5 w-5 text-[color:var(--gold-strong)]" />
+                <IconMail className="h-5 w-5 text-[color:var(--color-accent-strong)]" />
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-lg font-medium text-white">
                   Message your strategist
                 </h3>
@@ -368,7 +369,7 @@ export default async function PortalPage() {
                 </p>
                 <a
                   href={`mailto:${eng.support.channel}`}
-                  className="mt-4 inline-block text-[15px] text-white transition-colors hover:text-[color:var(--gold-strong)]"
+                  className="mt-4 inline-block text-[15px] text-white transition-colors hover:text-[color:var(--color-accent-strong)]"
                 >
                   {eng.support.channel}
                 </a>
@@ -385,7 +386,7 @@ export default async function PortalPage() {
 
               {/* Book a working call */}
               <div className="flex flex-col rounded-2xl border border-line bg-surface p-7">
-                <IconCalendar className="h-5 w-5 text-[color:var(--gold-strong)]" />
+                <IconCalendar className="h-5 w-5 text-[color:var(--color-accent-strong)]" />
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-lg font-medium text-white">
                   {eng.support.bookCtaLabel}
                 </h3>
@@ -394,7 +395,7 @@ export default async function PortalPage() {
                 </p>
                 <Link
                   href={eng.support.bookCtaHref}
-                  className="mt-4 inline-flex items-center gap-2 text-[15px] text-white transition-colors hover:text-[color:var(--gold-strong)]"
+                  className="mt-4 inline-flex items-center gap-2 text-[15px] text-white transition-colors hover:text-[color:var(--color-accent-strong)]"
                 >
                   Request a call <span>→</span>
                 </Link>
@@ -419,7 +420,7 @@ export default async function PortalPage() {
           <div className="grid gap-6 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="flex items-start gap-4 rounded-2xl border border-line bg-surface p-7 md:p-8">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color:rgba(var(--gold-rgb),0.4)] bg-[rgba(var(--gold-rgb),0.07)] text-[color:var(--gold-strong)]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color:rgba(var(--accent-rgb),0.4)] bg-[rgba(var(--accent-rgb),0.07)] text-[color:var(--color-accent-strong)]">
                   <IconLock className="h-5 w-5" />
                 </span>
                 <div>

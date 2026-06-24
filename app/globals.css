@@ -324,26 +324,21 @@ body {
 }
 
 /* ================================================================== */
-/* PORTAL — private client sub-identity.                               */
-/* Built on the NOREN dark + glacial steel-blue foundation; layers in  */
-/* a restrained muted-champagne accent used ONLY as a secondary cue    */
-/* (member name, progress, "active" status, eyebrow marks).            */
+/* PORTAL — private client area.                                       */
+/* Same identity as the public NOREN site: dark four-layer surfaces +  */
+/* the glacial steel-blue accent. No separate accent palette — the      */
+/* portal uses --color-accent / --accent-rgb like the rest of the site. */
 /* ================================================================== */
-.portal {
-  --gold: #c6ad7e; /* muted champagne — secondary accent only */
-  --gold-strong: #e3d2ad;
-  --gold-rgb: 198, 173, 126;
-}
 
-/* Soft dual-glow background: steel-blue primary + champagne secondary. */
+/* Soft steel-blue glow, matching the marketing hero/CTA glows. */
 .portal-aurora {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(58% 48% at 78% -4%, rgba(198, 173, 126, 0.1), transparent 60%),
-    radial-gradient(52% 44% at 12% 6%, rgba(147, 168, 199, 0.1), transparent 62%);
+    radial-gradient(55% 45% at 78% -4%, rgba(var(--accent-rgb), 0.08), transparent 60%),
+    radial-gradient(52% 44% at 12% 6%, rgba(var(--accent-rgb), 0.1), transparent 62%);
 }
 
 /* Sticky member bar glass state on scroll. */

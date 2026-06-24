@@ -138,7 +138,7 @@ export function Onboarding({ memberName }: { memberName: string }) {
   if (done) {
     return (
       <div className="ticks rounded-2xl border border-line bg-surface p-7 md:p-10">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:rgba(var(--gold-rgb),0.4)] bg-[rgba(var(--gold-rgb),0.08)] text-[color:var(--gold-strong)]">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:rgba(var(--accent-rgb),0.4)] bg-[rgba(var(--accent-rgb),0.08)] text-[color:var(--color-accent-strong)]">
           ✓
         </div>
         <h3 className="display-md mt-6">Your client profile is complete.</h3>
@@ -176,13 +176,13 @@ export function Onboarding({ memberName }: { memberName: string }) {
         <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-faint">
           Step {step + 1} of {total}
         </span>
-        <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+        <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
           {saving ? "Saving…" : `${pct}% complete`}
         </span>
       </div>
       <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-white/[0.07]">
         <div
-          className="onb-progress-fill h-full rounded-full bg-[var(--gold)]"
+          className="onb-progress-fill h-full rounded-full bg-[var(--color-accent)]"
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -194,7 +194,7 @@ export function Onboarding({ memberName }: { memberName: string }) {
               i < step
                 ? "bg-accent/60"
                 : i === step
-                  ? "bg-[var(--gold)]"
+                  ? "bg-[var(--color-accent)]"
                   : "bg-white/[0.07]"
             }`}
           />

@@ -24,7 +24,7 @@ export function SignOutButton() {
       type="button"
       onClick={signOut}
       disabled={busy}
-      className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-6 py-3 text-sm font-medium text-white transition-colors hover:border-[color:rgba(var(--gold-rgb),0.5)] disabled:opacity-60"
+      className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-6 py-3 text-sm font-medium text-white transition-colors hover:border-[color:rgba(var(--accent-rgb),0.5)] disabled:opacity-60"
     >
       {busy ? "Signing out…" : "Sign out of workspace"}
     </button>
