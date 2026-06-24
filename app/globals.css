@@ -322,3 +322,54 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2a3344;
 }
+
+/* ================================================================== */
+/* PORTAL — private client sub-identity.                               */
+/* Built on the NOREN dark + glacial steel-blue foundation; layers in  */
+/* a restrained muted-champagne accent used ONLY as a secondary cue    */
+/* (member name, progress, "active" status, eyebrow marks).            */
+/* ================================================================== */
+.portal {
+  --gold: #c6ad7e; /* muted champagne — secondary accent only */
+  --gold-strong: #e3d2ad;
+  --gold-rgb: 198, 173, 126;
+}
+
+/* Soft dual-glow background: steel-blue primary + champagne secondary. */
+.portal-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(58% 48% at 78% -4%, rgba(198, 173, 126, 0.1), transparent 60%),
+    radial-gradient(52% 44% at 12% 6%, rgba(147, 168, 199, 0.1), transparent 62%);
+}
+
+/* Sticky member bar glass state on scroll. */
+.member-bar-glass {
+  background: rgba(5, 5, 8, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Onboarding progress fill easing. */
+.onb-progress-fill {
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Shake — invalid field / failed login. */
+@keyframes onb-shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+.onb-shake {
+  animation: onb-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .onb-shake {
+    animation: none;
+  }
+}
