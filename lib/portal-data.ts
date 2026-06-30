@@ -130,7 +130,8 @@ export const ONBOARDING_SUMMARY: { key: string; label: string }[] = [
 
 /* ------------------------------------------------------------------ */
 /* Resources / implementation docs                                     */
-/* Links are placeholders (#) until the real docs/pages exist.          */
+/* Links point to the public sample library until per-client docs are    */
+/* wired; swap each `href` for the real resource URL in production.       */
 /* ------------------------------------------------------------------ */
 export type PortalResource = {
   icon: Ico;
@@ -146,37 +147,37 @@ export const PORTAL_RESOURCES: PortalResource[] = [
     title: "Onboarding & Access Setup",
     desc: "What we need from you, how to grant access, and how the first two weeks run.",
     tag: "Start here",
-    href: "#",
+    href: "/sample-deliverables",
   },
   {
     icon: IconLayers,
     title: "Content Infrastructure Playbook",
     desc: "The systems, formats, and workflows behind publishing consistently at scale.",
-    href: "#",
+    href: "/sample-deliverables",
   },
   {
     icon: IconTrendingUp,
     title: "Paid Acquisition Guidance",
     desc: "Channel structure, creative direction, and budget-allocation principles.",
-    href: "#",
+    href: "/sample-deliverables",
   },
   {
     icon: IconUserCheck,
     title: "CRM, Retention & Lifecycle",
     desc: "Lifecycle flows and retention systems that turn first orders into repeat revenue.",
-    href: "#",
+    href: "/sample-deliverables",
   },
   {
     icon: IconRoute,
     title: "Distribution & Channel Strategy",
     desc: "How we choose channels and the role each plays in your growth.",
-    href: "#",
+    href: "/sample-deliverables",
   },
   {
     icon: IconBarChart,
     title: "Reporting & Growth Reviews",
     desc: "How performance is measured and how review cycles drive the next decisions.",
-    href: "#",
+    href: "/sample-deliverables",
   },
 ];
 
@@ -209,6 +210,8 @@ export type DeliverableStatus = "in-progress" | "scheduled" | "delivered";
 
 export type Deliverable = { title: string; due: string; status: DeliverableStatus };
 export type EngagementUpdate = { date: string; title: string; body: string };
+export type ChecklistItem = { label: string; done: boolean; date?: string };
+export type DeliveredFile = { title: string; kind: string; date: string; href: string };
 
 export type EngagementSupport = {
   /** Primary support channel (monitored corporate inbox). */
@@ -235,8 +238,10 @@ export type ClientEngagement = {
   scope: string[];
   currentPhase: string;
   phases: EngagementPhase[];
+  onboardingChecklist: ChecklistItem[];
   pendingInputs: string[];
   nextDeliverables: Deliverable[];
+  deliveredFiles: DeliveredFile[];
   recentUpdates: EngagementUpdate[];
   support: EngagementSupport;
 };
@@ -258,15 +263,27 @@ const DEMO_ENGAGEMENT: ClientEngagement = {
   ],
   currentPhase: "Strategy",
   phases: ENGAGEMENT_PHASES,
+  onboardingChecklist: [
+    { label: "Workspace access provisioned", done: true, date: "May 28, 2026" },
+    { label: "Client profile / intake completed", done: true, date: "Jun 2, 2026" },
+    { label: "Channel & analytics access granted", done: true, date: "Jun 4, 2026" },
+    { label: "Kickoff session held", done: true, date: "Jun 6, 2026" },
+    { label: "Brand assets shared", done: false },
+  ],
   pendingInputs: [
-    "Complete your client profile in onboarding above.",
-    "Grant access to your primary channels and analytics.",
-    "Share brand assets and any existing guidelines.",
+    "Share remaining brand assets and any existing guidelines.",
+    "Confirm access to your secondary analytics property.",
   ],
   nextDeliverables: [
-    { title: "Positioning & messaging brief", due: "Current phase", status: "in-progress" },
-    { title: "Growth roadmap & channel plan", due: "Next up", status: "scheduled" },
+    { title: "Positioning & messaging brief", due: "Delivered Jun 9", status: "delivered" },
+    { title: "Content plan", due: "Delivered Jun 12", status: "delivered" },
+    { title: "Growth roadmap & channel plan", due: "Current phase", status: "in-progress" },
     { title: "Content system setup", due: "Infrastructure phase", status: "scheduled" },
+  ],
+  deliveredFiles: [
+    { title: "Strategy Brief", kind: "PDF", date: "Jun 9, 2026", href: "/sample-deliverables/strategy-brief.pdf" },
+    { title: "Content Plan", kind: "PDF", date: "Jun 12, 2026", href: "/sample-deliverables/content-plan.pdf" },
+    { title: "Growth Roadmap", kind: "PDF", date: "Jun 16, 2026", href: "/sample-deliverables/growth-roadmap.pdf" },
   ],
   recentUpdates: [
     {

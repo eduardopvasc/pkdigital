@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Terms of Service",
   description:
-    "The general terms on which NOREN Agency (operated by PK Digital LLC) provides its services, including scope, fees, intellectual property, and liability.",
+    "The general terms on which NOREN Agency (operated by PK DIGITAL LLC) provides its services, including scope, fees, intellectual property, and liability.",
   path: "/terms",
 });
 

@@ -9,7 +9,12 @@
 
 import Link from "next/link";
 import { Reveal } from "@/components/site";
-import { IconCheck } from "@/components/icons";
+import { IconCheck, IconLock } from "@/components/icons";
+import {
+  checkoutUrlFor,
+  CHECKOUT_PROVIDER,
+  CHECKOUT_DISCLOSURE,
+} from "@/lib/site-config";
 
 export type Plan = {
   name: string;
@@ -143,15 +148,17 @@ export function PlanCard({ plan, reduce }: { plan: Plan; reduce: boolean }) {
           ))}
         </ul>
 
-        <Link
-          href="/contact"
+        <a
+          href={checkoutUrlFor(plan.name.toLowerCase())}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`group mt-9 inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-tight transition-all duration-300 ${
             featured
               ? "btn-glow bg-white text-black hover:bg-white/90"
               : "btn-ghost border border-line bg-white/[0.02] text-white hover:border-accent/45 hover:bg-white/[0.05]"
           }`}
         >
-          Choose {plan.name}
+          Get {plan.name}
           <span
             className={`transition-transform duration-300 group-hover:translate-x-1 ${
               featured ? "" : "text-accent"
@@ -159,6 +166,15 @@ export function PlanCard({ plan, reduce }: { plan: Plan; reduce: boolean }) {
           >
             →
           </span>
+        </a>
+        <p className="mt-3 text-center font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-faint">
+          Secure checkout · {CHECKOUT_PROVIDER}
+        </p>
+        <Link
+          href="/contact"
+          className="mt-3 block text-center text-[12.5px] text-muted underline-offset-2 transition-colors hover:text-white"
+        >
+          Questions first? Talk to us
         </Link>
       </div>
     </Reveal>
@@ -195,7 +211,14 @@ export function PricingPlans({ reduce }: { reduce: boolean }) {
         ))}
       </div>
 
-      <Reveal reduce={reduce} className="mt-12">
+      <Reveal reduce={reduce} className="mt-10">
+        <p className="mx-auto flex max-w-xl items-center justify-center gap-2 rounded-full border border-line bg-white/[0.02] px-5 py-3 text-center font-[family-name:var(--font-mono)] text-[11px] leading-relaxed tracking-[0.04em] text-muted">
+          <IconLock className="h-3.5 w-3.5 shrink-0 text-accent-strong" />
+          {CHECKOUT_DISCLOSURE}
+        </p>
+      </Reveal>
+
+      <Reveal reduce={reduce} className="mt-6">
         <p className="mx-auto max-w-3xl text-center font-[family-name:var(--font-mono)] text-[11px] leading-relaxed tracking-[0.04em] text-faint">
           {PRICING_NOTE}
         </p>

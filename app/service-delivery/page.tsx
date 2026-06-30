@@ -25,7 +25,10 @@ export default function ServiceDeliveryPage() {
         <p>
           Engagements are purchased as a one-time, upfront payment through an
           approved checkout provider (for example, Whop) or by invoice. Once
-          payment is confirmed, we begin onboarding.
+          payment is confirmed, we begin onboarding. checkout-atroyale.com is
+          used solely as the operational checkout domain for selected NOREN
+          Agency transactions, operated on behalf of NOREN Agency (PK DIGITAL
+          LLC).
         </p>
       </LegalBlock>
 

@@ -1,0 +1,216 @@
+{
+  "documents": [
+    {
+      "slug": "strategy-brief",
+      "title": "Strategy Brief",
+      "kind": "Strategy",
+      "summary": "Defines positioning, audience, and the first-90-day growth priorities for an engagement.",
+      "meta": [
+        { "label": "Prepared for", "value": "Sample Client (illustrative)" },
+        { "label": "Prepared by", "value": "NOREN Agency" },
+        { "label": "Stage", "value": "Engagement kickoff" }
+      ],
+      "sections": [
+        {
+          "heading": "Objective",
+          "bullets": [
+            "Establish a clear, defensible market position the audience can recognize.",
+            "Turn scattered activity into one accountable growth system.",
+            "Define the first measurable wins for the first 90 days."
+          ]
+        },
+        {
+          "heading": "Positioning & narrative",
+          "body": "The brand is positioned around a single, ownable promise, expressed consistently across every channel. The narrative leads with the customer's problem, frames the brand as the system that solves it, and supports it with proof rather than claims."
+        },
+        {
+          "heading": "Target audience",
+          "bullets": [
+            "Primary: decision-makers actively seeking a structured growth partner.",
+            "Secondary: operators influencing the buying decision.",
+            "Channels where this audience already pays attention are prioritized first."
+          ]
+        },
+        {
+          "heading": "Priorities — first 90 days",
+          "bullets": [
+            "Lock positioning and messaging architecture.",
+            "Stand up the content system and publishing cadence.",
+            "Open the two highest-intent distribution channels.",
+            "Instrument reporting so every cycle is measurable."
+          ]
+        },
+        {
+          "heading": "Success measures",
+          "bullets": [
+            "Audience growth on owned channels.",
+            "Qualified inbound volume and quality.",
+            "Content consistency and reach.",
+            "Cycle-over-cycle improvement in the metrics that drive revenue."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "content-plan",
+      "title": "Content Plan",
+      "kind": "Content",
+      "summary": "The content system — pillars, formats, channel roles, and a sample 4-week cycle.",
+      "meta": [
+        { "label": "Prepared for", "value": "Sample Client (illustrative)" },
+        { "label": "Prepared by", "value": "NOREN Agency" },
+        { "label": "Cycle", "value": "30 days" }
+      ],
+      "sections": [
+        {
+          "heading": "Content pillars",
+          "bullets": [
+            "Authority — point-of-view content that establishes expertise.",
+            "Education — practical, useful content for the audience.",
+            "Proof — outcomes, process, and behind-the-scenes.",
+            "Brand — story, values, and personality."
+          ]
+        },
+        {
+          "heading": "Formats & cadence",
+          "table": {
+            "head": ["Channel", "Format", "Frequency"],
+            "rows": [
+              ["Primary social", "Short-form video", "4× / week"],
+              ["Primary social", "Carousel / static", "3× / week"],
+              ["Newsletter", "Long-form note", "1× / week"],
+              ["Blog / SEO", "Article", "2× / month"]
+            ]
+          }
+        },
+        {
+          "heading": "Sample 4-week calendar",
+          "table": {
+            "head": ["Week", "Theme", "Key assets"],
+            "rows": [
+              ["1", "Positioning & POV", "2 videos, 1 carousel, 1 note"],
+              ["2", "Education", "2 videos, 2 carousels, 1 note"],
+              ["3", "Proof & process", "2 videos, 1 carousel, 1 article"],
+              ["4", "Brand & recap", "2 videos, 1 carousel, 1 note"]
+            ]
+          }
+        },
+        {
+          "heading": "Production workflow",
+          "bullets": [
+            "Briefs → scripts → production → review → schedule → publish.",
+            "One point of contact maintains the cadence.",
+            "Each asset maps back to a pillar and a goal."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "performance-report",
+      "title": "Monthly Performance Report",
+      "kind": "Reporting",
+      "summary": "A sample monthly report showing the metrics tracked and how results drive the next cycle. Figures are illustrative.",
+      "meta": [
+        { "label": "Prepared for", "value": "Sample Client (illustrative)" },
+        { "label": "Prepared by", "value": "NOREN Agency" },
+        { "label": "Period", "value": "Sample month" }
+      ],
+      "sections": [
+        {
+          "heading": "Highlights",
+          "bullets": [
+            "Owned-audience growth continued across primary channels.",
+            "Content consistency held at the planned cadence.",
+            "Top-performing formats identified for the next cycle."
+          ]
+        },
+        {
+          "heading": "Key metrics",
+          "note": "Illustrative sample figures — not real client data.",
+          "table": {
+            "head": ["Metric", "This period", "Previous", "Change"],
+            "rows": [
+              ["Reach", "412,000", "318,000", "+30%"],
+              ["Engagement rate", "5.8%", "4.9%", "+0.9 pts"],
+              ["New followers", "3,940", "2,610", "+51%"],
+              ["Qualified inbound", "47", "31", "+52%"]
+            ]
+          }
+        },
+        {
+          "heading": "What worked",
+          "bullets": [
+            "Short-form video drove the majority of new reach.",
+            "Proof-led posts produced the highest-quality inbound.",
+            "Newsletter retention improved with a consistent format."
+          ]
+        },
+        {
+          "heading": "Next cycle",
+          "bullets": [
+            "Double down on the two highest-performing formats.",
+            "Test one new distribution channel.",
+            "Tighten the call-to-action on proof content."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "growth-roadmap",
+      "title": "Growth Roadmap",
+      "kind": "Roadmap",
+      "summary": "A phased roadmap from positioning to compounding growth across the engagement.",
+      "meta": [
+        { "label": "Prepared for", "value": "Sample Client (illustrative)" },
+        { "label": "Prepared by", "value": "NOREN Agency" },
+        { "label": "Horizon", "value": "Engagement lifecycle" }
+      ],
+      "sections": [
+        {
+          "heading": "Phase 1 — Discovery",
+          "bullets": [
+            "Growth assessment and baseline.",
+            "Audience, positioning, and distribution audit.",
+            "Diagnosis of where attention and trust leak today."
+          ]
+        },
+        {
+          "heading": "Phase 2 — Strategy",
+          "bullets": [
+            "Positioning and messaging architecture.",
+            "Content pillars and channel roles.",
+            "Goals and the metrics each will be measured against."
+          ]
+        },
+        {
+          "heading": "Phase 3 — Infrastructure",
+          "bullets": [
+            "Content systems and production workflows live.",
+            "Distribution channels opened and sequenced.",
+            "Reporting instrumented end to end."
+          ]
+        },
+        {
+          "heading": "Phase 4 — Optimization",
+          "bullets": [
+            "Recurring reporting and review.",
+            "Reallocation toward what compounds.",
+            "Sustained, compounding growth over time."
+          ]
+        },
+        {
+          "heading": "Milestones",
+          "table": {
+            "head": ["Phase", "Focus", "Outcome"],
+            "rows": [
+              ["1", "Diagnose", "Baseline & gaps"],
+              ["2", "Design", "Approved strategy"],
+              ["3", "Build", "Live growth system"],
+              ["4", "Compound", "Improving every cycle"]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

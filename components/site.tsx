@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Shared site components for NOREN Agency (operated by PK Digital LLC).
+ * Shared site components for NOREN Agency (operated by PK DIGITAL LLC).
  * Identity: Fraunces (high-contrast serif display, mixed-case) + DM Sans (body)
  * + DM Mono (UPPERCASE tracked labels). Greyscale base over a four-layer depth
  * (#050508 → #16161f) with a glacial steel-blue accent (--color-accent) used
@@ -414,10 +414,10 @@ export function CTA({
 /* ------------------------------------------------------------------ */
 
 const NAV_LINKS = [
-  { href: "/framework", label: "Framework" },
   { href: "/services", label: "Services" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/plans", label: "Plans" },
-  { href: "/work", label: "Work" },
+  { href: "/sample-deliverables", label: "Samples" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -553,9 +553,13 @@ const FOOTER_SERVICES = SERVICES.map((s) => ({
 }));
 
 const FOOTER_COMPANY = [
-  { href: "/framework", label: "Framework" },
+  { href: "/how-it-works", label: "How It Works" },
+  { href: "/client-journey", label: "Client Journey" },
   { href: "/services", label: "Services" },
+  { href: "/framework", label: "Framework" },
   { href: "/plans", label: "Plans" },
+  { href: "/sample-deliverables", label: "Sample Deliverables" },
+  { href: "/after-purchase", label: "After Purchase" },
   { href: "/work", label: "Work" },
   { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
@@ -682,12 +686,18 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-faint">
-            © 2026 NOREN Agency. Operated by PK Digital LLC.
+            © 2026 NOREN Agency. Operated by PK DIGITAL LLC.
           </p>
           <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-faint">
             Registered office: {REGISTERED_ADDRESS.join(", ")}
           </p>
         </div>
+        <p className="mt-6 font-[family-name:var(--font-mono)] text-[11px] leading-relaxed tracking-[0.04em] text-faint">
+          Payments are processed securely through Whop. checkout-atroyale.com is
+          used solely as the operational checkout domain for selected NOREN
+          Agency transactions, operated on behalf of NOREN Agency (PK DIGITAL
+          LLC).
+        </p>
       </div>
     </footer>
   );
@@ -1217,7 +1227,7 @@ export function CompanyInfo({ reduce }: { reduce: boolean }) {
           reduce={reduce}
           kicker="Company information"
           title="A registered, contactable company."
-          lead="NOREN Agency is operated by PK Digital LLC, a registered US company. The same details appear across the site — no anonymity, no ambiguity."
+          lead="NOREN Agency is operated by PK DIGITAL LLC, a registered US company. The same details appear across the site — no anonymity, no ambiguity."
         />
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {COMPANY_INFO.map((c) => (

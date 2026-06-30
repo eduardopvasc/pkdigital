@@ -15,7 +15,14 @@ import {
   type DeliverableStatus,
 } from "@/lib/portal-data";
 import { CONTACT_PHONE, CONTACT_PHONE_HREF } from "@/components/site";
-import { IconMail, IconLock, IconChat, IconCalendar } from "@/components/icons";
+import {
+  IconMail,
+  IconLock,
+  IconChat,
+  IconCalendar,
+  IconCheck,
+  IconDocument,
+} from "@/components/icons";
 
 // Reads the session cookie → always dynamic.
 export const dynamic = "force-dynamic";
@@ -251,11 +258,84 @@ export default async function PortalPage() {
             </div>
           </div>
 
-          {/* Recent updates & notes */}
+          {/* Onboarding checklist + delivered files */}
+          <div className="mt-6 grid gap-6 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <div className="h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                  Onboarding checklist
+                </span>
+                <ul className="mt-6 space-y-3.5">
+                  {eng.onboardingChecklist.map((c) => (
+                    <li key={c.label} className="flex items-center gap-3">
+                      <span
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                          c.done
+                            ? "border-accent/40 text-accent-strong"
+                            : "border-line text-faint"
+                        }`}
+                      >
+                        {c.done ? <IconCheck className="h-3 w-3" /> : null}
+                      </span>
+                      <span
+                        className={`flex-1 text-[14.5px] ${
+                          c.done ? "text-white" : "text-muted"
+                        }`}
+                      >
+                        {c.label}
+                      </span>
+                      <span className="shrink-0 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-faint">
+                        {c.done ? c.date : "Pending"}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="h-full rounded-2xl border border-line bg-surface p-7 md:p-8">
+                <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
+                  Delivered files
+                </span>
+                <ul className="mt-5 divide-y divide-line">
+                  {eng.deliveredFiles.map((f) => (
+                    <li key={f.title}>
+                      <a
+                        href={f.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between gap-4 py-3.5"
+                      >
+                        <span className="flex items-center gap-3">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-white/[0.02] text-accent-strong">
+                            <IconDocument className="h-4 w-4" />
+                          </span>
+                          <span>
+                            <span className="block text-[14.5px] text-white">
+                              {f.title}
+                            </span>
+                            <span className="block font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-faint">
+                              {f.kind} · {f.date}
+                            </span>
+                          </span>
+                        </span>
+                        <span className="shrink-0 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-accent-strong">
+                          Download ↓
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Recent updates & notes (engagement timeline) */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-line">
             <div className="border-b border-line bg-surface px-7 py-5">
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-accent)]">
-                Recent updates &amp; notes
+                Engagement timeline
               </span>
             </div>
             {eng.recentUpdates.map((u, i) => (
@@ -446,6 +526,9 @@ export default async function PortalPage() {
                     Signed in as{" "}
                     <span className="text-white">{session?.email || "your account"}</span>
                     . Access is private to you.
+                  </p>
+                  <p className="mt-4 font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.12em] text-faint">
+                    Demonstration workspace · populated with sample data
                   </p>
                 </div>
                 <div className="mt-8">

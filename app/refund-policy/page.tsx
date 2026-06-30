@@ -36,6 +36,12 @@ export default function RefundPolicyPage() {
           final, because resources, time, and strategic work are committed to
           your account from the start.
         </p>
+        <p>
+          Payments are processed securely through Whop. checkout-atroyale.com is
+          used solely as the operational checkout domain for selected NOREN
+          Agency transactions, operated on behalf of NOREN Agency (PK DIGITAL
+          LLC).
+        </p>
       </LegalBlock>
 
       <LegalBlock n="03" title="Digital delivery">

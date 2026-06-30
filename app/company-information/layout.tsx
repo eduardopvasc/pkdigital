@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Company Information",
   description:
-    "NOREN Agency corporate details — operating entity (PK Digital LLC), business and registered addresses, phone, email, and business hours.",
+    "NOREN Agency corporate details — operating entity (PK DIGITAL LLC), business and registered addresses, phone, email, and business hours.",
   path: "/company-information",
 });
 
