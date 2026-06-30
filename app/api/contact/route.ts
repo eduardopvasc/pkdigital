@@ -50,16 +50,56 @@ export async function POST(request: Request) {
     );
   }
 
-  // No email/CRM provider is wired up yet. Log the enquiry server-side and
-  // acknowledge. Swap this for an email send (e.g. Resend) or DB write later.
-  console.log("[contact] new enquiry", {
+  const enquiry = {
     name,
     company,
     email,
     website: data.website?.trim() || null,
     subject,
     message,
-  });
+  };
+
+  // Deliver the enquiry by email when Resend is configured (no SDK dependency —
+  // uses the Resend REST API). If the env is not set, fall back to a server log
+  // so the form never blocks. Set RESEND_API_KEY, CONTACT_TO_EMAIL and
+  // CONTACT_FROM_EMAIL (a verified sender) to enable real delivery.
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM_EMAIL;
+
+  if (apiKey && to && from) {
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to,
+          reply_to: email,
+          subject: `New enquiry — ${subject} — ${company}`,
+          text: [
+            `Name: ${name}`,
+            `Company: ${company}`,
+            `Email: ${email}`,
+            `Website: ${enquiry.website ?? "—"}`,
+            `Topic: ${subject}`,
+            "",
+            message,
+          ].join("\n"),
+        }),
+      });
+      if (!res.ok) {
+        console.error("[contact] email send failed", res.status, enquiry);
+      }
+    } catch (err) {
+      console.error("[contact] email send error", err, enquiry);
+    }
+  } else {
+    console.log("[contact] new enquiry (email not configured)", enquiry);
+  }
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }

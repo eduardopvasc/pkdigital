@@ -71,6 +71,13 @@ export default function TermsPage() {
           separately as agreed. Custom scopes and alternative structures are
           arranged through a private proposal.
         </p>
+        <p>
+          Payments are processed securely through Whop. checkout-atroyale.com is
+          used solely as the operational checkout domain for selected NOREN
+          Agency transactions, operated on behalf of NOREN Agency (PK DIGITAL
+          LLC); the purchased service remains a NOREN Agency engagement operated
+          by PK DIGITAL LLC.
+        </p>
       </LegalBlock>
 
       <LegalBlock n="05" title="Digital delivery and third-party platforms">

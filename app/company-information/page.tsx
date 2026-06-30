@@ -57,7 +57,7 @@ const ROWS: Row[] = [
   {
     label: "Registered address",
     lines: REGISTERED_ADDRESS,
-    note: "The registered office of PK Digital LLC for legal and corporate purposes.",
+    note: "The registered office of PK DIGITAL LLC for legal and corporate purposes.",
   },
   {
     label: "Business hours",
@@ -76,7 +76,7 @@ export default function CompanyInformationPage() {
           reduce={reduce}
           kicker="Company information"
           title="A registered, contactable company."
-          lead="NOREN Agency is operated by PK Digital LLC, a registered US company. The same details appear consistently across the site — no anonymity, no ambiguity."
+          lead="NOREN Agency is operated by PK DIGITAL LLC, a registered US company. The same details appear consistently across the site — no anonymity, no ambiguity."
         />
 
         <section className="mx-auto max-w-[1200px] px-6 py-24 md:px-8 md:py-32">
